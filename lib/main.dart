@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:state_management_course/inherited_widget/view/inherited_widget_page.dart';
+import 'package:state_management_course/provider/first_project/provider/bread_crumb_provider.dart';
+import 'package:state_management_course/provider/first_project/views/bread_crumb_page.dart';
 
 import 'vanilla_contacts/views/vanilla_contact_page.dart';
 
@@ -19,7 +21,7 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return const MaterialApp(
       debugShowCheckedModeBanner: false,
-      home: InheritedWidgetPage(),
+      home: BreadCrumbPage(),
     );
   }
 }
