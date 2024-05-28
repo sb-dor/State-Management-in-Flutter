@@ -6,13 +6,21 @@ import 'package:state_management_course/provider/first_project/models/bread_crum
 class BreadCrumbProvider extends ChangeNotifier {
   final List<BreadCrumb> _items = [];
 
-  UnmodifiableListView<BreadCrumb> get item => UnmodifiableListView(_items);
+  UnmodifiableListView<BreadCrumb> get items => UnmodifiableListView(_items);
 
   void add(BreadCrumb breadCrumb) {
     for (final item in _items) {
       item.activate();
     }
     _items.add(breadCrumb);
+    notifyListeners();
+  }
+
+  void removeItem(BreadCrumb breadCrumb) {
+    _items.removeWhere((e) => e.uuid == breadCrumb.uuid);
+    if (_items.isNotEmpty) {
+      _items.last.isActive = false;
+    }
     notifyListeners();
   }
 
