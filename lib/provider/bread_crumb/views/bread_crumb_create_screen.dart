@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_management_course/main.dart';
-import 'package:state_management_course/provider/first_project/models/bread_crumb.dart';
-import 'package:state_management_course/provider/first_project/provider/bread_crumb_provider.dart';
+import 'package:state_management_course/provider/bread_crumb/models/bread_crumb.dart';
+import 'package:state_management_course/provider/bread_crumb/provider/bread_crumb_provider.dart';
 
 class BreadCrumbCreateScreen extends StatefulWidget {
   const BreadCrumbCreateScreen({super.key});

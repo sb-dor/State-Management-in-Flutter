@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:state_management_course/provider/first_project/models/bread_crumb.dart';
-import 'package:state_management_course/provider/first_project/provider/bread_crumb_provider.dart';
-import 'package:state_management_course/provider/first_project/views/bread_crumb_create_screen.dart';
-import 'package:state_management_course/provider/first_project/views/bread_crumb_widget.dart';
+import 'package:state_management_course/provider/bread_crumb/models/bread_crumb.dart';
+import 'package:state_management_course/provider/bread_crumb/provider/bread_crumb_provider.dart';
+import 'package:state_management_course/provider/bread_crumb/views/bread_crumb_widget.dart';
 
+import 'bread_crumb_create_screen.dart';
 class BreadCrumbPage extends StatefulWidget {
   const BreadCrumbPage({super.key});
 

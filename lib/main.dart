@@ -1,10 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
-import 'package:state_management_course/inherited_widget/view/inherited_widget_page.dart';
-import 'package:state_management_course/provider/first_project/provider/bread_crumb_provider.dart';
-import 'package:state_management_course/provider/first_project/views/bread_crumb_page.dart';
-
-import 'vanilla_contacts/views/vanilla_contact_page.dart';
+import 'provider/bread_crumb/provider/bread_crumb_provider.dart';
+import 'provider/bread_crumb/views/bread_crumb_page.dart';
 
 void main() {
   runApp(const App());
