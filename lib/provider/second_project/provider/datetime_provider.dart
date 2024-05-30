@@ -9,7 +9,9 @@ class DatetimeProvider extends ChangeNotifier {
   DatetimeProvider()
       : id = const Uuid().v4(),
         _cheapDatetimeModel = CheapDatetimeModel(),
-        _expensiveDatetimeModel = ExpensiveDatetimeModel();
+        _expensiveDatetimeModel = ExpensiveDatetimeModel() {
+    start();
+  }
 
   late String id;
   late CheapDatetimeModel _cheapDatetimeModel;
@@ -28,11 +30,12 @@ class DatetimeProvider extends ChangeNotifier {
   void start() {
     _cheapDateTimeModelSubs = Stream.periodic(const Duration(seconds: 1)).listen((e) {
       _cheapDatetimeModel = CheapDatetimeModel();
+      notifyListeners();
     });
     _expensiveDateTimeModelSubs = Stream.periodic(const Duration(seconds: 10)).listen((e) {
       _expensiveDatetimeModel = ExpensiveDatetimeModel();
+      notifyListeners();
     });
-    notifyListeners();
   }
 
   void stop() {

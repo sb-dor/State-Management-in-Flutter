@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:state_management_course/provider/second_project/provider/datetime_provider.dart';
 import 'provider/bread_crumb/provider/bread_crumb_provider.dart';
 import 'provider/bread_crumb/views/bread_crumb_page.dart';
+import 'provider/second_project/views/second_provider_project_page.dart';
 
 void main() {
   runApp(const App());
@@ -19,13 +21,16 @@ class _AppState extends State<App> {
   Widget build(BuildContext context) {
     return MultiProvider(
       providers: [
-        ChangeNotifierProvider(
+        ChangeNotifierProvider<BreadCrumbProvider>(
           create: (_) => BreadCrumbProvider(),
+        ),
+        ChangeNotifierProvider<DatetimeProvider>(
+          create: (_) => DatetimeProvider(),
         ),
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: BreadCrumbPage(),
+        home: SecondProviderProjectPage(),
       ),
     );
   }
