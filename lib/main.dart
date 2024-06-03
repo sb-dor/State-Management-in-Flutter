@@ -4,6 +4,7 @@ import 'package:state_management_course/provider/second_project/provider/datetim
 import 'provider/bread_crumb/provider/bread_crumb_provider.dart';
 import 'provider/bread_crumb/views/bread_crumb_page.dart';
 import 'provider/second_project/views/second_provider_project_page.dart';
+import 'redux/filtered_items/view/redux_filtered_items_page.dart';
 
 void main() {
   runApp(const App());
@@ -30,7 +31,7 @@ class _AppState extends State<App> {
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
-        home: SecondProviderProjectPage(),
+        home: ReduxFilteredItemsPage(),
       ),
     );
   }
