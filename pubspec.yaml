@@ -40,11 +40,14 @@ dependencies:
   provider: ^6.1.2
   redux: ^5.0.0
   flutter_redux: ^0.10.0
+  flutter_bloc: ^8.1.5
+  equatable: ^2.0.5
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  bloc_test: ^9.1.7
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
