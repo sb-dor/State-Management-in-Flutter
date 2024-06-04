@@ -3,6 +3,8 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:provider/provider.dart';
 import 'package:redux/redux.dart';
 import 'package:state_management_course/provider/second_project/provider/datetime_provider.dart';
+import 'package:state_management_course/redux/async_redux_example/state/async_redux_state.dart';
+import 'package:state_management_course/redux/async_redux_example/view/async_redux_page.dart';
 import 'provider/bread_crumb/provider/bread_crumb_provider.dart';
 import 'provider/bread_crumb/views/bread_crumb_page.dart';
 import 'provider/second_project/views/second_provider_project_page.dart';
@@ -22,6 +24,11 @@ final state = Store<FilteredItemsState>(
   initialState: const FilteredItemsState(items: [], filter: ItemFilter.all),
 );
 
+final asyncState = Store<AsyncReduxState>(
+  asyncReduxReducer,
+  initialState: const AsyncReduxState.empty(),
+);
+
 class App extends StatefulWidget {
   const App({super.key});
 
@@ -37,9 +44,11 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return StoreProvider( // Redux's store provider
-      store: state,
-      child: MultiProvider( // Provider package
+    return StoreProvider(
+      // Redux's store provider
+      store: asyncState,
+      child: MultiProvider(
+        // Provider package
         providers: [
           ChangeNotifierProvider<BreadCrumbProvider>(
             create: (_) => BreadCrumbProvider(),
@@ -50,7 +59,7 @@ class _AppState extends State<App> {
         ],
         child: const MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: ReduxFilteredItemsPage(),
+          home: AsyncReduxPage(),
         ),
       ),
     );
