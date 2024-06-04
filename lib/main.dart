@@ -1,14 +1,26 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_redux/flutter_redux.dart';
 import 'package:provider/provider.dart';
+import 'package:redux/redux.dart';
 import 'package:state_management_course/provider/second_project/provider/datetime_provider.dart';
 import 'provider/bread_crumb/provider/bread_crumb_provider.dart';
 import 'provider/bread_crumb/views/bread_crumb_page.dart';
 import 'provider/second_project/views/second_provider_project_page.dart';
+import 'redux/filtered_items/enums/filtered_items_enums.dart';
+import 'redux/filtered_items/states/filtered_items_state.dart';
+import 'redux/filtered_items/states/filtered_reducer.dart';
 import 'redux/filtered_items/view/redux_filtered_items_page.dart';
 
 void main() {
   runApp(const App());
 }
+
+// in redux create a single store that holds the whole application state
+// REMEMBER!!! - SINGLE STORE (SINGLE STATE) FOR ENTIRE APP!
+final state = Store<FilteredItemsState>(
+  appStateReducer,
+  initialState: const FilteredItemsState(items: [], filter: ItemFilter.all),
+);
 
 class App extends StatefulWidget {
   const App({super.key});
@@ -19,19 +31,27 @@ class App extends StatefulWidget {
 
 class _AppState extends State<App> {
   @override
+  void initState() {
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
-    return MultiProvider(
-      providers: [
-        ChangeNotifierProvider<BreadCrumbProvider>(
-          create: (_) => BreadCrumbProvider(),
+    return StoreProvider( // Redux's store provider
+      store: state,
+      child: MultiProvider( // Provider package
+        providers: [
+          ChangeNotifierProvider<BreadCrumbProvider>(
+            create: (_) => BreadCrumbProvider(),
+          ),
+          ChangeNotifierProvider<DatetimeProvider>(
+            create: (_) => DatetimeProvider(),
+          ),
+        ],
+        child: const MaterialApp(
+          debugShowCheckedModeBanner: false,
+          home: ReduxFilteredItemsPage(),
         ),
-        ChangeNotifierProvider<DatetimeProvider>(
-          create: (_) => DatetimeProvider(),
-        ),
-      ],
-      child: const MaterialApp(
-        debugShowCheckedModeBanner: false,
-        home: ReduxFilteredItemsPage(),
       ),
     );
   }
