@@ -44,6 +44,13 @@ AsyncReduxState asyncReduxReducer(AsyncReduxState oldState, action) {
   return oldState;
 }
 
+// all Future functions that do something in the future
+// should be placed inside "middlewares"
+// and after calling Future function use specific action of Redux in order to place data
+// ***
+// ***
+// all middlewares should be initialized inside main app's store
+// ------ take a look a main.dart ------
 void loadPeopleMiddleware(
   Store<AsyncReduxState> store,
   action,

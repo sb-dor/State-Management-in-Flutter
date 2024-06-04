@@ -27,6 +27,9 @@ final state = Store<FilteredItemsState>(
 final asyncState = Store<AsyncReduxState>(
   asyncReduxReducer,
   initialState: const AsyncReduxState.empty(),
+  middleware: [
+    loadPeopleMiddleware,
+  ]
 );
 
 class App extends StatefulWidget {
