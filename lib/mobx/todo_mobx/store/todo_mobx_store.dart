@@ -13,7 +13,7 @@ abstract class _TodoMobxStore with Store {
   ObservableList<MobxTodoModel> todos = ObservableList<MobxTodoModel>();
 
   @observable
-  ShowTypeOfTodos showTypeOfTodos = ShowTypeOfTodos.deleted;
+  ShowTypeOfTodos showTypeOfTodos = ShowTypeOfTodos.current;
 
   @computed
   ObservableList<MobxTodoModel> get visibleType {

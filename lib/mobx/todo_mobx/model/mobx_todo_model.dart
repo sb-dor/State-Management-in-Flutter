@@ -1,9 +1,17 @@
+import 'package:mobx/mobx.dart';
 import 'package:uuid/uuid.dart';
 
-class MobxTodoModel {
+part 'mobx_todo_model.g.dart';
+
+class MobxTodoModel = _MobxTodoModelAbstraction with _$MobxTodoModel;
+
+abstract class _MobxTodoModelAbstraction with Store {
   final String description;
   final String uuid;
+
+  @observable
   bool deleted;
 
-  MobxTodoModel({required this.description, this.deleted = false}) : uuid = const Uuid().v4();
+  _MobxTodoModelAbstraction({required this.description, this.deleted = false})
+      : uuid = const Uuid().v4();
 }

@@ -20,8 +20,7 @@ import 'redux/filtered_items/view/redux_filtered_items_page.dart';
 // mobx here
 final counter = Counter(); // counter mobx state
 
-final todoMobxStoreState = TodoMobxStoreObservable(); // todos mobx state
-
+// final todoMobxStoreState = TodoMobxStoreObservable(); // todos mobx state
 
 //
 void main() {
@@ -67,6 +66,9 @@ class _AppState extends State<App> {
           ),
           ChangeNotifierProvider<DatetimeProvider>(
             create: (_) => DatetimeProvider(),
+          ),
+          Provider(
+            create: (_) => TodoMobxStoreObservable(),
           ),
         ],
         child: const MaterialApp(

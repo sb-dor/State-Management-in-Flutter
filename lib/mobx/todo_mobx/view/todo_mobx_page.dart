@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:provider/provider.dart';
 import 'package:state_management_course/main.dart';
 import 'package:state_management_course/mobx/todo_mobx/store/todo_mobx_store.dart';
 
@@ -27,6 +28,7 @@ class _TodoMobxPageState extends State<TodoMobxPage> {
 
   @override
   Widget build(BuildContext context) {
+    final todoMobxObservable = Provider.of<TodoMobxStoreObservable>(context);
     return Scaffold(
       appBar: AppBar(
         title: const Text("Todo mobx add"),
@@ -35,7 +37,8 @@ class _TodoMobxPageState extends State<TodoMobxPage> {
         onPressed: () {
           final desc = _textEditingController.text.trim();
           if (desc.isEmpty) return;
-          todoMobxStoreState.addTodo(desc);
+          todoMobxObservable.addTodo(desc);
+          _textEditingController.clear();
         },
         child: const Icon(Icons.add),
       ),
@@ -48,7 +51,7 @@ class _TodoMobxPageState extends State<TodoMobxPage> {
               children: ShowTypeOfTodos.values
                   .map(
                     (e) => ElevatedButton(onPressed: () {
-                      todoMobxStoreState.showType(e);
+                      todoMobxObservable.showType(e);
                     }, child: Text(e.name)),
                   )
                   .toList(),
@@ -62,14 +65,14 @@ class _TodoMobxPageState extends State<TodoMobxPage> {
               physics: const NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               separatorBuilder: (context, index) => const SizedBox(height: 10),
-              itemCount: todoMobxStoreState.visibleType.length,
+              itemCount: todoMobxObservable.visibleType.length,
               itemBuilder: (context, index) {
-                final todo = todoMobxStoreState.visibleType[index];
+                final todo = todoMobxObservable.visibleType[index];
                 return ListTile(
                   title: Text(todo.description),
                   trailing: IconButton(
                     onPressed: () {
-                      todoMobxStoreState.removeTodo(todo);
+                      todoMobxObservable.removeTodo(todo);
                     },
                     icon: const Icon(Icons.delete),
                   ),
