@@ -3,6 +3,8 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:provider/provider.dart';
 import 'package:redux/redux.dart';
 import 'package:state_management_course/mobx/counter/view/counter_mobx_page.dart';
+import 'package:state_management_course/mobx/mobx_with_streams/store/mobx_with_streams_store.dart';
+import 'package:state_management_course/mobx/mobx_with_streams/view/mobx_with_stream_page.dart';
 import 'package:state_management_course/mobx/todo_mobx/store/todo_mobx_store.dart';
 import 'package:state_management_course/mobx/todo_mobx/view/todo_mobx_page.dart';
 import 'package:state_management_course/provider/second_project/provider/datetime_provider.dart';
@@ -70,10 +72,13 @@ class _AppState extends State<App> {
           Provider(
             create: (_) => TodoMobxStoreObservable(),
           ),
+          Provider(
+            create: (_) => MobxWithStreamsData(),
+          ),
         ],
         child: const MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: TodoMobxPage(),
+          home: MobxWithStreamPage(),
         ),
       ),
     );
