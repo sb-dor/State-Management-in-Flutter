@@ -42,12 +42,17 @@ dependencies:
   flutter_redux: ^0.10.0
   flutter_bloc: ^8.1.5
   equatable: ^2.0.5
+  mobx: ^2.3.3+2
+  flutter_mobx: ^2.2.1+1
+  collection: ^1.18.0
 
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
   bloc_test: ^9.1.7
+  build_runner: ^2.4.10
+  mobx_codegen: ^2.6.1
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
