@@ -3,6 +3,8 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:provider/provider.dart';
 import 'package:redux/redux.dart';
 import 'package:state_management_course/mobx/counter/view/counter_mobx_page.dart';
+import 'package:state_management_course/mobx/mobx_google_suggestion/store/mobx_google_suggestion_store.dart';
+import 'package:state_management_course/mobx/mobx_google_suggestion/view/mobx_google_suggestion_page.dart';
 import 'package:state_management_course/mobx/mobx_with_streams/store/mobx_with_streams_store.dart';
 import 'package:state_management_course/mobx/mobx_with_streams/view/mobx_with_stream_page.dart';
 import 'package:state_management_course/mobx/todo_mobx/store/todo_mobx_store.dart';
@@ -69,16 +71,21 @@ class _AppState extends State<App> {
           ChangeNotifierProvider<DatetimeProvider>(
             create: (_) => DatetimeProvider(),
           ),
+
+          // MOBX REGISTRATIONS
           Provider(
             create: (_) => TodoMobxStoreObservable(),
           ),
           Provider(
             create: (_) => MobxWithStreamsData(),
           ),
+          Provider(
+            create: (_) => MobxGoogleSuggestionStoreData(),
+          )
         ],
         child: const MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: MobxWithStreamPage(),
+          home: MobxGoogleSuggestionPage(),
         ),
       ),
     );
