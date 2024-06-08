@@ -7,6 +7,7 @@ import 'package:state_management_course/mobx/mobx_google_suggestion/store/mobx_g
 import 'package:state_management_course/mobx/mobx_google_suggestion/view/mobx_google_suggestion_page.dart';
 import 'package:state_management_course/mobx/mobx_with_streams/store/mobx_with_streams_store.dart';
 import 'package:state_management_course/mobx/mobx_with_streams/view/mobx_with_stream_page.dart';
+import 'package:state_management_course/mobx/mobx_without_code_generation/view/mobx_without_code_generation_page.dart';
 import 'package:state_management_course/mobx/todo_mobx/store/todo_mobx_store.dart';
 import 'package:state_management_course/mobx/todo_mobx/view/todo_mobx_page.dart';
 import 'package:state_management_course/provider/second_project/provider/datetime_provider.dart';
@@ -85,7 +86,7 @@ class _AppState extends State<App> {
         ],
         child: const MaterialApp(
           debugShowCheckedModeBanner: false,
-          home: MobxGoogleSuggestionPage(),
+          home: MobxWithoutCodeGenerationPage(),
         ),
       ),
     );
