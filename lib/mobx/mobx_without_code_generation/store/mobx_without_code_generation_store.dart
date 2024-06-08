@@ -16,7 +16,9 @@ class ModelWithoutCodeGenerationStore {
   final ObservableList<ModelWithoutCodeGeneration> _list =
       ObservableList<ModelWithoutCodeGeneration>();
 
-  UnmodifiableListView<ModelWithoutCodeGeneration> get list => UnmodifiableListView(_list);
+  UnmodifiableListView<ModelWithoutCodeGeneration> get list => UnmodifiableListView(
+        _list.where((e) => !e.deleted.value).toList(),
+      );
 
   void addToList(String value) {
     runInAction(() {
@@ -27,7 +29,10 @@ class ModelWithoutCodeGenerationStore {
 
   void delete(ModelWithoutCodeGeneration model) {
     runInAction(() {
-      _list.removeWhere((e) => e.id == model.id);
+      final todo = _list.firstWhereOrNull((e) => e.id == model.id);
+      if (todo == null) return;
+      todo.deleted.value = true;
+      _list[_list.indexWhere((e) => e.id == todo.id)] = todo;
     });
   }
 }
