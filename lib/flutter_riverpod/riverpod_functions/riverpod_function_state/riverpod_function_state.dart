@@ -9,11 +9,6 @@ part 'riverpod_function_state.g.dart';
 //  All providers must be annotated with @riverpod or @Riverpod().
 //  This annotation can be placed on global functions or classes.
 //  Through this annotation, it is possible to configure the provider.
-
-//  When a @riverpod annotation is placed on a class, that class is called a "Notifier".
-//  The class must extend _$NotifierName, where NotifierName is the class name.
-//
-//  Notifiers are responsible for exposing ways to modify the state of the provider.
 @riverpod
 Future<RiverpodNumberTriviaModel> trivia(TriviaRef ref) async {
   final headers = {'Content-Type': 'application/json'};
