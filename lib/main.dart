@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:provider/provider.dart';
 import 'package:redux/redux.dart';
+import 'package:state_management_course/flutter_riverpod/riverpod_functions/riverpod_function_page.dart';
 import 'package:state_management_course/mobx/counter/view/counter_mobx_page.dart';
 import 'package:state_management_course/mobx/mobx_google_suggestion/store/mobx_google_suggestion_store.dart';
 import 'package:state_management_course/mobx/mobx_google_suggestion/view/mobx_google_suggestion_page.dart';
@@ -21,7 +22,7 @@ import 'redux/filtered_items/enums/filtered_items_enums.dart';
 import 'redux/filtered_items/states/filtered_items_state.dart';
 import 'redux/filtered_items/states/filtered_reducer.dart';
 import 'redux/filtered_items/view/redux_filtered_items_page.dart';
-
+import 'package:flutter_riverpod/flutter_riverpod.dart' as riverpod;
 // mobx here
 final counter = Counter(); // counter mobx state
 
@@ -34,7 +35,7 @@ void main() {
 
 // in redux create a single store that holds the whole application state
 // REMEMBER!!! - SINGLE STORE (SINGLE STATE) FOR ENTIRE APP!
-final state = Store<FilteredItemsState>(
+final stateSome = Store<FilteredItemsState>(
   appStateReducer,
   initialState: const FilteredItemsState(items: [], filter: ItemFilter.all),
 );
@@ -84,9 +85,11 @@ class _AppState extends State<App> {
             create: (_) => MobxGoogleSuggestionStoreData(),
           )
         ],
-        child: const MaterialApp(
-          debugShowCheckedModeBanner: false,
-          home: MobxWithoutCodeGenerationPage(),
+        child: const riverpod.ProviderScope(
+          child: MaterialApp(
+            debugShowCheckedModeBanner: false,
+            home: RiverpodFunctionPage(),
+          ),
         ),
       ),
     );

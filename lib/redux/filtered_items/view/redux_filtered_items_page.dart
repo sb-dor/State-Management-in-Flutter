@@ -35,7 +35,7 @@ class _ReduxFilteredItemsPageState extends State<ReduxFilteredItemsPage> {
             children: [
               TextButton(
                 onPressed: () {
-                  state.dispatch(
+                  stateSome.dispatch(
                     const ChangeFilterTypeAction(ItemFilter.all),
                   );
                 },
@@ -43,7 +43,7 @@ class _ReduxFilteredItemsPageState extends State<ReduxFilteredItemsPage> {
               ),
               TextButton(
                 onPressed: () {
-                  state.dispatch(
+                  stateSome.dispatch(
                     const ChangeFilterTypeAction(ItemFilter.shortTexts),
                   );
                 },
@@ -51,7 +51,7 @@ class _ReduxFilteredItemsPageState extends State<ReduxFilteredItemsPage> {
               ),
               TextButton(
                 onPressed: () {
-                  state.dispatch(
+                  stateSome.dispatch(
                     const ChangeFilterTypeAction(ItemFilter.longTexts),
                   );
                 },
@@ -68,7 +68,7 @@ class _ReduxFilteredItemsPageState extends State<ReduxFilteredItemsPage> {
                 onPressed: () {
                   final text = _textEditingController.text.trim();
                   if (text.isEmpty) return;
-                  state.dispatch(AddItemAction(text));
+                  stateSome.dispatch(AddItemAction(text));
                   _textEditingController.clear();
                 },
                 child: const Text("Add"),
@@ -77,7 +77,7 @@ class _ReduxFilteredItemsPageState extends State<ReduxFilteredItemsPage> {
                 onPressed: () {
                   final text = _textEditingController.text.trim();
                   if (text.isEmpty) return;
-                  state.dispatch(RemoveItemAction(text));
+                  stateSome.dispatch(RemoveItemAction(text));
                   _textEditingController.clear();
                 },
                 child: const Text("Remove"),
