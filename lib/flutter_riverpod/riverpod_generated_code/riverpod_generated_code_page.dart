@@ -37,6 +37,10 @@ class _RiverpodGeneratedCodePageState extends ConsumerState<RiverpodGeneratedCod
           ),
         ],
       ),
+      //  When the listened to provider changes and our request recomputes, the previous state is kept until the new request is completed.
+      //  At the same time, while the request is pending, the "isLoading" and "isReloading" flags will be set.
+      //
+      //  This enables UI to either show the previous state or a loading indicator, or even both.
       body: Column(
         children: [
           Padding(

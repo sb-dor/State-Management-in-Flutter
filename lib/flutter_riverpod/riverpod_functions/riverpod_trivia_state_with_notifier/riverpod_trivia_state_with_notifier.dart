@@ -1,6 +1,8 @@
 import 'dart:convert';
 
 import 'package:collection/collection.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:provider/provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:state_management_course/flutter_riverpod/riverpod_functions/riverpod_number_trivia_model.dart';
 import 'package:http/http.dart' as http;
@@ -20,9 +22,23 @@ part 'riverpod_trivia_state_with_notifier.g.dart';
 class RiverpodTriviaStateWithNotifier extends _$RiverpodTriviaStateWithNotifier {
   @override
   Future<List<RiverpodNumberTriviaModel>> build() async {
+    // We use "ref.watch" to obtain the latest passed seconds.
+    // By specifying that ".future" after the provider, our code will wait
+    // for at least one another seconds to be available.
+
+    // Notice how we used ref.watch(otherRiverpodForTheCombiningProvidersProvider.future) instead of ref.watch(otherRiverpodForTheCombiningProvidersProvider).
+    // That is because our provider is asynchronous. As such, we want to await for an initial value to be available.
+    //
+    // If we omit that .future, we would receive an AsyncValue, which is a snapshot of the current state of the provider.
+    // But if no seconds is available yet, we won't be able to do anything.
+    final value = await ref.watch(otherRiverpodForTheCombiningProvidersProvider(3)
+        .future); // when the value will be available
+
+    debugPrint("second value comes: $value");
+
     final headers = {'Content-Type': 'application/json'};
     final List<RiverpodNumberTriviaModel> data = [];
-    for (int i = 0; i < 10; i++) {
+    for (int i = 0; i < value; i++) {
       final response = await http.get(
         Uri.parse("http://numbersapi.com/random?json"),
         headers: headers,
@@ -53,5 +69,15 @@ class RiverpodTriviaStateWithNotifier extends _$RiverpodTriviaStateWithNotifier 
       return data;
     });
     state = data;
+  }
+}
+
+@riverpod
+class OtherRiverpodForTheCombiningProviders extends _$OtherRiverpodForTheCombiningProviders {
+  @override
+  Future<int> build(int duration) async {
+    // just for test
+    await Future.delayed(Duration(seconds: duration));
+    return duration;
   }
 }

@@ -82,57 +82,77 @@ class _DialogWidget extends ConsumerWidget {
       child: Scaffold(
         appBar: AppBar(
           title: const Text("Number of trivias"),
+          scrolledUnderElevation: 0,
           actions: [
             IconButton(
-              onPressed: () => ref.invalidate(triviasProvider),
+              onPressed: () => ref.invalidate(otherRiverpodForTheCombiningProvidersProvider),
+              icon: const Icon(Icons.update),
+            ),
+            IconButton(
+              onPressed: () => ref.invalidate(riverpodTriviaStateWithNotifierProvider),
               icon: const Icon(Icons.refresh),
             ),
           ],
         ),
-        body: numberTrivialRiverpod.when(
-          data: (list) {
-            return ListView.separated(
-                separatorBuilder: (context, index) => Padding(
+        //  When the listened to provider changes and our request recomputes,
+        //  the previous state is kept until the new request is completed.
+        //  At the same time, while the request is pending, the "isLoading" and "isReloading" flags will be set.
+        //
+        //  This enables UI to either show the previous state or a loading indicator, or even both.Ï
+        body: numberTrivialRiverpod.isLoading
+            ? const Center(child: CircularProgressIndicator())
+            : numberTrivialRiverpod.when<Widget>(
+                data: (list) {
+                  return ListView.separated(
+                    separatorBuilder: (context, index) => Padding(
                       padding: const EdgeInsets.symmetric(horizontal: 20),
                       child: Divider(
                         color: Colors.grey[300],
                       ),
                     ),
-                itemCount: list.length,
-                itemBuilder: (context, index) {
-                  final trivia = list[index];
-                  return ListTile(
-                    title: trivia.edit
-                        ? TextField(
-                            controller: trivia.textEditingController,
-                            maxLines: null,
-                          )
-                        : Text("Trivia: ${trivia.text}"),
-                    subtitle: Text("Trivia number: ${trivia.number}"),
-                    leading: IconButton(
-                      onPressed: () {
-                        if (trivia.edit) {
-                          ref
-                              .read(riverpodTriviaStateWithNotifierProvider.notifier)
-                              .saveTriviaText(trivia);
-                        } else {
-                          ref
-                              .read(riverpodTriviaStateWithNotifierProvider.notifier)
-                              .showEdit(trivia);
-                        }
-                      },
-                      icon: Icon(
-                        trivia.edit ? Icons.save : Icons.edit,
-                      ),
-                    ),
+                    itemCount: list.length,
+                    itemBuilder: (context, index) {
+                      final trivia = list[index];
+                      return Card(
+                        child: ListTile(
+                          title: trivia.edit
+                              ? TextField(
+                                  controller: trivia.textEditingController,
+                                  maxLines: null,
+                                  onSubmitted: (v) {
+                                    ref
+                                        .read(riverpodTriviaStateWithNotifierProvider.notifier)
+                                        .saveTriviaText(trivia);
+                                  },
+                                )
+                              : Text("Trivia: ${trivia.text}"),
+                          subtitle: Text("Trivia number: ${trivia.number}"),
+                          leading: IconButton(
+                            onPressed: () {
+                              if (trivia.edit) {
+                                ref
+                                    .read(riverpodTriviaStateWithNotifierProvider.notifier)
+                                    .saveTriviaText(trivia);
+                              } else {
+                                ref
+                                    .read(riverpodTriviaStateWithNotifierProvider.notifier)
+                                    .showEdit(trivia);
+                              }
+                            },
+                            icon: Icon(
+                              trivia.edit ? Icons.save : Icons.edit,
+                            ),
+                          ),
+                        ),
+                      );
+                    },
                   );
-                });
-          },
-          error: (error, trace) {
-            return Text("Error is: $trace");
-          },
-          loading: () => const CircularProgressIndicator(),
-        ),
+                },
+                error: (error, trace) {
+                  return Text("Error is: $trace");
+                },
+                loading: () => const CircularProgressIndicator(),
+              ),
       ),
     );
   }
