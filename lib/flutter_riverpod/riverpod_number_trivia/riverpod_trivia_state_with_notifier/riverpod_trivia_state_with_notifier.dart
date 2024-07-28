@@ -1,12 +1,9 @@
 import 'dart:convert';
 
-import 'package:collection/collection.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:provider/provider.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
-import 'package:state_management_course/flutter_riverpod/riverpod_functions/riverpod_number_trivia_model.dart';
 import 'package:http/http.dart' as http;
-import 'package:state_management_course/main.dart';
+import 'package:state_management_course/flutter_riverpod/riverpod_number_trivia/riverpod_number_trivia_model.dart';
 
 part 'riverpod_trivia_state_with_notifier.g.dart';
 

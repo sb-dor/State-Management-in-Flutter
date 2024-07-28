@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:state_management_course/provider/second_project/models/cheap_datetime_model.dart';
-import 'package:state_management_course/provider/second_project/models/expensive_datetime_model.dart';
 import 'package:state_management_course/provider/second_project/provider/datetime_provider.dart';
 
 class CheapWidget extends StatelessWidget {

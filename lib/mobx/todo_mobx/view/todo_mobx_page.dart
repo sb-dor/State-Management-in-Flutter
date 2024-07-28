@@ -3,7 +3,6 @@ import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:mobx/mobx.dart';
 import 'package:provider/provider.dart';
 import 'package:state_management_course/mobx/todo_mobx/store/todo_mobx_store.dart';
-import 'package:flutter_mobx/flutter_mobx.dart' as mobx;
 
 class TodoMobxPage extends StatefulWidget {
   const TodoMobxPage({super.key});

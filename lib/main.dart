@@ -3,26 +3,18 @@ import 'package:flutter_redux/flutter_redux.dart';
 import 'package:provider/provider.dart';
 import 'package:redux/redux.dart';
 import 'package:state_management_course/flutter_riverpod/provider_observer/provider_observer.dart';
-import 'package:state_management_course/flutter_riverpod/riverpod_functions/riverpod_function_page.dart';
-import 'package:state_management_course/mobx/counter/view/counter_mobx_page.dart';
+import 'package:state_management_course/flutter_riverpod/riverpod_number_trivia/riverpod_function_page.dart';
+import 'package:state_management_course/flutter_riverpod/riverpod_number_trivia/riverpod_trivia_state_with_notifier/riverpod_trivia_state_with_notifier.dart';
 import 'package:state_management_course/mobx/mobx_google_suggestion/store/mobx_google_suggestion_store.dart';
-import 'package:state_management_course/mobx/mobx_google_suggestion/view/mobx_google_suggestion_page.dart';
 import 'package:state_management_course/mobx/mobx_with_streams/store/mobx_with_streams_store.dart';
-import 'package:state_management_course/mobx/mobx_with_streams/view/mobx_with_stream_page.dart';
-import 'package:state_management_course/mobx/mobx_without_code_generation/view/mobx_without_code_generation_page.dart';
 import 'package:state_management_course/mobx/todo_mobx/store/todo_mobx_store.dart';
-import 'package:state_management_course/mobx/todo_mobx/view/todo_mobx_page.dart';
 import 'package:state_management_course/provider/second_project/provider/datetime_provider.dart';
 import 'package:state_management_course/redux/async_redux_example/state/async_redux_state.dart';
-import 'package:state_management_course/redux/async_redux_example/view/async_redux_page.dart';
 import 'mobx/counter/store/counter_store.dart';
 import 'provider/bread_crumb/provider/bread_crumb_provider.dart';
-import 'provider/bread_crumb/views/bread_crumb_page.dart';
-import 'provider/second_project/views/second_provider_project_page.dart';
 import 'redux/filtered_items/enums/filtered_items_enums.dart';
 import 'redux/filtered_items/states/filtered_items_state.dart';
 import 'redux/filtered_items/states/filtered_reducer.dart';
-import 'redux/filtered_items/view/redux_filtered_items_page.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart' as riverpod;
 
 // mobx here
@@ -88,8 +80,16 @@ class _AppState extends State<App> {
           )
         ],
         child: riverpod.ProviderScope(
+          // for observables
           observers: [
             ProviderObserverHelper(),
+          ],
+          // for providers
+          overrides: const [
+            // you can register riverpod to the specific widget tree by using
+            // similar code like this code below
+
+            // riverpodTriviaStateWithNotifierProvider // <- THIS IS PROVIDER
           ],
           child: const MaterialApp(
             debugShowCheckedModeBanner: false,

@@ -2,7 +2,7 @@ import 'dart:convert';
 
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:http/http.dart' as http;
-import 'package:state_management_course/flutter_riverpod/riverpod_functions/riverpod_number_trivia_model.dart';
+import 'package:state_management_course/flutter_riverpod/riverpod_number_trivia/riverpod_number_trivia_model.dart';
 
 part 'riverpod_function_state.g.dart';
 
@@ -10,7 +10,7 @@ part 'riverpod_function_state.g.dart';
 //  This annotation can be placed on global functions or classes.
 //  Through this annotation, it is possible to configure the provider.
 @riverpod
-Future<RiverpodNumberTriviaModel> trivia(TriviaRef ref) async {
+Future<RiverpodNumberTriviaModel?> trivia(TriviaRef ref) async {
   final headers = {'Content-Type': 'application/json'};
   final response = await http.get(
     Uri.parse("http://numbersapi.com/random?json"),
@@ -18,6 +18,7 @@ Future<RiverpodNumberTriviaModel> trivia(TriviaRef ref) async {
   );
   return RiverpodNumberTriviaModel.fromJson(jsonDecode(response.body));
 }
+
 
 @riverpod
 Future<List<RiverpodNumberTriviaModel>> trivias(TriviasRef ref) async {

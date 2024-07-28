@@ -1,5 +1,4 @@
 import 'package:flutter/foundation.dart';
-import 'package:state_management_course/redux/filtered_items/models/filtered_actions.dart';
 
 @immutable
 abstract class ItemAction {

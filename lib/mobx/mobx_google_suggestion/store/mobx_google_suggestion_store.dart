@@ -1,6 +1,5 @@
 import 'dart:async';
 import 'dart:convert';
-import 'package:flutter/cupertino.dart';
 import 'package:mobx/mobx.dart';
 import 'package:state_management_course/mobx/mobx_google_suggestion/model/mobx_google_suggestion_model.dart';
 import 'package:http/http.dart' as http;

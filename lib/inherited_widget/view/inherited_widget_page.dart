@@ -25,7 +25,7 @@ class _InheritedWidgetPageState extends State<InheritedWidgetPage> {
 }
 
 class _InheritedScreen extends StatefulWidget {
-  const _InheritedScreen({super.key});
+  const _InheritedScreen();
 
   @override
   State<_InheritedScreen> createState() => _InheritedScreenState();
