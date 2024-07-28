@@ -5,6 +5,7 @@ import 'package:redux/redux.dart';
 import 'package:state_management_course/flutter_riverpod/provider_observer/provider_observer.dart';
 import 'package:state_management_course/flutter_riverpod/riverpod_number_trivia/riverpod_function_page.dart';
 import 'package:state_management_course/flutter_riverpod/riverpod_number_trivia/riverpod_trivia_state_with_notifier/riverpod_trivia_state_with_notifier.dart';
+import 'package:state_management_course/flutter_riverpod/riverpod_with_state/riverpod_with_state_page.dart';
 import 'package:state_management_course/mobx/mobx_google_suggestion/store/mobx_google_suggestion_store.dart';
 import 'package:state_management_course/mobx/mobx_with_streams/store/mobx_with_streams_store.dart';
 import 'package:state_management_course/mobx/todo_mobx/store/todo_mobx_store.dart';
@@ -93,7 +94,7 @@ class _AppState extends State<App> {
           ],
           child: const MaterialApp(
             debugShowCheckedModeBanner: false,
-            home: RiverpodFunctionPage(),
+            home: RiverpodWithStatePage(),
           ),
         ),
       ),

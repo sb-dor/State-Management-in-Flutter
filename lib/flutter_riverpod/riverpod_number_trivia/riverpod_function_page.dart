@@ -21,7 +21,6 @@ class RiverpodFunctionPage extends ConsumerWidget {
           children: [
             const _FirstWidgetWithProviderScope(),
             const _SecondWidgetWithProviderScope(),
-
             ElevatedButton(
               onPressed: () {
                 showModalBottomSheet(
@@ -56,36 +55,38 @@ class _FirstWidgetWithProviderScope extends StatelessWidget {
       child: Consumer(
         builder: (context, ref, child) {
           final riverpodFunction = ref.watch(triviaProvider);
-          return riverpodFunction.when(
-            data: (data) => Column(
-              children: [
-                Text(
-                  "Name: ${data?.text}",
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 10),
-                Text("Number: ${riverpodFunction.value?.number ?? '-'}"),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    // for function "riverpod"
-                    // in order recall function
-                    // you have to use the code below
+          return riverpodFunction.isLoading
+              ? const CircularProgressIndicator()
+              : riverpodFunction.when(
+                  data: (data) => Column(
+                    children: [
+                      Text(
+                        "Name: ${data?.text}",
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 10),
+                      Text("Number: ${riverpodFunction.value?.number ?? '-'}"),
+                      const SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: () {
+                          // for function "riverpod"
+                          // in order recall function
+                          // you have to use the code below
 
-                    // whenever user try to click button several times
-                    // "ref.invalidate(anyProvider)" will work only once
-                    ref.invalidate(triviaProvider);
-                  },
-                  child: const Text(
-                    "Find Trivia",
+                          // whenever user try to click button several times
+                          // "ref.invalidate(anyProvider)" will work only once
+                          ref.invalidate(triviaProvider);
+                        },
+                        child: const Text(
+                          "Find Trivia",
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              ],
-            ),
-            error: (error, stacktrace) => const Text("Error occreed, please try again later"),
-            loading: () => const CircularProgressIndicator(),
-          );
+                  error: (error, stacktrace) => const Text("Error occreed, please try again later"),
+                  loading: () => const CircularProgressIndicator(),
+                );
         },
       ),
     );
@@ -98,42 +99,42 @@ class _SecondWidgetWithProviderScope extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return ProviderScope(
-      overrides: [
-        triviaProvider
-      ],
+      overrides: [triviaProvider],
       child: Consumer(
         builder: (context, ref, child) {
           final riverpodFunction = ref.watch(triviaProvider);
-          return riverpodFunction.when(
-            data: (data) => Column(
-              children: [
-                Text(
-                  "Name: ${data?.text}",
-                  style: const TextStyle(fontWeight: FontWeight.bold),
-                  textAlign: TextAlign.center,
-                ),
-                const SizedBox(height: 10),
-                Text("Number: ${riverpodFunction.value?.number ?? '-'}"),
-                const SizedBox(height: 20),
-                ElevatedButton(
-                  onPressed: () {
-                    // for function "riverpod"
-                    // in order recall function
-                    // you have to use the code below
+          return riverpodFunction.isLoading
+              ? const CircularProgressIndicator()
+              : riverpodFunction.when(
+                  data: (data) => Column(
+                    children: [
+                      Text(
+                        "Name: ${data?.text}",
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                        textAlign: TextAlign.center,
+                      ),
+                      const SizedBox(height: 10),
+                      Text("Number: ${riverpodFunction.value?.number ?? '-'}"),
+                      const SizedBox(height: 20),
+                      ElevatedButton(
+                        onPressed: () {
+                          // for function "riverpod"
+                          // in order recall function
+                          // you have to use the code below
 
-                    // whenever user try to click button several times
-                    // "ref.invalidate(anyProvider)" will work only once
-                    ref.invalidate(triviaProvider);
-                  },
-                  child: const Text(
-                    "Find Trivia",
+                          // whenever user try to click button several times
+                          // "ref.invalidate(anyProvider)" will work only once
+                          ref.invalidate(triviaProvider);
+                        },
+                        child: const Text(
+                          "Find Trivia",
+                        ),
+                      ),
+                    ],
                   ),
-                ),
-              ],
-            ),
-            error: (error, stacktrace) => const Text("Error occreed, please try again later"),
-            loading: () => const CircularProgressIndicator(),
-          );
+                  error: (error, stacktrace) => const Text("Error occreed, please try again later"),
+                  loading: () => const CircularProgressIndicator(),
+                );
         },
       ),
     );
