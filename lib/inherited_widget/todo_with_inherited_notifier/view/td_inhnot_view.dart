@@ -17,6 +17,7 @@ class _TdInhNotViewState extends State<TdInhNotView> {
   // this stateful widget is just for creating state on the top that's all
   // we will pass whole logic down to the widget tree
   // and we will change value wherever we want
+  // even you can write class itself without creating object
   final TdInhViewModel _viewModel = TdInhViewModel();
 
   @override
@@ -50,6 +51,7 @@ class _TdInhNotViewHelperState extends State<_TdInhNotViewHelper> {
     WidgetsBinding.instance.addPostFrameCallback((v) {
       // TdInhNot.read(context)?.tdInhViewModel.initTodos();
       OwnChangeNotifierProvider.read<TdInhViewModel>(context)?.initTodos();
+      // OwnMultiProvider.read<TdInhViewModel>(context)?.initTodos();
     });
   }
 
@@ -57,6 +59,7 @@ class _TdInhNotViewHelperState extends State<_TdInhNotViewHelper> {
   Widget build(BuildContext context) {
     // final todoInhNot = TdInhNot.watch(context);
     final todoInhNot = OwnChangeNotifierProvider.watch<TdInhViewModel>(context);
+    // final todoInhNot = OwnMultiProvider.watch<TdInhViewModel>(context);
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -133,6 +136,7 @@ class _SeparatedList extends StatelessWidget {
   Widget build(BuildContext context) {
     // final todoInhNot = TdInhNot.watch(context);
     final todoInhNot = OwnChangeNotifierProvider.watch<TdInhViewModel>(context);
+    // final todoInhNot = OwnMultiProvider.watch<TdInhViewModel>(context);
     return SliverList.separated(
       itemCount: todoInhNot?.todoListMVVMStateModel.todoMVVM.length,
       itemBuilder: (context, index) {
