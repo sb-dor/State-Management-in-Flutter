@@ -30,7 +30,7 @@ class _TdInhNotViewState extends State<TdInhNotView> {
 }
 
 class _TdInhNotViewHelper extends StatefulWidget {
-  const _TdInhNotViewHelper({super.key});
+  const _TdInhNotViewHelper();
 
   @override
   State<_TdInhNotViewHelper> createState() => _TdInhNotViewHelperState();
@@ -38,6 +38,8 @@ class _TdInhNotViewHelper extends StatefulWidget {
 
 class _TdInhNotViewHelperState extends State<_TdInhNotViewHelper> {
   final TextEditingController _todoTextController = TextEditingController();
+
+  // final GlobalKey key = GlobalKey();
 
   @override
   void dispose() {
@@ -52,6 +54,9 @@ class _TdInhNotViewHelperState extends State<_TdInhNotViewHelper> {
       // TdInhNot.read(context)?.tdInhViewModel.initTodos();
       OwnChangeNotifierProvider.read<TdInhViewModel>(context)?.initTodos();
       // OwnMultiProvider.read<TdInhViewModel>(context)?.initTodos();
+      // final renderBoc = key.currentContext?.findRenderObject() as RenderBox;
+      // final offset = renderBoc.localToGlobal(Offset.zero);
+      // print("widget offset: $offset");
     });
   }
 
@@ -68,48 +73,49 @@ class _TdInhNotViewHelperState extends State<_TdInhNotViewHelper> {
           ),
 
           // for test one
-          // SliverToBoxAdapter(
-          //   child: ChangeNotifierProvider<TodoMvvmViewModel>(
-          //     create: (context) => TodoMvvmViewModel(),
-          //     builder: (context, child) {
-          //       return child!;
-          //     },
-          //     child: Builder(
-          //       builder: (context) {
-          //         final intValue = context.watch<TodoMvvmViewModel>();
-          //         return TextButton(
-          //           onPressed: () {
-          //             if (_todoTextController.text.trim().isEmpty) return;
-          //             context.read<TodoMvvmViewModel>().addTodo(_todoTextController.text.trim());
-          //           },
-          //           child: Text("${intValue.todoListMVVMStateService.todoMVVM.length}"),
-          //         );
-          //       },
-          //     ),
-          //   ),
-          // ),
           SliverToBoxAdapter(
-            child: Row(
-              children: [
-                Expanded(
-                  child: CupertinoTextFormFieldRow(
-                    controller: _todoTextController,
-                    prefix: const Text("TODO name"),
-                    placeholder: "Enter Text",
+            child: OwnChangeNotifierProvider(
+              provider: TdInhViewModel(),
+              child: Builder(
+                builder: (context) {
+                  final intValue = OwnChangeNotifierProvider.watch<TdInhViewModel>(context);
+                  return TextButton(
+                    onPressed: () {
+                      if (_todoTextController.text.trim().isEmpty) return;
+                      OwnChangeNotifierProvider.read<TdInhViewModel>(context)
+                          ?.addTodo(_todoTextController.text.trim());
+                    },
+                    child: Text("${intValue?.todoListMVVMStateModel.todoMVVM.length}"),
+                  );
+                },
+              ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: Container(
+              // key: key,
+              child: Row(
+                children: [
+                  Expanded(
+                    child: CupertinoTextFormFieldRow(
+                      controller: _todoTextController,
+                      prefix: const Text("TODO name"),
+                      placeholder: "Enter Text",
+                    ),
                   ),
-                ),
-                IconButton(
-                  onPressed: () {
-                    if (_todoTextController.text.trim().isEmpty) return;
-                    // todoInhNot?.tdInhViewModel.addTodo(_todoTextController.text.trim());
-                    todoInhNot?.addTodo(_todoTextController.text.trim());
-                  },
-                  icon: const Icon(
-                    CupertinoIcons.add,
-                    color: CupertinoColors.activeGreen,
+                  IconButton(
+                    onPressed: () {
+                      if (_todoTextController.text.trim().isEmpty) return;
+                      // todoInhNot?.tdInhViewModel.addTodo(_todoTextController.text.trim());
+                      todoInhNot?.addTodo(_todoTextController.text.trim());
+                    },
+                    icon: const Icon(
+                      CupertinoIcons.add,
+                      color: CupertinoColors.activeGreen,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
           // if ((todoInhNot?.tdInhViewModel.todoListMVVMStateModel.loading ?? false))
@@ -130,7 +136,7 @@ class _TdInhNotViewHelperState extends State<_TdInhNotViewHelper> {
 }
 
 class _SeparatedList extends StatelessWidget {
-  const _SeparatedList({super.key});
+  const _SeparatedList();
 
   @override
   Widget build(BuildContext context) {

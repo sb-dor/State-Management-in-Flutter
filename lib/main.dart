@@ -13,6 +13,7 @@ import 'package:state_management_course/provider/second_project/provider/datetim
 import 'package:state_management_course/redux/async_redux_example/state/async_redux_state.dart';
 import 'inherited_widget/get_datetime_on_screen_tap/view/inherited_widget_page.dart';
 import 'inherited_widget/todo_with_inherited_notifier/view/td_inhnot_view.dart';
+import 'inherited_widget/todo_with_inherited_notifier/view_model/view_model/td_inh_view_model.dart';
 import 'mobx/counter/store/counter_store.dart';
 import 'provider/bread_crumb/provider/bread_crumb_provider.dart';
 import 'redux/filtered_items/enums/filtered_items_enums.dart';
@@ -94,9 +95,9 @@ class _AppState extends State<App> {
 
             // riverpodTriviaStateWithNotifierProvider // <- THIS IS PROVIDER
           ],
-          child: const MaterialApp(
+          child: MaterialApp(
             debugShowCheckedModeBanner: false,
-            home: TdInhNotView(),
+            home: const TdInhNotView(),
           ),
         ),
       ),
