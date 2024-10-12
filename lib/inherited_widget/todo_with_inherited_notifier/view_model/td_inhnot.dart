@@ -33,3 +33,32 @@ class TdInhNot extends InheritedNotifier {
 //   throw UnimplementedError();
 // }
 }
+
+// that is why here we can create our own changeNotifierProvider
+// without using provider's changeNotifierProvider
+
+// <T? extends ChangeNotifier> means that our class that we will
+// provide here should be extended ChangeNotifier
+class OwnChangeNotifierProvider<T extends ChangeNotifier> extends InheritedNotifier {
+  final T provider;
+
+  const OwnChangeNotifierProvider({
+    super.key,
+    required this.provider,
+    required super.child,
+  }) : super(notifier: provider);
+
+  static T? watch<T extends ChangeNotifier>(BuildContext context) {
+    final widget = context.dependOnInheritedWidgetOfExactType<OwnChangeNotifierProvider<T>>();
+    return widget?.provider;
+  }
+
+  // just for reading
+  static T? read<T extends ChangeNotifier>(BuildContext context) {
+    final element = context.getElementForInheritedWidgetOfExactType<OwnChangeNotifierProvider<T>>();
+    if (element?.widget is OwnChangeNotifierProvider<T>) {
+      return (element?.widget as OwnChangeNotifierProvider<T>).provider;
+    }
+    return null;
+  }
+}

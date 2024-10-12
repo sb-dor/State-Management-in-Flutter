@@ -19,8 +19,8 @@ class _TdInhNotViewState extends State<TdInhNotView> {
 
   @override
   Widget build(BuildContext context) {
-    return TdInhNot(
-      tdInhViewModel: _viewModel,
+    return OwnChangeNotifierProvider(
+      provider: _viewModel,
       child: const _TdInhNotViewHelper(),
     );
   }
@@ -46,13 +46,15 @@ class _TdInhNotViewHelperState extends State<_TdInhNotViewHelper> {
   void initState() {
     super.initState();
     WidgetsBinding.instance.addPostFrameCallback((v) {
-      TdInhNot.read(context)?.tdInhViewModel.initTodos();
+      // TdInhNot.read(context)?.tdInhViewModel.initTodos();
+      OwnChangeNotifierProvider.read<TdInhViewModel>(context)?.initTodos();
     });
   }
 
   @override
   Widget build(BuildContext context) {
-    final todoInhNot = TdInhNot.watch(context);
+    // final todoInhNot = TdInhNot.watch(context);
+    final todoInhNot = OwnChangeNotifierProvider.watch<TdInhViewModel>(context);
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -94,7 +96,8 @@ class _TdInhNotViewHelperState extends State<_TdInhNotViewHelper> {
                 IconButton(
                   onPressed: () {
                     if (_todoTextController.text.trim().isEmpty) return;
-                    todoInhNot?.tdInhViewModel.addTodo(_todoTextController.text.trim());
+                    // todoInhNot?.tdInhViewModel.addTodo(_todoTextController.text.trim());
+                    todoInhNot?.addTodo(_todoTextController.text.trim());
                   },
                   icon: const Icon(
                     CupertinoIcons.add,
@@ -104,7 +107,8 @@ class _TdInhNotViewHelperState extends State<_TdInhNotViewHelper> {
               ],
             ),
           ),
-          if ((todoInhNot?.tdInhViewModel.todoListMVVMStateModel.loading ?? false))
+          // if ((todoInhNot?.tdInhViewModel.todoListMVVMStateModel.loading ?? false))
+          if ((todoInhNot?.todoListMVVMStateModel.loading ?? false))
             SliverFillRemaining(
               child: Center(
                 child: defaultTargetPlatform == TargetPlatform.iOS
@@ -125,16 +129,17 @@ class _SeparatedList extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final todoInhNot = TdInhNot.watch(context);
+    // final todoInhNot = TdInhNot.watch(context);
+    final todoInhNot = OwnChangeNotifierProvider.watch<TdInhViewModel>(context);
     return SliverList.separated(
-      itemCount: todoInhNot?.tdInhViewModel.todoListMVVMStateModel.todoMVVM.length,
+      itemCount: todoInhNot?.todoListMVVMStateModel.todoMVVM.length,
       itemBuilder: (context, index) {
-        final item = todoInhNot?.tdInhViewModel.todoListMVVMStateModel.todoMVVM[index];
+        final item = todoInhNot?.todoListMVVMStateModel.todoMVVM[index];
         return CupertinoListTile(
           title: Text(item?.todo ?? ''),
           trailing: IconButton(
             onPressed: () {
-              todoInhNot?.tdInhViewModel.removeTodo(item!);
+              todoInhNot?.removeTodo(item!);
             },
             icon: const Icon(CupertinoIcons.delete),
             color: CupertinoColors.destructiveRed,
