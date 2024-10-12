@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:state_management_course/inherited_widget/api/inh_api.dart';
-import 'package:state_management_course/inherited_widget/inherited_widget_helper/inherited_widget_helper.dart';
+import 'package:state_management_course/inherited_widget/get_datetime_on_screen_tap/api/inh_api.dart';
+import 'package:state_management_course/inherited_widget/get_datetime_on_screen_tap/inherited_widget_helper/inherited_widget_helper.dart';
 
 ///
 ///

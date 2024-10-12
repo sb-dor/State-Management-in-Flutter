@@ -11,6 +11,8 @@ import 'package:state_management_course/mobx/mobx_with_streams/store/mobx_with_s
 import 'package:state_management_course/mobx/todo_mobx/store/todo_mobx_store.dart';
 import 'package:state_management_course/provider/second_project/provider/datetime_provider.dart';
 import 'package:state_management_course/redux/async_redux_example/state/async_redux_state.dart';
+import 'inherited_widget/get_datetime_on_screen_tap/view/inherited_widget_page.dart';
+import 'inherited_widget/todo_with_inherited_notifier/view/td_inhnot_view.dart';
 import 'mobx/counter/store/counter_store.dart';
 import 'provider/bread_crumb/provider/bread_crumb_provider.dart';
 import 'redux/filtered_items/enums/filtered_items_enums.dart';
@@ -94,7 +96,7 @@ class _AppState extends State<App> {
           ],
           child: const MaterialApp(
             debugShowCheckedModeBanner: false,
-            home: RiverpodWithStatePage(),
+            home: TdInhNotView(),
           ),
         ),
       ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:state_management_course/inherited_widget/api/inh_api.dart';
+import 'package:state_management_course/inherited_widget/get_datetime_on_screen_tap/api/inh_api.dart';
 import 'package:uuid/uuid.dart';
 
 class InheritedWidgetHelper extends InheritedWidget {
@@ -23,7 +23,14 @@ class InheritedWidgetHelper extends InheritedWidget {
     return uuid != oldWidget.uuid;
   }
 
+  // for listening
   static InheritedWidgetHelper of(BuildContext context) {
     return context.dependOnInheritedWidgetOfExactType<InheritedWidgetHelper>()!;
+  }
+
+  // for read, not listening
+  static InheritedWidgetHelper read(BuildContext context) {
+    final element = context.getElementForInheritedWidgetOfExactType<InheritedWidgetHelper>();
+    return element?.widget as InheritedWidgetHelper;
   }
 }
