@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:state_management_course/inherited_widget/todo_with_inherited_notifier/view_model/td_inhnot.dart';
 import 'package:state_management_course/inherited_widget/todo_with_inherited_notifier/view_model/view_model/td_inh_view_model.dart';
 
+// class TempMock extends ChangeNotifier {}
+
 class TdInhNotView extends StatefulWidget {
   const TdInhNotView({super.key});
 

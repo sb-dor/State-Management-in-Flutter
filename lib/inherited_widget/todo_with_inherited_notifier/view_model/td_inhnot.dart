@@ -34,7 +34,7 @@ class TdInhNot extends InheritedNotifier {
 // }
 }
 
-// that is why here we can create our own changeNotifierProvider
+// so, here we can create our own changeNotifierProvider
 // without using provider's changeNotifierProvider
 
 // <T? extends ChangeNotifier> means that our class that we will
@@ -50,7 +50,11 @@ class OwnChangeNotifierProvider<T extends ChangeNotifier> extends InheritedNotif
 
   static T? watch<T extends ChangeNotifier>(BuildContext context) {
     final widget = context.dependOnInheritedWidgetOfExactType<OwnChangeNotifierProvider<T>>();
-    return widget?.provider;
+    if (widget == null) {
+      // Throw an exception if the provider is not found
+      throw Exception('No OwnChangeNotifierProvider found in context for type $T.');
+    }
+    return widget.provider;
   }
 
   // just for reading
@@ -59,6 +63,6 @@ class OwnChangeNotifierProvider<T extends ChangeNotifier> extends InheritedNotif
     if (element?.widget is OwnChangeNotifierProvider<T>) {
       return (element?.widget as OwnChangeNotifierProvider<T>).provider;
     }
-    return null;
+    throw Exception('No OwnChangeNotifierProvider found in context for type $T.');
   }
 }
