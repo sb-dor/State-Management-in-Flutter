@@ -6,10 +6,12 @@ class TdInhViewModel extends ChangeNotifier {
   final TdInhNotStateModel todoListMVVMStateModel = TdInhNotStateModel();
 
   Future<void> initTodos() async {
+    debugPrint("initing todos");
     todoListMVVMStateModel.setLoading(true);
     notifyListeners();
     await todoListMVVMStateModel.initTodos();
     todoListMVVMStateModel.setLoading(false);
+    debugPrint("initing todos");
     notifyListeners();
   }
 

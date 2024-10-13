@@ -4,7 +4,7 @@ import 'package:flutter/material.dart';
 import 'package:state_management_course/inherited_widget/todo_with_inherited_notifier/td_inhnot.dart';
 import 'package:state_management_course/inherited_widget/todo_with_inherited_notifier/view_model/td_inh_view_model.dart';
 
-// class TempMock extends ChangeNotifier {}
+class TempMock extends ChangeNotifier {}
 
 class TdInhNotView extends StatefulWidget {
   const TdInhNotView({super.key});
@@ -14,29 +14,6 @@ class TdInhNotView extends StatefulWidget {
 }
 
 class _TdInhNotViewState extends State<TdInhNotView> {
-  // this stateful widget is just for creating state on the top that's all
-  // we will pass whole logic down to the widget tree
-  // and we will change value wherever we want
-  // even you can write class itself without creating object
-  final TdInhViewModel _viewModel = TdInhViewModel();
-
-  @override
-  Widget build(BuildContext context) {
-    return OwnChangeNotifierProvider(
-      provider: _viewModel,
-      child: const _TdInhNotViewHelper(),
-    );
-  }
-}
-
-class _TdInhNotViewHelper extends StatefulWidget {
-  const _TdInhNotViewHelper();
-
-  @override
-  State<_TdInhNotViewHelper> createState() => _TdInhNotViewHelperState();
-}
-
-class _TdInhNotViewHelperState extends State<_TdInhNotViewHelper> {
   final TextEditingController _todoTextController = TextEditingController();
 
   // final GlobalKey key = GlobalKey();
