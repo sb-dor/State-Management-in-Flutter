@@ -40,6 +40,8 @@ class TdInhNot extends InheritedNotifier {
 
 // <T? extends ChangeNotifier> means that our class that we will
 // provide here should be extended ChangeNotifier
+// take a look this link:
+// https://www.youtube.com/watch?v=WmgUuDojbm4
 class OwnChangeNotifierProvider<T extends ChangeNotifier> extends InheritedNotifier {
   final T provider;
 
