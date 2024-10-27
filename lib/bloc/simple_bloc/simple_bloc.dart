@@ -112,17 +112,21 @@ class SimpleBloc {
     _stateController.add(_state);
   }
 
+  void _updateState(SimpleBlocState state) {
+    if (_state == state) return;
+    _state = state;
+    _stateController.add(_state);
+  }
+
   void incrementAge() {
     var user = _state.user;
     user = user.copyWith(age: user.age! + 1);
-    _state = _state.copyWith(user: user);
-    _stateController.add(_state);
+    _updateState(_state.copyWith(user: user));
   }
 
   void decrementAge() {
     var user = _state.user;
     user = user.copyWith(age: user.age! - 1);
-    _state = _state.copyWith(user: user);
-    _stateController.add(_state);
+    _updateState(_state.copyWith(user: user));
   }
 }
