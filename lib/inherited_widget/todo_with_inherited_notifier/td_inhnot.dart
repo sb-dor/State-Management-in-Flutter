@@ -26,6 +26,7 @@ class TdInhNot extends InheritedNotifier {
   }
 
 // inheritedNotifier doesn't need updateShouldNotify because under the hood it extended inheritedWidget
+// and uses your notifier as newWidget and checks with oldWidget itself (go to the docs)
 // that is why inheritedNotifier is better than inheritedWidget
 
 // @override
