@@ -15,7 +15,7 @@ class SimpleBlocDecrementEvent extends SimpleBlocEvents {}
 class InitSimpleBlocEvent extends SimpleBlocEvents {}
 
 class SimpleBlocWithEvent {
-  SimpleBlocState _state = SimpleBlocState(user: SimpleUser(age: 10));
+  SimpleBlocState _state = const SimpleBlocState(user: SimpleUser(age: 10));
 
   SimpleBlocState get state => _state;
 
@@ -24,6 +24,10 @@ class SimpleBlocWithEvent {
   late final Stream<SimpleBlocState> _stateStream;
 
   Stream<SimpleBlocState> get stateStream => _stateStream;
+
+  void close() {
+    _eventController.close();
+  }
 
   SimpleBlocWithEvent() {
     _stateStream = _eventController.stream.asyncExpand<SimpleBlocState>(

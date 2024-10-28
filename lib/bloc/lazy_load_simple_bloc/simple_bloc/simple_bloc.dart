@@ -11,6 +11,8 @@ class SimpleBloc {
 
   Stream<SimpleBlocState> get stateStream => _stateController.stream;
 
+  void close() => _stateController.close();
+
   SimpleBloc() {
     _init();
   }
