@@ -38,6 +38,21 @@ class _SimpleBlocPageUIState extends State<SimpleBlocPageUI> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Simple bloc"),
+        actions: [
+          IconButton(
+            onPressed: () {
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => const _AnotherPage(),
+                ),
+              );
+            },
+            icon: const Icon(
+              Icons.arrow_right_alt,
+            ),
+          ),
+        ],
       ),
       body: StreamBuilder(
         initialData: simpleBloc.initialState,
@@ -70,6 +85,34 @@ class _SimpleBlocPageUIState extends State<SimpleBlocPageUI> {
           // }
         },
       ),
+    );
+  }
+}
+
+class _AnotherPage extends StatelessWidget {
+  const _AnotherPage({super.key});
+
+  @override
+  Widget build(BuildContext context) {
+    final simpleBloc = context.read<SimpleBloc>();
+    return StreamBuilder(
+      initialData: simpleBloc.initialState,
+      stream: simpleBloc.stateStream,
+      builder: (context, snap) {
+        return Scaffold(
+          appBar: AppBar(
+            title: Text("${snap.requireData.user.age}"),
+            actions: [
+              IconButton(
+                onPressed: () {
+                  simpleBloc.decrementAge();
+                },
+                icon: const Icon(Icons.remove_circle_outline),
+              ),
+            ],
+          ),
+        );
+      },
     );
   }
 }
