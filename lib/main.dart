@@ -11,7 +11,7 @@ import 'package:state_management_course/mobx/mobx_with_streams/store/mobx_with_s
 import 'package:state_management_course/mobx/todo_mobx/store/todo_mobx_store.dart';
 import 'package:state_management_course/provider/second_project/provider/datetime_provider.dart';
 import 'package:state_management_course/redux/async_redux_example/state/async_redux_state.dart';
-import 'bloc/simple_bloc/simple_bloc_page.dart';
+import 'bloc/lazy_load_simple_bloc/simple_bloc/simple_bloc_page.dart';
 import 'inherited_widget/get_datetime_on_screen_tap/view/inherited_widget_page.dart';
 import 'inherited_widget/todo_with_inherited_notifier/main_td_inhnot.dart';
 import 'inherited_widget/todo_with_inherited_notifier/view/td_inhnot_view.dart';

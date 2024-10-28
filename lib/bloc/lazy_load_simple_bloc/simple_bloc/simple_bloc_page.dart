@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:provider/provider.dart';
-import 'package:state_management_course/bloc/simple_bloc/simple_bloc.dart';
+import 'simple_bloc.dart';
 
 class SimpleBlocPage extends StatefulWidget {
   const SimpleBlocPage({super.key});
@@ -90,7 +90,7 @@ class _SimpleBlocPageUIState extends State<SimpleBlocPageUI> {
 }
 
 class _AnotherPage extends StatelessWidget {
-  const _AnotherPage({super.key});
+  const _AnotherPage();
 
   @override
   Widget build(BuildContext context) {
