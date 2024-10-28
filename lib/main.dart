@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_redux/flutter_redux.dart';
 import 'package:provider/provider.dart';
 import 'package:redux/redux.dart';
+import 'package:state_management_course/bloc/lazy_load_simple_bloc/simple_bloc_with_event/simple_bloc_wuth_events_page.dart';
 import 'package:state_management_course/flutter_riverpod/provider_observer/provider_observer.dart';
 import 'package:state_management_course/flutter_riverpod/riverpod_number_trivia/riverpod_function_page.dart';
 import 'package:state_management_course/flutter_riverpod/riverpod_number_trivia/riverpod_trivia_state_with_notifier/riverpod_trivia_state_with_notifier.dart';
@@ -61,7 +62,7 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return const SimpleBlocPage();
+    return const SimpleBlocWithEventsPage();
     return StoreProvider(
       // Redux's store provider
       store: asyncState,

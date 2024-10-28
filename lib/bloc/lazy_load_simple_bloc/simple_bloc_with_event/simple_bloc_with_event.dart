@@ -2,6 +2,7 @@
 
 import 'dart:async';
 
+import 'package:flutter/cupertino.dart';
 import 'package:state_management_course/bloc/lazy_load_simple_bloc/models/simple_user.dart';
 import 'package:state_management_course/bloc/lazy_load_simple_bloc/simple_bloc_state/simple_bloc_state.dart';
 
@@ -14,41 +15,59 @@ class SimpleBlocDecrementEvent extends SimpleBlocEvents {}
 class InitSimpleBlocEvent extends SimpleBlocEvents {}
 
 class SimpleBlocWithEvent {
-  late final SimpleBlocState _state;
+  SimpleBlocState _state = SimpleBlocState(user: SimpleUser(age: 10));
 
   SimpleBlocState get state => _state;
 
-  final _streamController = StreamController<SimpleBlocEvents>.broadcast(); // get events in
+  final _eventController = StreamController<SimpleBlocEvents>.broadcast(); // get events in
 
   late final Stream<SimpleBlocState> _stateStream;
 
   Stream<SimpleBlocState> get stateStream => _stateStream;
 
   SimpleBlocWithEvent() {
-    addEvent(InitSimpleBlocEvent());
-    _stateStream = _streamController.stream.asyncExpand<SimpleBlocState>(
+    _stateStream = _eventController.stream.asyncExpand<SimpleBlocState>(
       (event) async* {
-        switch (SimpleBlocEvents) {
+        switch (event) {
           case InitSimpleBlocEvent():
             yield _state = const SimpleBlocState(user: SimpleUser());
           case SimpleBlocIncrementEvent():
+            debugPrint("hote medroya yo ne");
             yield* _increment();
           case SimpleBlocDecrementEvent():
             yield* _decrement();
         }
       },
     ).asBroadcastStream();
+
+    addEvent(InitSimpleBlocEvent());
   }
 
   void addEvent(SimpleBlocEvents event) {
-    _streamController.add(event);
+    _eventController.add(event);
   }
 
   Stream<SimpleBlocState> _increment() async* {
-    yield _state.copyWith(user: _state.user.copyWith(age: _state.user.age! + 1));
+    var user = _state.user;
+    user = user.copyWith(age: user.age! + 1);
+
+    // Update _state with the new value
+    _state = _state.copyWith(
+      user: user,
+    );
+
+    yield _state; // Yield the updated state
   }
 
   Stream<SimpleBlocState> _decrement() async* {
-    yield _state.copyWith(user: _state.user.copyWith(age: _state.user.age! - 1));
+    var user = _state.user;
+    user = user.copyWith(age: user.age! - 1);
+
+    // Update _state with the new value
+    _state = _state.copyWith(
+      user: user,
+    );
+
+    yield _state; // Yield the updated state
   }
 }
