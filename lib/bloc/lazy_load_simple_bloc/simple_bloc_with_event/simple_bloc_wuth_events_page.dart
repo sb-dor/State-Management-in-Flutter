@@ -69,14 +69,14 @@ class _SimpleBlocPageUIState extends State<_SimpleBlocPageUI> {
             children: [
               TextButton(
                 onPressed: () {
-                  simpleBloc.addEvent(SimpleBlocIncrementEvent());
+                  simpleBloc.addEvent(const SimpleBlocIncrementEvent());
                 },
                 child: const Text("Increment"),
               ),
               Text("${state.user.age}"),
               TextButton(
                 onPressed: () {
-                  simpleBloc.addEvent(SimpleBlocDecrementEvent());
+                  simpleBloc.addEvent(const SimpleBlocDecrementEvent());
                 },
                 child: const Text("Increment"),
               ),
@@ -105,7 +105,7 @@ class _AnotherPage extends StatelessWidget {
             actions: [
               IconButton(
                 onPressed: () {
-                  simpleBloc.addEvent(SimpleBlocDecrementEvent());
+                  simpleBloc.addEvent(const SimpleBlocDecrementEvent());
                 },
                 icon: const Icon(Icons.remove_circle_outline),
               ),

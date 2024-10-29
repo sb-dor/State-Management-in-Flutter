@@ -6,15 +6,24 @@ import 'package:flutter/cupertino.dart';
 import 'package:state_management_course/bloc/lazy_load_simple_bloc/models/simple_user.dart';
 import 'package:state_management_course/bloc/lazy_load_simple_bloc/simple_bloc_state/simple_bloc_state.dart';
 
-sealed class SimpleBlocEvents {}
+@immutable
+sealed class SimpleBlocEvents {
+  const SimpleBlocEvents();
+}
 
-class SimpleBlocIncrementEvent extends SimpleBlocEvents {}
+final class SimpleBlocIncrementEvent extends SimpleBlocEvents {
+  const SimpleBlocIncrementEvent();
+}
 
-class SimpleBlocDecrementEvent extends SimpleBlocEvents {}
+final class SimpleBlocDecrementEvent extends SimpleBlocEvents {
+  const SimpleBlocDecrementEvent();
+}
 
-class InitSimpleBlocEvent extends SimpleBlocEvents {}
+final class InitSimpleBlocEvent extends SimpleBlocEvents {
+  const InitSimpleBlocEvent();
+}
 
-class SimpleBlocWithEvent {
+final class SimpleBlocWithEvent {
   SimpleBlocState _state = const SimpleBlocState(user: SimpleUser(age: 10));
 
   SimpleBlocState get state => _state;
@@ -44,7 +53,7 @@ class SimpleBlocWithEvent {
       },
     ).asBroadcastStream();
 
-    addEvent(InitSimpleBlocEvent());
+    addEvent(const InitSimpleBlocEvent());
   }
 
   void addEvent(SimpleBlocEvents event) {
