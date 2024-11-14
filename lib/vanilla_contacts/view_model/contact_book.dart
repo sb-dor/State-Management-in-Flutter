@@ -1,3 +1,5 @@
+import 'dart:collection';
+
 import 'package:flutter/foundation.dart';
 import 'package:state_management_course/vanilla_contacts/models/contact.dart';
 

@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:state_management_course/vanilla_contacts/view_model/contact_book.dart';
-import 'package:state_management_course/vanilla_contacts/views/vanilla_new_contact_view.dart';
+
+import 'vanilla_new_contact_view.dart';
 
 class VanillaContactPage extends StatefulWidget {
   const VanillaContactPage({super.key});
