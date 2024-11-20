@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:state_management_course/bloc/fox_second_bloc_learning/data/authentication_repository.dart';
-import 'package:state_management_course/bloc/fox_second_bloc_learning/models/user_entity.dart';
+import 'package:state_management_course/bloc/fox_second_bloc_learning/authentication/data/authentication_repository.dart';
+import 'package:state_management_course/bloc/fox_second_bloc_learning/authentication/models/user_entity.dart';
 import 'authentication_events.dart';
 import 'authentication_states.dart';
 
@@ -16,7 +16,7 @@ class AuthenticationBloc extends Bloc<AuthenticationBlocEvents, AuthenticationSt
   })  : _repository = repository,
         super(
           user?.when(
-                // this when is using from UserEntity.dart (from models folder)
+                // is using from UserEntity.dart (from models folder)
                 authenticated: (user) => AuthenticationStates.authenticated(user),
                 notAuthenticated: () => const AuthenticationStates.inProgress(),
               ) ??

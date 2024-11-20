@@ -1,6 +1,5 @@
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:state_management_course/bloc/fox_second_bloc_learning/models/user_entity.dart';
-
+import 'package:state_management_course/bloc/fox_second_bloc_learning/authentication/models/user_entity.dart';
 part 'authentication_states.freezed.dart';
 
 @freezed

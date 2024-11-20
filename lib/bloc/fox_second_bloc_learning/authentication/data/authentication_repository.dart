@@ -1,4 +1,4 @@
-import 'package:state_management_course/bloc/fox_second_bloc_learning/models/user_entity.dart';
+import 'package:state_management_course/bloc/fox_second_bloc_learning/authentication/models/user_entity.dart';
 
 abstract interface class IAuthenticationRepository {
   Future<AuthenticatedUser?> login({
