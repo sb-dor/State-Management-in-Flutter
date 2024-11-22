@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:state_management_course/bloc/fox_second_bloc_learning/authentication/data/authentication_repository.dart';
-import 'package:state_management_course/bloc/fox_second_bloc_learning/authentication/models/user_entity.dart';
+import 'package:state_management_course/bloc/fox_second_bloc_learning/src/authentication/data/authentication_repository.dart';
+import 'package:state_management_course/bloc/fox_second_bloc_learning/src/authentication/models/user_entity.dart';
 import 'authentication_events.dart';
 import 'authentication_states.dart';
 

@@ -1,11 +1,3 @@
-import 'package:flutter/material.dart';
+import 'package:state_management_course/bloc/fox_second_bloc_learning/src/initialization/logic/app_runner_io.dart';
 
-void run() => runApp(
-      MaterialApp(
-        home: Scaffold(
-          body: Center(
-            child: Text("IO"),
-          ),
-        ),
-      ),
-    );
+void run() => AppRunnerIo().init();

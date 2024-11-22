@@ -4,7 +4,7 @@ import 'post_state.dart';
 
 
 class PostBloc extends Bloc<PostEvent, PostState> {
-  PostBloc() : super(const PostState.initial()) {
+  PostBloc() : super(const PostState.loadingText()) {
     on<PostEvent>((event, emit) {
       // TODO: implement event handler
     });
