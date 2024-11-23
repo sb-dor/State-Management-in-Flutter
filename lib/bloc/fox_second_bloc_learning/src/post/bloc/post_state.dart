@@ -6,27 +6,31 @@ part 'post_state.freezed.dart';
 @immutable
 @freezed
 sealed class PostState with _$PostState {
-  // String? get path => when(
-  //       initial: () => null,
-  //       hasText: (text) => null,
-  //       addingText: () => null,
-  //       addingFile: (text) => null,
-  //       hasFileAndText: (_, path) => path,
-  //       sending: (_, path) => path,
-  //       error: (_, path, __) => path,
-  //       successful: (_, path) => path,
-  //     );
+  const PostState._();
+
   //
-  // String? get text => when(
-  //       initial: () => null,
-  //       hasText: (text) => text,
-  //       addingText: () => null,
-  //       addingFile: (text) => text,
-  //       hasFileAndText: (text, _) => text,
-  //       sending: (text, _) => text,
-  //       error: (text, _, __) => text,
-  //       successful: (text, _) => text,
-  //     );
+  String? get path => when(
+        initial: () => null,
+        hasText: (text) => null,
+        addingText: () => null,
+        addingFile: (text) => null,
+        hasFileAndText: (_, path) => path,
+        sending: (_, path) => path,
+        error: (_, path, __) => path,
+        successful: (_, path) => path,
+      );
+
+  //
+  String? get text => when(
+        initial: () => null,
+        hasText: (text) => text,
+        addingText: () => null,
+        addingFile: (text) => text,
+        hasFileAndText: (text, _) => text,
+        sending: (text, _) => text,
+        error: (text, _, __) => text,
+        successful: (text, _) => text,
+      );
 
   const factory PostState.initial() = LoadingTextState;
 

@@ -15,32 +15,57 @@ class PostBloc extends Bloc<PostEvent, PostState> {
           restore: (restore) => _restore(restore, emit),
         );
       },
-      transformer: sequential(),
+      transformer: droppable(),
     );
   }
 
   void _addText(
     AddTextEvent event,
     Emitter<PostState> emit,
-  ) async {}
+  ) async {
+    try {
+      emit(event.addingText());
+      // logic here
+      //
+      emit(event.hasText());
+    } catch (error, stackTrace) {
+      //
+    }
+  }
 
   void _addFile(
     AddFileEvent event,
     Emitter<PostState> state,
-  ) async {}
+  ) async {
+    try {} catch (error, stackTrace) {
+      //
+    }
+  }
 
   void _send(
     SendPostEvent event,
     Emitter<PostState> state,
-  ) {}
+  ) {
+    try {} catch (error, stackTrace) {
+      //
+    }
+  }
 
   void _cancel(
     CancelPostEvent event,
     Emitter<PostState> state,
-  ) async {}
+  ) async {
+    try {} catch (error, stackTrace) {
+      //
+    }
+  }
 
   void _restore(
     RestorePostEvent event,
     Emitter<PostState> state,
-  ) async {}
+  ) async {
+    try {} catch (error, stackTrace) {
+      //
+    }
+  }
 }
