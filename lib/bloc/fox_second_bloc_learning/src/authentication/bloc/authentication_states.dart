@@ -13,11 +13,20 @@ sealed class AuthenticationStates with _$AuthenticationStates {
 
   // checks only your preferred state and returns anything that related to return function
   // other functions will not be considered and you can return anything you want
+  // also you can create like this for each state
+  // in order to not emit same state again and again
+  //
+  // NOTE!
+  // if you want to use transformers with freezed
+  // the best solution for transformer is sequential
+  // but you have to created getters for each state (optional, one is enough)
+  // in order to check whether specific state is working and you can not to emit particular
+  // state again while it's in precess (you can call other events at that time)
   bool get isInProgress => maybeMap(orElse: () => false, inProgress: (_) => true);
 
   const AuthenticationStates._();
 
-  const factory AuthenticationStates.authenticated(UserEntity user) = InitialAuthenticationState;
+  const factory AuthenticationStates.authenticated(UserEntity user) = AuthenticatedState;
 
   const factory AuthenticationStates.inProgress({
     @Default(UserEntity.notAuthenticated()) UserEntity user,

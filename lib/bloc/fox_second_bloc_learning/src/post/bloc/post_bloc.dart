@@ -51,6 +51,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
       event.hasFileAndText(state: state);
     } catch (error, stackTrace) {
       //
+      event.error(state: state);
     }
   }
 
@@ -66,26 +67,27 @@ class PostBloc extends Bloc<PostEvent, PostState> {
       event.successFul(state: state);
     } catch (error, stackTrace) {
       //
+      event.error(state: state);
     }
   }
 
-  // void _cancel(
-  //   CancelPostEvent event,
-  //   Emitter<PostState> emit,
-  // ) async {
-  //   try {
-  //     // logic
-  //   } catch (error, stackTrace) {
-  //     //
-  //   }
-  // }
-  //
-  // void _restore(
-  //   RestorePostEvent event,
-  //   Emitter<PostState> state,
-  // ) async {
-  //   try {} catch (error, stackTrace) {
-  //     //
-  //   }
-  // }
+// void _cancel(
+//   CancelPostEvent event,
+//   Emitter<PostState> emit,
+// ) async {
+//   try {
+//     // logic
+//   } catch (error, stackTrace) {
+//     //
+//   }
+// }
+//
+// void _restore(
+//   RestorePostEvent event,
+//   Emitter<PostState> state,
+// ) async {
+//   try {} catch (error, stackTrace) {
+//     //
+//   }
+// }
 }

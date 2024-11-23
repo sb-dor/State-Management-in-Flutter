@@ -10,4 +10,6 @@ class AuthenticationBlocEvents with _$AuthenticationBlocEvents {
   }) = LogInAuthenticationEvent;
 
   const factory AuthenticationBlocEvents.logOut() = LogOutAuthenticationEvent;
+
+  const factory AuthenticationBlocEvents.checkAuth() = CheckAuthenticationEvent;
 }

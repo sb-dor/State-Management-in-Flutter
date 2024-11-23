@@ -27,17 +27,19 @@ sealed class PostEvent with _$PostEvent {
   @With<AddFileEmitter>()
   @With<HasTextAndFileEmitter>()
   @With<ErrorEmitter>()
+  @With<HasTextAndFileEmitter>()
   const factory PostEvent.addFile({required final String path}) = AddFileEvent;
 
+  //
   @With<SendingEmitter>()
   @With<SuccessFulEmitter>()
   @With<InitialStateEmitter>()
   @With<ErrorEmitter>()
   const factory PostEvent.send() = SendPostEvent;
 
-  // const factory PostEvent.cancel() = CancelPostEvent;
-  //
-  // const factory PostEvent.restore() = RestorePostEvent;
+// const factory PostEvent.cancel() = CancelPostEvent;
+//
+// const factory PostEvent.restore() = RestorePostEvent;
 }
 
 // events mixins
