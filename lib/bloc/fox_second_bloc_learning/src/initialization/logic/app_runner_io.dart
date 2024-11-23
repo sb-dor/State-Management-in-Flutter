@@ -11,18 +11,24 @@ class AppRunnerIo {
     final binding = WidgetsFlutterBinding.ensureInitialized();
 
     binding.deferFirstFrame();
+    try {
+      // init app dependencies and all necessary things here
 
-    // init app dependencies and all necessary things here
+      final compositionResult = await CompositionRoot().composeResult();
 
-    final compositionResult = await CompositionRoot().composeResult();
-
-    runApp(
-      MultiBlocProviderHelper(
-        compositionResult: compositionResult,
-        child: const AppWidget(
-          screen: MainScreen(),
+      runApp(
+        MultiBlocProviderHelper(
+          compositionResult: compositionResult,
+          child: const AppWidget(
+            screen: MainScreen(),
+          ),
         ),
-      ),
-    );
+      );
+    } catch (error, stackTrace) {
+      // catch problems here
+      rethrow;
+    } finally {
+      binding.allowFirstFrame();
+    }
   }
 }

@@ -35,9 +35,9 @@ sealed class PostEvent with _$PostEvent {
   @With<ErrorEmitter>()
   const factory PostEvent.send() = SendPostEvent;
 
-  const factory PostEvent.cancel() = CancelPostEvent;
-
-  const factory PostEvent.restore() = RestorePostEvent;
+  // const factory PostEvent.cancel() = CancelPostEvent;
+  //
+  // const factory PostEvent.restore() = RestorePostEvent;
 }
 
 // events mixins

@@ -32,6 +32,17 @@ sealed class PostState with _$PostState {
         successful: (text, _) => text,
       );
 
+  bool get isProcessing => map(
+        initial: (_) => false,
+        hasText: (_) => false,
+        addingText: (_) => true,
+        addingFile: (_) => true,
+        hasFileAndText: (_) => false,
+        sending: (_) => true,
+        error: (_) => true,
+        successful: (_) => false,
+      );
+
   const factory PostState.initial() = LoadingTextState;
 
   const factory PostState.hasText({required final String text}) = HasTextState;
