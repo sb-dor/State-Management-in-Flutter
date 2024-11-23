@@ -11,8 +11,16 @@ class _State extends State<PostPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(),
-      body: const Column(
+      appBar: AppBar(
+        title: Text("Post page"),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {},
+        child: Icon(
+          Icons.add,
+        ),
+      ),
+      body: Column(
         children: [],
       ),
     );

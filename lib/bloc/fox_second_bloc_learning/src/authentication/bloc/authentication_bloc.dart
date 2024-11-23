@@ -67,11 +67,11 @@ class AuthenticationBloc extends Bloc<AuthenticationBlocEvents, AuthenticationSt
 
       final user = await _repository.login(email: event.email, password: event.password);
 
-      // if (user != null) {
-      //   emit(AuthenticationStates.authenticated(user)); // new user
-      // } else {
-      //   emit(const AuthenticationStates.unAuthenticated());
-      // }
+      if (user != null) {
+        emit(AuthenticationStates.authenticated(user)); // new user
+      } else {
+        emit(const AuthenticationStates.unAuthenticated());
+      }
     } on Object catch (error, stackTrace) {
       emit(AuthenticationStates.error(user: state.user));
       rethrow;
