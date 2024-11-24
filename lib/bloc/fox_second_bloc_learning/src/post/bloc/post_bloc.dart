@@ -3,7 +3,7 @@ import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/data/post_repository.dart';
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/models/post.dart';
-import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/models/post_state_model.dart';
+import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/bloc/state_model/post_state_model.dart';
 import 'post_event.dart';
 import 'post_state.dart';
 
@@ -95,21 +95,19 @@ class PostBloc extends Bloc<PostEvent, PostState> {
 
       emit(event.sending(state: state));
 
-      debugPrint("save post value: working : ${state.isSending}");
-
       final savePost = await _postRepository.savePost();
 
-      debugPrint("save post value: $savePost");
-
       if (savePost) {
+        
         final listFromCopiedList = List<Post>.from(state.postStateModel.posts);
+
         listFromCopiedList.add(event.post);
-        final copiedState = state.copyWith(
-          postStateModel: state.postStateModel.copyWith(
-            posts: listFromCopiedList,
-          ),
+        
+        final copiedState = state.postStateModel.copyWith(
+          posts: listFromCopiedList,
         );
-        emit(event.successFul(state: copiedState));
+
+        emit(PostSuccessfulState(copiedState));
       } else {
         emit(event.sendError(state: state));
       }

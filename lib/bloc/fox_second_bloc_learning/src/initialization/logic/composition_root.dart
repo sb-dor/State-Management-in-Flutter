@@ -7,7 +7,7 @@ import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/b
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/data/post_datasource.dart';
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/data/post_repository.dart';
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/models/post.dart';
-import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/models/post_state_model.dart';
+import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/bloc/state_model/post_state_model.dart';
 
 // the main reason and the main concept of doing so
 // is that we want to achieve injections without getIt pattern (Service locator, which is good for service location)

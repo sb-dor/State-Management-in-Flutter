@@ -1,6 +1,6 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/models/post_state_model.dart';
+import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/bloc/state_model/post_state_model.dart';
 
 part 'post_state.freezed.dart';
 
