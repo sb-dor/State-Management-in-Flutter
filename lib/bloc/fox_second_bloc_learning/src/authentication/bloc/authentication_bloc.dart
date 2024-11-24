@@ -40,7 +40,7 @@ class AuthenticationBloc extends Bloc<AuthenticationBlocEvents, AuthenticationSt
     // event handlers
     // NOTE!
     // if you want to use transformers with freezed
-    // the best solution for transformer is "sequential()"
+    // the best solution for transformer is "concurrent()"
     // but you have to created getters for each state (optional, one is enough)
     // in order to check whether specific state is working and you can not to emit particular
     // state again while it's in precess (you can call other events at that time)
@@ -53,7 +53,7 @@ class AuthenticationBloc extends Bloc<AuthenticationBlocEvents, AuthenticationSt
         logOut: (logoutEvent) => _logout(logoutEvent, emit),
         checkAuth: (checkAuthEvent) => _checkAuthEvent(checkAuthEvent, emit),
       ),
-      transformer: sequential(),
+      transformer: concurrent(),
     );
   }
 

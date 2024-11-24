@@ -33,9 +33,9 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
               crossAxisAlignment: CrossAxisAlignment.center,
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                // if (state is InProgressAuthenticationState)
-                //   const CircularProgressIndicator()
-                // else
+                if (state is InProgressAuthenticationState)
+                  const CircularProgressIndicator()
+                else
                   TextButton(
                     onPressed: () {
                       context.read<AuthenticationBloc>().add(
