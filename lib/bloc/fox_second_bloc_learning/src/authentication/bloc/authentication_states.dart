@@ -34,7 +34,7 @@ sealed class AuthenticationStates with _$AuthenticationStates {
 
   const factory AuthenticationStates.unAuthenticated({
     @Default(UserEntity.notAuthenticated()) UserEntity user,
-  }) = UnErrorAuthenticationError;
+  }) = UnAuthenticated;
 
   const factory AuthenticationStates.error({
     @Default(UserEntity.notAuthenticated()) UserEntity user,

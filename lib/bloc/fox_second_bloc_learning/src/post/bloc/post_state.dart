@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-
 part 'post_state.freezed.dart';
 
 @immutable
@@ -32,16 +31,7 @@ sealed class PostState with _$PostState {
         successful: (text, _) => text,
       );
 
-  bool get isProcessing => map(
-        initial: (_) => false,
-        hasText: (_) => false,
-        addingText: (_) => true,
-        addingFile: (_) => true,
-        hasFileAndText: (_) => false,
-        sending: (_) => true,
-        error: (_) => true,
-        successful: (_) => false,
-      );
+  bool get sending => maybeMap(orElse: () => false, sending: (_) => true);
 
   const factory PostState.initial() = LoadingTextState;
 

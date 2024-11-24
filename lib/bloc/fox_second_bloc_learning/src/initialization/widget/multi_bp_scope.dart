@@ -4,11 +4,11 @@ import 'package:state_management_course/bloc/fox_second_bloc_learning/src/authen
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/initialization/logic/composition_root.dart';
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/bloc/post_bloc.dart';
 
-class MultiBlocProviderHelper extends StatelessWidget {
+class MultiBlocProviderScope extends StatelessWidget {
   final Widget child;
   final CompositionResult compositionResult;
 
-  const MultiBlocProviderHelper({
+  const MultiBlocProviderScope({
     super.key,
     required this.child,
     required this.compositionResult,

@@ -25,15 +25,6 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
     return Scaffold(
       appBar: AppBar(
         title: const Text("Authentication"),
-        actions: [
-          IconButton(
-            onPressed: () {
-              // or like this
-              context.read<AuthenticationBloc>().add(const LogOutAuthenticationEvent());
-            },
-            icon: const Icon(Icons.logout),
-          ),
-        ],
       ),
       body: BlocConsumer<AuthenticationBloc, AuthenticationStates>(
         builder: (context, state) {
@@ -45,17 +36,17 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                 if (state is InProgressAuthenticationState)
                   const CircularProgressIndicator()
                 else
-                TextButton(
-                  onPressed: () {
-                    context.read<AuthenticationBloc>().add(
-                          const LogInAuthenticationEvent(
-                            email: "temp_email",
-                            password: "temp_password",
-                          ),
-                        );
-                  },
-                  child: const Text("auth"),
-                ),
+                  TextButton(
+                    onPressed: () {
+                      context.read<AuthenticationBloc>().add(
+                            const LogInAuthenticationEvent(
+                              email: "temp_email",
+                              password: "temp_password",
+                            ),
+                          );
+                    },
+                    child: const Text("auth"),
+                  ),
               ],
             ),
           );

@@ -52,6 +52,16 @@ class OwnChangeNotifierProvider<T extends ChangeNotifier> extends InheritedNotif
     required super.child,
   }) : super(notifier: provider);
 
+  // when you try to get inheritedWidget inside initState
+  // it should throw error, that is why you have to get that with listen false
+  static T? of<T extends ChangeNotifier>(BuildContext context, {bool listen = true}) {
+    if (listen) {
+      return watch<T>(context);
+    } else {
+      return read<T>(context);
+    }
+  }
+
   static T? watch<T extends ChangeNotifier>(BuildContext context) {
     final widget = context.dependOnInheritedWidgetOfExactType<OwnChangeNotifierProvider<T>>();
     if (widget == null) {
