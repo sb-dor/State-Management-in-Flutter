@@ -45,6 +45,9 @@ class AuthenticationBloc extends Bloc<AuthenticationBlocEvents, AuthenticationSt
     // in order to check whether specific state is working and you can not to emit particular
     // state again while it's in precess (you can call other events at that time)
     on<AuthenticationBlocEvents>(
+      /// NOTE! when you want to create events with freezed
+      /// register all events like I'm doing below
+      /// especially:  [(event, emit) => event.map]
       (event, emit) => event.map(
         logIn: (loginEvent) => _login(loginEvent, emit),
         logOut: (logoutEvent) => _logout(logoutEvent, emit),

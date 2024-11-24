@@ -1,13 +1,14 @@
 abstract interface class IPostDatasource {
-  Future<void> savePost();
+  Future<bool> savePost();
 
   Future<void> addText();
 }
 
 class PostDatasourceImpl implements IPostDatasource {
   @override
-  Future<void> savePost() async {
-    //
+  Future<bool> savePost() async {
+    await Future.delayed(const Duration(seconds: 3));
+    return true;
   }
 
   @override

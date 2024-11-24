@@ -5,6 +5,10 @@ import 'package:state_management_course/bloc/fox_second_bloc_learning/src/authen
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/authentication/bloc/authentication_events.dart';
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/authentication/bloc/authentication_states.dart';
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/authentication/widget/authentication_widget.dart';
+import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/bloc/post_bloc.dart';
+import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/bloc/post_state.dart';
+import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/widgets/post_creation_widget.dart';
+import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/widgets/post_widget.dart';
 
 class PostPage extends StatefulWidget {
   const PostPage({super.key});
@@ -56,13 +60,29 @@ class _State extends State<PostPage> {
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {},
+        onPressed: () async {
+          Navigator.push(
+            context,
+            MaterialPageRoute(
+              builder: (context) => const PostCreationWidget(),
+            ),
+          );
+        },
         child: const Icon(
           Icons.add,
         ),
       ),
-      body: const Column(
-        children: [],
+      body: BlocBuilder<PostBloc, PostState>(
+        builder: (context, state) {
+          final stateModel = state.postStateModel;
+          return ListView.builder(
+            itemCount: stateModel.posts.length,
+            itemBuilder: (context, index) {
+              final post = stateModel.posts[index];
+              return PostWidget(post: post);
+            },
+          );
+        },
       ),
     );
   }

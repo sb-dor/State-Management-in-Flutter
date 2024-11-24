@@ -1,7 +1,7 @@
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/data/post_datasource.dart';
 
 abstract interface class IPostRepository {
-  Future<void> savePost();
+  Future<bool> savePost();
 
   Future<void> addText();
 }
@@ -12,7 +12,7 @@ class PostRepositoryImpl implements IPostRepository {
   PostRepositoryImpl(this._postDatasource);
 
   @override
-  Future<void> savePost() => _postDatasource.savePost();
+  Future<bool> savePost() => _postDatasource.savePost();
 
   @override
   Future<void> addText() {

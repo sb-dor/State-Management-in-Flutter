@@ -15,7 +15,7 @@ abstract interface class IAuthenticationDatasource {
 class AuthenticationDatasourceImpl implements IAuthenticationDatasource {
   @override
   Future<AuthenticatedUser?> login({required String email, required String password}) async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 1));
     return AuthenticatedUser(
       uid: const Uuid().v4(),
       displayName: "Name",
@@ -26,13 +26,13 @@ class AuthenticationDatasourceImpl implements IAuthenticationDatasource {
 
   @override
   Future<bool> logout() async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 1));
     return true;
   }
 
   @override
   Future<AuthenticatedUser?> checkAuth() async {
-    await Future.delayed(const Duration(seconds: 3));
+    await Future.delayed(const Duration(seconds: 1));
     return null;
   }
 }
