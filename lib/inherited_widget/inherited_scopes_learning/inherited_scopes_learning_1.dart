@@ -1,11 +1,13 @@
 import 'package:flutter/material.dart';
 
 class _InheritedScope extends InheritedWidget {
-  final _InheritedScopesLearning1State inhScopeLearning1;
+  final int counter;
+  final _InheritedScopesLearning1State state;
 
   const _InheritedScope({
     required super.child,
-    required this.inhScopeLearning1,
+    required this.counter,
+    required this.state,
   });
 
   static _InheritedScope? of(BuildContext context, {bool listen = true}) {
@@ -21,7 +23,7 @@ class _InheritedScope extends InheritedWidget {
 
   @override
   bool updateShouldNotify(_InheritedScope old) {
-    return old.inhScopeLearning1.counter != inhScopeLearning1.counter;
+    return old.counter != counter;
   }
 }
 
@@ -52,7 +54,8 @@ class _InheritedScopesLearning1State extends State<InheritedScopesLearning1> {
         title: const Text("Inherited learning 1"),
       ),
       body: _InheritedScope(
-        inhScopeLearning1: this,
+        counter: counter,
+        state: this,
         child: const _BodyWidget(),
       ),
     );
@@ -81,7 +84,7 @@ class _IncrementButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        _InheritedScope.of(context, listen: false)?.inhScopeLearning1.increment();
+        _InheritedScope.of(context, listen: false)?.state.increment();
       },
       child: const Text("Increment"),
     );
@@ -93,7 +96,7 @@ class _InformationOfData extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final value = _InheritedScope.of(context)?.inhScopeLearning1.counter;
+    final value = _InheritedScope.of(context)?.counter;
     return Text("$value");
   }
 }
@@ -105,7 +108,7 @@ class _DecrementButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return TextButton(
       onPressed: () {
-        _InheritedScope.of(context, listen: false)?.inhScopeLearning1.decrement();
+        _InheritedScope.of(context, listen: false)?.state.decrement();
       },
       child: const Text("Decrement"),
     );
