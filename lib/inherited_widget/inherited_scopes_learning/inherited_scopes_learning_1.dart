@@ -33,8 +33,6 @@ class InheritedScopesLearning1 extends StatefulWidget {
 }
 
 class _InheritedScopesLearning1State extends State<InheritedScopesLearning1> {
-  // same library, that is why you don't have to crate private
-  // I did so, because of that I would never write code in same file
   int counter = 0;
 
   void increment() => setState(() {
