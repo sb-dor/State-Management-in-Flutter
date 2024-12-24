@@ -34,6 +34,7 @@ final counter = Counter(); // counter mobx state
 
 //
 void main() {
+  WidgetsFlutterBinding.ensureInitialized();
   runApp(const App());
 }
 
