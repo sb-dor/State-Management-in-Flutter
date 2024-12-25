@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:socket_io_client/socket_io_client.dart' as IO;
+import 'package:state_management_course/socket_io_learning/socket_service/socket_client_service.dart';
 
 part 'socket_bloc.freezed.dart';
 
@@ -15,9 +16,9 @@ class SocketState with _$SocketState {
 }
 
 class SocketBloc extends Bloc<SocketEvent, SocketState> {
-  late IO.Socket socket;
+  final SocketClientService _socketClientService;
 
-  SocketBloc() : super(const SocketState.initial()) {
+  SocketBloc(this._socketClientService) : super(const SocketState.initial()) {
     on<SocketEvent>(
       (event, emit) => event.map(
         started: (event) => _started(event, emit),
@@ -29,12 +30,19 @@ class SocketBloc extends Bloc<SocketEvent, SocketState> {
     _Started event,
     Emitter<SocketState> emit,
   ) async {
-
-    socket = IO.io(
-      "http://192.168.100.3:6001",
+    await _socketClientService.connectToSocket(
+      "http://192.168.100.3:3000", // port does not matter
+      handlers: {
+        "echo": (data) {},
+        "joinRoom": (data) {},
+        "room": (data) {},
+      },
     );
-    socket.on("connection", (socket) {
-      socket.join("some room");
-    });
+  }
+
+  @override
+  Future<void> close() {
+    _socketClientService.disconnectSocket();
+    return super.close();
   }
 }

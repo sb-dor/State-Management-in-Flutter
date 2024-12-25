@@ -25,6 +25,7 @@ import 'redux/filtered_items/states/filtered_items_state.dart';
 import 'redux/filtered_items/states/filtered_reducer.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart' as riverpod;
 
+import 'socket_io_learning/widgets/socket_io_widget.dart';
 import 'vanilla_contacts/views/vanilla_contacts_with_change_notifier/vanilla_contact_page_with_change_notifier.dart';
 
 // mobx here
@@ -66,7 +67,7 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: InheritedScopesLearning1());
+    return const MaterialApp(home: SocketIoWidget());
     return StoreProvider(
       // Redux's store provider
       store: asyncState,
