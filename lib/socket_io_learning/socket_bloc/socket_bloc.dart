@@ -1,3 +1,5 @@
+import 'dart:convert';
+
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
@@ -12,6 +14,8 @@ class SocketEvent with _$SocketEvent {
   const factory SocketEvent.initialEvent() = _InitialEventOnSocketEvent;
 
   const factory SocketEvent.joinToTheRoom(User user) = _JoinToTheRoomEventOnSocketEvent;
+
+  const factory SocketEvent.leaveRoom() = _LeaveRoomEventOnSocketEvent;
 
   const factory SocketEvent.sendMessage(String message) = _SendMessageEvemtOnSocketEvent;
 
@@ -31,7 +35,9 @@ class SocketBloc extends Bloc<SocketEvent, SocketState> {
       (event, emit) => event.map(
         initialEvent: (event) => _init(event, emit),
         joinToTheRoom: (event) => _joinToTheRoom(event, emit),
+        leaveRoom: (event) => _leaveRoom(event, emit),
         sendMessage: (event) => _sendMessage(event, emit),
+        handleMessage: (event) => _handleMessages(event, emit),
       ),
     );
   }
@@ -40,7 +46,6 @@ class SocketBloc extends Bloc<SocketEvent, SocketState> {
     _InitialEventOnSocketEvent event,
     Emitter<SocketState> emit,
   ) async {
-
     await _socketClientService.connectToSocket(
       "http://192.168.100.3:3000", // port does not matter
       handlers: {
@@ -51,10 +56,7 @@ class SocketBloc extends Bloc<SocketEvent, SocketState> {
           debugPrint("joining room info: $data");
         },
         "room": (data) {
-          debugPrint("message to the room info: $data");
-          final currentState = state.copyWith();
-
-          emit(currentState);
+          add(SocketEvent.handleMessage(data));
         },
       },
     );
@@ -68,6 +70,15 @@ class SocketBloc extends Bloc<SocketEvent, SocketState> {
     emit(SocketState.initial(user: event.user));
   }
 
+  void _leaveRoom(
+    _LeaveRoomEventOnSocketEvent event,
+    Emitter<SocketState> emit,
+  ) async {
+    if (state.user == null) return;
+    _socketClientService.leaveTheRoom("room_${state.user?.id}");
+    emit(const SocketState.initial(user: null));
+  }
+
   void _sendMessage(
     _SendMessageEvemtOnSocketEvent event,
     Emitter<SocketState> emit,
@@ -75,7 +86,22 @@ class SocketBloc extends Bloc<SocketEvent, SocketState> {
     if (event.message.trim().isEmpty) return;
     if (state.user == null) return;
 
-    _socketClientService.messageToRoom(event.message, "room_${state.user?.id}");
+    _socketClientService.messageToRoom(
+        jsonEncode({
+          "message": event.message,
+        }),
+        "room_${state.user?.id}");
+  }
+
+  void _handleMessages(
+    _HandleMessagesEventOnSocketEvent event,
+    Emitter<SocketState> emit,
+  ) async {
+    final decodedData = jsonDecode(event.data);
+    debugPrint("message to the room info: $decodedData");
+    final currentState = state.copyWith();
+
+    emit(currentState);
   }
 
   @override

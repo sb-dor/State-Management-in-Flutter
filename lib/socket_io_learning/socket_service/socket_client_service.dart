@@ -25,6 +25,9 @@ class SocketClientService {
     socket?.onConnectError((data) {
       debugPrint("on connection error: $data");
     });
+    socket?.onError((data) {
+      debugPrint("on error: $data");
+    });
 
     // do specific thing on event that comes from server
     for (final each in handlers.entries) {
@@ -52,5 +55,10 @@ class SocketClientService {
   void joinToRoom(String room) {
     assert((socket?.connected ?? false), "Socket must be connected");
     socket?.emit("joinRoom", room);
+  }
+
+  void leaveTheRoom(String room) {
+    assert((socket?.connected ?? false), "Socket must be connected");
+    socket?.emit("leaveRoom", room);
   }
 }

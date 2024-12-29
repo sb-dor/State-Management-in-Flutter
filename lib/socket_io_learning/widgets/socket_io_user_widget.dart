@@ -28,6 +28,7 @@ class _SocketIoUserWidgetState extends State<SocketIoUserWidget> {
 
   @override
   void dispose() {
+    widget.socketBloc.add(const SocketEvent.leaveRoom());
     _textEditingController.dispose();
     super.dispose();
   }
