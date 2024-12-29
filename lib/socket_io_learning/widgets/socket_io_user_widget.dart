@@ -44,6 +44,20 @@ class _SocketIoUserWidgetState extends State<SocketIoUserWidget> {
           crossAxisAlignment: CrossAxisAlignment.center,
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
+            BlocBuilder<SocketBloc, SocketState>(
+              bloc: widget.socketBloc,
+              builder: (context, state) {
+                switch (state) {
+                  case Initial():
+                    return const SizedBox();
+                  case CompletedStateOnSocketStates():
+                    return Wrap(
+                      spacing: 10,
+                      children: state.messages.map((element) => Text(element)).toList(),
+                    );
+                }
+              },
+            ),
             TextField(
               controller: _textEditingController,
               decoration: const InputDecoration(hintText: "Add message"),
@@ -52,10 +66,10 @@ class _SocketIoUserWidgetState extends State<SocketIoUserWidget> {
               onPressed: () {
                 if (_textEditingController.text.trim().isEmpty) return;
                 widget.socketBloc.add(
-                      SocketEvent.sendMessage(
-                        _textEditingController.text.trim(),
-                      ),
-                    );
+                  SocketEvent.sendMessage(
+                    _textEditingController.text.trim(),
+                  ),
+                );
               },
               child: const Text("Send"),
             ),

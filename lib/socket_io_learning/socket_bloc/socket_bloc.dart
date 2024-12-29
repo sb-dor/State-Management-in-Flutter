@@ -23,8 +23,13 @@ class SocketEvent with _$SocketEvent {
 }
 
 @freezed
-class SocketState with _$SocketState {
-  const factory SocketState.initial({User? user}) = _Initial;
+sealed class SocketState with _$SocketState {
+  const factory SocketState.initial() = Initial;
+
+  const factory SocketState.completed({
+    required User toUser,
+    required List<String> messages,
+  }) = CompletedStateOnSocketStates;
 }
 
 class SocketBloc extends Bloc<SocketEvent, SocketState> {
@@ -67,39 +72,58 @@ class SocketBloc extends Bloc<SocketEvent, SocketState> {
     Emitter<SocketState> emit,
   ) async {
     _socketClientService.joinToRoom("room_${event.user.id}");
-    emit(SocketState.initial(user: event.user));
+    emit(
+      SocketState.completed(toUser: event.user, messages: <String>[]),
+    );
   }
 
   void _leaveRoom(
     _LeaveRoomEventOnSocketEvent event,
     Emitter<SocketState> emit,
   ) async {
-    if (state.user == null) return;
-    _socketClientService.leaveTheRoom("room_${state.user?.id}");
-    emit(const SocketState.initial(user: null));
+    if (state is! CompletedStateOnSocketStates) return;
+    final currentState = state as CompletedStateOnSocketStates;
+    _socketClientService.leaveTheRoom("room_${currentState.toUser.id}");
+    emit(const SocketState.initial());
   }
 
   void _sendMessage(
     _SendMessageEvemtOnSocketEvent event,
     Emitter<SocketState> emit,
   ) async {
+    if (state is! CompletedStateOnSocketStates) return;
+    final currentState = state as CompletedStateOnSocketStates;
     if (event.message.trim().isEmpty) return;
-    if (state.user == null) return;
 
     _socketClientService.messageToRoom(
-        jsonEncode({
-          "message": event.message,
-        }),
-        "room_${state.user?.id}");
+      jsonEncode({
+        "message": event.message,
+        "user_id": currentState.toUser.id,
+      }),
+      "room_${currentState.toUser.id}",
+    );
   }
 
   void _handleMessages(
     _HandleMessagesEventOnSocketEvent event,
     Emitter<SocketState> emit,
   ) async {
-    final decodedData = jsonDecode(event.data);
-    debugPrint("message to the room info: $decodedData");
-    final currentState = state.copyWith();
+    if (state is! CompletedStateOnSocketStates) return;
+    var currentState = state as CompletedStateOnSocketStates;
+
+    Map<String, dynamic> decodedData =
+        event.data is Map<String, dynamic> ? event.data : jsonDecode(event.data);
+
+    debugPrint("decoded data: $decodedData");
+
+    if (decodedData.containsKey('user_id') && decodedData['user_id'] == currentState.toUser.id) {
+      List<String> stateMessages = List<String>.from(currentState.messages);
+      stateMessages.add("${decodedData['message']}");
+      currentState = currentState.copyWith(
+        messages: stateMessages,
+      );
+      debugPrint("adding messagesssss");
+    }
 
     emit(currentState);
   }
