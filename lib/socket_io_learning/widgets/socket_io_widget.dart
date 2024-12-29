@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:state_management_course/socket_io_learning/models/chat.dart';
 import 'package:state_management_course/socket_io_learning/socket_bloc/socket_bloc.dart';
 import 'package:state_management_course/socket_io_learning/socket_service/socket_client_service.dart';
+import 'package:state_management_course/socket_io_learning/widgets/socket_io_user_widget.dart';
 
 class SocketIoWidget extends StatelessWidget {
   const SocketIoWidget({super.key});
@@ -24,6 +25,13 @@ class _SocketIoWidgetUI extends StatefulWidget {
 }
 
 class _SocketIoWidgetState extends State<_SocketIoWidgetUI> {
+
+  @override
+  void initState() {
+    super.initState();
+    context.read<SocketBloc>().add(const SocketEvent.initialEvent());
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -36,19 +44,33 @@ class _SocketIoWidgetState extends State<_SocketIoWidgetUI> {
         itemCount: chats.length,
         itemBuilder: (context, index) {
           final chat = chats[index];
-          return ColoredBox(
-            color: Colors.deepPurpleAccent.shade200,
-            child: Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Row(
-                children: [
-                  Text(
-                    "User: ${chat.user.name}",
-                    style: const TextStyle(
-                      color: Colors.white,
-                    ),
+          return GestureDetector(
+            onTap: () {
+              final socketBloc = context.read<SocketBloc>();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => SocketIoUserWidget(
+                    user: chat.user,
+                    socketBloc: socketBloc,
                   ),
-                ],
+                ),
+              );
+            },
+            child: ColoredBox(
+              color: Colors.deepPurpleAccent.shade200,
+              child: Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: Row(
+                  children: [
+                    Text(
+                      "User: ${chat.user.name}",
+                      style: const TextStyle(
+                        color: Colors.white,
+                      ),
+                    ),
+                  ],
+                ),
               ),
             ),
           );

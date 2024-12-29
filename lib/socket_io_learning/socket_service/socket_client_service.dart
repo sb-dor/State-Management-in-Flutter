@@ -23,7 +23,7 @@ class SocketClientService {
       debugPrint("on disconnect: data");
     });
     socket?.onConnectError((data) {
-      debugPrint("on connection error");
+      debugPrint("on connection error: $data");
     });
 
     // do specific thing on event that comes from server
