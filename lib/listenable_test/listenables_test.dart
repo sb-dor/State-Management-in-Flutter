@@ -32,6 +32,30 @@ class _ListenableTestState extends State<ListenableTest> {
   final _changeNotifier = ChangeNotifierTest();
 
   @override
+  void initState() {
+    super.initState();
+
+    _valueNotifier.addListener(_listenValueNotifier);
+
+    _changeNotifier.addListener(_listenChangeNotifier);
+  }
+
+  void _listenValueNotifier() {
+    debugPrint("value notifier is changing: ${_valueNotifier.value}");
+  }
+
+  void _listenChangeNotifier() {
+    debugPrint("change notifier is changing: ${_changeNotifier.counter}");
+  }
+
+  @override
+  void dispose() {
+    _valueNotifier.dispose();
+    _changeNotifier.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Column(
       children: [
