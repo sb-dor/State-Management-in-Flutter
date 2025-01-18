@@ -57,54 +57,57 @@ class _ListenableTestState extends State<ListenableTest> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: [
-        TextButton(
-          onPressed: () {
-            _valueNotifier.increment();
-          },
-          child: const Text("Counter for ValueNotifier"),
-        ),
-        TextButton(
-          onPressed: () {
-            _changeNotifier.increment();
-          },
-          child: const Text("Counter for ChangeNotifier"),
-        ),
-        // listens only ValueListenable -> ValueNotifier, Animation
-        ValueListenableBuilder(
-          valueListenable: _valueNotifier,
-          builder: (context, counter, child) {
-            return Text(counter.toString());
-          },
-        ),
-        // listens all Listenable ->  ValueNotifier, Animation, ChangeNotifier etc
-        ListenableBuilder(
-          listenable: _valueNotifier,
-          builder: (context, child) {
-            return Column(
-              children: [
-                const _TestRandom(),
-                Text(
-                  _valueNotifier.value.toString(),
-                ),
-              ],
-            );
-          },
-        ),
-        // listens all Listenable ->  ValueNotifier, Animation, ChangeNotifier etc
-        ListenableBuilder(
-          listenable: _changeNotifier,
-          builder: (context, child) {
-            return Column(
-              children: [
-                _TestRandom(),
-                Text(_changeNotifier.counter.toString()),
-              ],
-            );
-          },
-        ),
-      ],
+    return Scaffold(
+      body: Column(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: [
+          TextButton(
+            onPressed: () {
+              _valueNotifier.increment();
+            },
+            child: const Text("Counter for ValueNotifier"),
+          ),
+          TextButton(
+            onPressed: () {
+              _changeNotifier.increment();
+            },
+            child: const Text("Counter for ChangeNotifier"),
+          ),
+          // listens only ValueListenable -> ValueNotifier, Animation
+          ValueListenableBuilder(
+            valueListenable: _valueNotifier,
+            builder: (context, counter, child) {
+              return Text(counter.toString());
+            },
+          ),
+          // listens all Listenable ->  ValueNotifier, Animation, ChangeNotifier etc
+          ListenableBuilder(
+            listenable: _valueNotifier,
+            builder: (context, child) {
+              return Column(
+                children: [
+                  const _TestRandom(),
+                  Text(
+                    _valueNotifier.value.toString(),
+                  ),
+                ],
+              );
+            },
+          ),
+          // listens all Listenable ->  ValueNotifier, Animation, ChangeNotifier etc
+          ListenableBuilder(
+            listenable: _changeNotifier,
+            builder: (context, child) {
+              return Column(
+                children: [
+                  _TestRandom(),
+                  Text(_changeNotifier.counter.toString()),
+                ],
+              );
+            },
+          ),
+        ],
+      ),
     );
   }
 }
