@@ -6,6 +6,8 @@ part 'post_event.freezed.dart';
 
 @freezed
 sealed class PostEvent with _$PostEvent {
+
+  const factory PostEvent.checkEventTest() = CheckTestEvent;
   //
   // events mixins
   // comes with freezed package

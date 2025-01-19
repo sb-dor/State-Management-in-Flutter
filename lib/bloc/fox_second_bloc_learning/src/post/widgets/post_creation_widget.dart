@@ -39,6 +39,7 @@ class _PostCreationWidgetState extends State<PostCreationWidget> {
             author: _authorController.text.trim(),
           );
           context.read<PostBloc>().add(PostEvent.addPost(post: post));
+          context.read<PostBloc>().add(const PostEvent.checkEventTest());
         },
         child: BlocConsumer<PostBloc, PostState>(
           listener: (context, state) {

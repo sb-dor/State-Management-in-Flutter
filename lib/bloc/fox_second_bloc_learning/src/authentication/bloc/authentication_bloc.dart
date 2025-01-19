@@ -44,6 +44,13 @@ class AuthenticationBloc extends Bloc<AuthenticationBlocEvents, AuthenticationSt
     // but you have to created getters for each state (optional, one is enough)
     // in order to check whether specific state is working and you can not to emit particular
     // state again while it's in precess (you can call other events at that time)
+
+
+    // EDITED!
+    // after learning specific articles from Fox and Michael Lazebny, I want to change opinion about
+    // using "concurrent" transformer, it's better to use only one "on" handler with "sequential"
+    // transformer, because every event inside "on" handler will be executed only after one of the finishes
+    //
     on<AuthenticationBlocEvents>(
       /// NOTE! when you want to create events with freezed
       /// register all events like I'm doing below
