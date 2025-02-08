@@ -58,6 +58,8 @@ dependencies:
   bloc_concurrency: ^0.2.5
   rxdart: ^0.28.0
   socket_io_client: ^1.0.2
+  logger: ^2.5.0
+  shared_preferences: ^2.5.1
 #  nested: ^1.0.0
 
 
