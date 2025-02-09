@@ -69,7 +69,7 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: TestValueListenableWidget());
+    return const MaterialApp(home: VanillaContactWithChangeNotifierMaterialApp());
     return StoreProvider(
       // Redux's store provider
       store: asyncState,
