@@ -18,7 +18,7 @@ class _GettingProtectedDataState extends State<GettingProtectedData> {
   @override
   void initState() {
     super.initState();
-    surnameController = PassingDataWidget.state(context).; // not visible
+    // surnameController = PassingDataWidget.state(context).; // not visible
   }
 
   @override
