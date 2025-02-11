@@ -15,6 +15,7 @@ import 'package:state_management_course/redux/async_redux_example/state/async_re
 import 'bloc/lazy_load_simple_bloc/simple_bloc/simple_bloc_page.dart';
 import 'inherited_widget/get_datetime_on_screen_tap/view/inherited_widget_page.dart';
 import 'inherited_widget/inherited_scopes_learning/inherited_scopes_learning_1.dart';
+import 'inherited_widget/passing_data_properly/hiding_data_in_interfaces.dart';
 import 'inherited_widget/passing_data_properly/passing_data_widget.dart';
 import 'inherited_widget/todo_with_inherited_notifier/main_td_inhnot.dart';
 import 'inherited_widget/todo_with_inherited_notifier/view/td_inhnot_view.dart';
@@ -70,7 +71,7 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: PassingDataWidget());
+    return const MaterialApp(home: HidingDataInterfaceWidget());
     return StoreProvider(
       // Redux's store provider
       store: asyncState,
