@@ -1,5 +1,9 @@
 import 'package:flutter/material.dart';
 
+
+// but I would say that using inh widget like in "passing_data_widget.dart" is better
+// because you may ask that why should I make my widget's state public, but take a look to the
+// flutter's Navigator class and you will see that even flutter's classes are not hidden
 abstract interface class HidingDataInInterfaces {
   TextEditingController get nameController;
 
