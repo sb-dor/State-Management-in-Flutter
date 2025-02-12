@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:state_management_course/inherited_widget/passing_data_properly/value_model.dart';
 
 class _PassingDataInhWidget extends InheritedWidget {
   const _PassingDataInhWidget({
     super.key,
     required this.passingDataWidgetState,
+    required this.valueModel,
     required super.child,
   });
 
@@ -12,6 +14,7 @@ class _PassingDataInhWidget extends InheritedWidget {
       : context.getInheritedWidgetOfExactType<_PassingDataInhWidget>()!;
 
   final PassingDataWidgetState passingDataWidgetState;
+  final ValueModel valueModel;
 
   @override
   bool updateShouldNotify(_PassingDataInhWidget old) {
@@ -42,6 +45,13 @@ class PassingDataWidgetState extends State<PassingDataWidget> {
   @protected
   final TextEditingController surnameController = TextEditingController();
 
+  var valueNumber = ValueModel(counter: 1);
+
+  void changeModel() {
+    valueNumber = valueNumber.copyWith(counter: valueNumber.counter + 1);
+    setState(() {});
+  }
+
   @override
   void dispose() {
     nameController.dispose();
@@ -57,6 +67,7 @@ class PassingDataWidgetState extends State<PassingDataWidget> {
       ),
       body: _PassingDataInhWidget(
         passingDataWidgetState: this,
+        valueModel: valueNumber,
         child: _TestWidget(),
       ),
     );
@@ -70,8 +81,20 @@ class _TestWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final passingDataInhWidget = PassingDataWidget.state(context);
 
-    return TextField(
-      controller: passingDataInhWidget.nameController,
+    return Column(
+      children: [
+        TextField(
+          controller: passingDataInhWidget.nameController,
+        ),
+        TextButton(
+          onPressed: () {
+            passingDataInhWidget.changeModel();
+          },
+          child: Text(
+            "Value of model: ${passingDataInhWidget.valueNumber.counter}",
+          ),
+        ),
+      ],
     );
   }
 }

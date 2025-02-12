@@ -71,7 +71,7 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: HidingDataInterfaceWidget());
+    return const MaterialApp(home: PassingDataWidget());
     return StoreProvider(
       // Redux's store provider
       store: asyncState,
