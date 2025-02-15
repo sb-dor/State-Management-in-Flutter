@@ -11,6 +11,7 @@ final class OwnValueNotifierListener<T> with ChangeNotifier implements ValueList
       return;
     }
     _value = newValue;
+    notifyListeners();
   }
 
   @override
