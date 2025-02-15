@@ -56,14 +56,14 @@ class _TestValueListenableWidgetState extends State<TestValueListenableWidget> {
   final _testValueListenable = ValueListenableTest(AnyClass());
 
   @override
-  void dispose() {
-    _testValueListenable.dispose();
-    super.dispose();
+  void initState() {
+    super.initState();
   }
 
   @override
-  void initState() {
-    super.initState();
+  void dispose() {
+    _testValueListenable.dispose();
+    super.dispose();
   }
 
   @override
@@ -90,33 +90,31 @@ class _TestValueListenableWidgetState extends State<TestValueListenableWidget> {
             ListenableBuilder(
               listenable: _testValueListenable,
               builder: (context, child) {
-                return Text("${_testValueListenable.value}");
+                return child!;
               },
+              // you can create this for those widgets that will not be rebuild again
+              // when you put that inside builder
+              child: Text("${_testValueListenable.value.number}"),
             ),
 
             AnimatedBuilder(
               animation: _testValueListenable,
               builder: (context, child) {
-                return Text("${_testValueListenable.value}");
+                return Text("${_testValueListenable.value.number}");
               },
             ),
 
             OwnListenableBuilder(
               listenable: _testValueListenable,
-              child: (context) {
-                return TextButton(
-                  onPressed: () {
-                    print(context.size);
-                    // Navigator.push(
-                    //   context,
-                    //   MaterialPageRoute(
-                    //     builder: (context) => VanillaNewContactView(),
-                    //   ),
-                    // );
-                  },
-                  child: Text("Test"),
-                );
-              },
+              child: () => TextButton(
+                onPressed: () {
+                  print(context.size);
+                  print(MediaQuery.of(context).size.width);
+                  print(MediaQuery.of(context).size.height);
+                  _testValueListenable.increment();
+                },
+                child: Text("Test: ${_testValueListenable.value.number}"),
+              ),
             ),
           ],
         ),
@@ -125,7 +123,7 @@ class _TestValueListenableWidgetState extends State<TestValueListenableWidget> {
   }
 }
 
-typedef WidgetBuilder = Widget Function(BuildContext);
+typedef WidgetBuilder = Widget Function();
 
 class OwnListenableBuilder extends StatefulWidget {
   const OwnListenableBuilder({
@@ -161,5 +159,5 @@ class _OwnListenableBuilderState extends State<OwnListenableBuilder> {
   }
 
   @override
-  Widget build(BuildContext context) => widget.child(context);
+  Widget build(BuildContext context) => widget.child();
 }
