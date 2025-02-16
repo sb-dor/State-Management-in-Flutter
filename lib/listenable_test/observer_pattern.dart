@@ -13,13 +13,18 @@ abstract interface class OwnListenable {
 // mixin class so we can create object from this mixin
 mixin class SubscribersNotifier implements OwnListenable {
   //
+  /// a list of callbacks that should be added as subscriber
+  /// when someone calls [notifySubscribers] all subscribers (callbacks) will be called
   final List<VoidCallback> _subscribers = [];
 
+  // adding subscriber (callback) inside a list of subscribers
   @override
   void addSubscriber(VoidCallback subscriber) {
     _subscribers.add(subscriber);
   }
 
+  /// removing specific subscriber (callback) from the list in order to not call him
+  /// when [notifySubscribers] calls
   @override
   void removeSubscriber(VoidCallback subscriber) {
     for (int i = 0; i < _subscribers.length; i++) {
@@ -30,24 +35,27 @@ mixin class SubscribersNotifier implements OwnListenable {
     }
   }
 
-  // calling each subscriber in order notify them all that someone called me
+  // calling each subscriber (callback)
   void notifySubscribers() {
     for (final each in _subscribers) {
       each.call();
     }
   }
 
+  // clearing callbacks
   void dispose() {
     _subscribers.clear();
   }
 }
 
+// just a class with method in order to print something
 final class NotifiableClass {
   void justAFunctionThatCallsPrint() {
     print("JUST A FUNCTION THAT CALLS PRINT");
   }
 }
 
+// a class that mixins with our own created notifier
 final class CounterChangerNotifier with SubscribersNotifier {
   int counter = 1;
 
@@ -57,6 +65,7 @@ final class CounterChangerNotifier with SubscribersNotifier {
   }
 }
 
+// own created listenable builder
 final class _OwnListenableBuilder extends StatefulWidget {
   //
   const _OwnListenableBuilder({
@@ -121,6 +130,7 @@ void main() async {
   );
 }
 
+// simple counter app
 class App extends StatefulWidget {
   const App({super.key});
 
