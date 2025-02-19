@@ -16,7 +16,7 @@ abstract class OwnBloc<Event, State> extends OwnBlocBase<Event, State> {
   //
   OwnBloc(this._state);
 
-  final List<({Event event, EventHandler eventHandler})> _events = [];
+  final List<({Type event, EventHandler eventHandler})> _events = [];
 
   final StreamController<State> _stateController = StreamController.broadcast();
 
@@ -29,7 +29,7 @@ abstract class OwnBloc<Event, State> extends OwnBlocBase<Event, State> {
   @override
   Future<void> add(Event event) async {
     for (final each in _events) {
-      if (each.event == event) {
+      if (each.event == event.runtimeType) {
         await each.eventHandler();
       }
     }
@@ -43,12 +43,11 @@ abstract class OwnBloc<Event, State> extends OwnBlocBase<Event, State> {
   @override
   void on<E extends Event>(EventHandler eventHandler) {
     for (final each in _events) {
-      if (each.eventHandler is E) {
+      if (each.eventHandler.runtimeType is E) {
         throw Error(); // TODO: implement own error or add assert
       }
     }
-
-    _events.add((event: E as Event, eventHandler: eventHandler));
+    _events.add((event: E, eventHandler: eventHandler));
   }
 
   @override
