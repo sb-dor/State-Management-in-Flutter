@@ -1,38 +1,35 @@
 import 'dart:async';
 
-typedef CallbackHandler<Event, State> = Future<void> Function(Event event, State state);
+abstract class OwnBlocBase<Event> {
+  Future<void> close();
 
-abstract class OwnBloc<Event, State> {
-  OwnBloc(this._state);
+  Future<void> add(Event event);
+}
 
-  final StreamController<Event> _eventController = StreamController<Event>.broadcast();
-  final StreamController<State> _stateController = StreamController<State>.broadcast();
-  State _state;
-  late final Stream<State> _stream = _stateController.stream;
+abstract class OwnBloc<Event> extends OwnBlocBase<Event> {
+  final StreamController<Event> _eventController = StreamController.broadcast();
 
-  State get state => _state;
+  Stream<Event> get stream => _eventController.stream;
 
-  Stream<State> get stream => _stream;
-
-  void on<E extends Event>(E event, CallbackHandler handler) {}
-
-  void add(Event event) {
+  @override
+  Future<void> add(Event event) async {
     _eventController.add(event);
   }
 
-  void emit(State state) {
-    _state = state;
-    _stateController.add(state);
+  @override
+  Future<void> close() async {
+    await _eventController.close();
   }
 }
 
-class StartEvent {}
+sealed class CounterEvents {}
 
-class FirstEvent extends StartEvent {}
+class Increment extends CounterEvents {}
 
-class StartState {}
+class Decrement extends CounterEvents {}
 
-class SimpleBloc extends OwnBloc<StartEvent, StartState> {
-  SimpleBloc(super.state) {
-  }
+final class CounterBloc extends OwnBloc<CounterEvents> {
+
+
+
 }
