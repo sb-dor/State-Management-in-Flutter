@@ -1,11 +1,11 @@
 import 'dart:async';
 
-typedef EventHandler = FutureOr<void> Function();
+typedef EventHandler<Event> = FutureOr<void> Function(Event event);
 
 class Handler {
   Handler({required this.event, required this.handler});
 
-  final FutureOr<void> Function() handler;
+  final FutureOr<void> Function(dynamic event) handler;
   Type event;
 }
 
@@ -37,7 +37,7 @@ abstract class OwnBloc<Event, State> extends OwnBlocBase<Event, State> {
   Future<void> add(Event event) async {
     for (final each in _events) {
       if (each.event == event.runtimeType) {
-        await each.handler();
+        await each.handler(event);
       }
     }
   }
@@ -48,13 +48,12 @@ abstract class OwnBloc<Event, State> extends OwnBlocBase<Event, State> {
   }
 
   @override
-  void on<E extends Event>(EventHandler eventHandler) {
-    for (final each in _events) {
-      if (each.event.runtimeType is E) {
-        throw Error(); // TODO: implement own error or add assert
-      }
-    }
-    _events.add(Handler(event: E, handler: eventHandler));
+  void on<E extends Event>(EventHandler<E> eventHandler) {
+    assert(
+      !_events.any((each) => each.event.runtimeType == E),
+      'An event of type $E has already been registered.',
+    );
+    _events.add(Handler(event: E, handler: (event) => eventHandler(event)));
   }
 
   @override
@@ -88,7 +87,7 @@ final class CounterBloc extends OwnBloc<CounterEvents, CounterStates> {
     on<Decrement>(_decrement);
   }
 
-  void _increment() {
+  void _increment(Increment increment) {
     if (state is! CounterSuccess) return;
 
     final currentState = state as CounterSuccess;
@@ -98,7 +97,7 @@ final class CounterBloc extends OwnBloc<CounterEvents, CounterStates> {
     emit(CounterSuccess(cnt));
   }
 
-  void _decrement() {
+  void _decrement(Decrement decrement) {
     if (state is! CounterSuccess) return;
 
     final currentState = state as CounterSuccess;
@@ -114,7 +113,7 @@ void main() async {
 
   final subs = ownCounterBloc.stream.listen((state) {
     if (state is CounterSuccess) {
-      print("CounterSuccess: ${state.cnt}");
+      print("$state: ${state.cnt}");
     } else {
       print("state is: $state");
     }
