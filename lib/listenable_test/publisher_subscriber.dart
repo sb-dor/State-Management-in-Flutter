@@ -1,5 +1,7 @@
 import 'dart:async';
 
+import 'package:flutter/material.dart';
+
 typedef EventHandler<Event> = FutureOr<void> Function(Event event);
 
 class Handler {
@@ -50,7 +52,7 @@ abstract class OwnBloc<Event, State> extends OwnBlocBase<Event, State> {
   @override
   void on<E extends Event>(EventHandler<E> eventHandler) {
     assert(
-      !_events.any((each) => each.event.runtimeType == E),
+      !_events.any((each) => each.event == E),
       'An event of type $E has already been registered.',
     );
     _events.add(Handler(event: E, handler: (event) => eventHandler(event)));
@@ -66,7 +68,6 @@ abstract class OwnBloc<Event, State> extends OwnBlocBase<Event, State> {
 sealed class CounterEvents {}
 
 class Increment extends CounterEvents {
-
   Increment(this.initialValue);
 
   final int initialValue;
@@ -113,30 +114,115 @@ final class CounterBloc extends OwnBloc<CounterEvents, CounterStates> {
   }
 }
 
-void main() async {
-  final ownCounterBloc = CounterBloc();
-
-  final subs = ownCounterBloc.stream.listen((state) {
-    if (state is CounterSuccess) {
-      print("$state: ${state.cnt}");
-    } else {
-      print("state is: $state");
-    }
+class OwnBlocBuilder<Bl extends OwnBloc, S> extends StatefulWidget {
+  //
+  const OwnBlocBuilder({
+    super.key,
+    required this.bloc,
+    required this.child,
   });
 
-  ownCounterBloc.add(Increment(5));
+  final Bl bloc;
+  final Widget Function(BuildContext context, S state) child;
 
-  await Future.delayed(const Duration(seconds: 3));
+  @override
+  State<OwnBlocBuilder> createState() => _OwnBlocBuilderState<Bl, S>();
+}
 
-  ownCounterBloc.add(Increment(3));
+class _OwnBlocBuilderState<Bl extends OwnBloc, S> extends State<OwnBlocBuilder> {
+  late final StreamSubscription<S> _stateSub;
+  late S _state;
 
-  await Future.delayed(const Duration(seconds: 3));
+  @override
+  void initState() {
+    super.initState();
+    _state = widget.bloc.state;
+    _stateSub = widget.bloc.stream.cast<S>().listen((state) => setState(() {
+          _state = state;
+        }));
+  }
 
-  ownCounterBloc.add(Decrement());
+  @override
+  void dispose() {
+    _stateSub.cancel();
+    super.dispose();
+  }
 
-  await Future.delayed(const Duration(seconds: 3));
+  @override
+  Widget build(BuildContext context) {
+    return widget.child(context, _state);
+  }
+}
 
-  ownCounterBloc.add(Decrement());
+void main() async {
+  runApp(_App());
+}
 
-  subs.cancel();
+class _App extends StatefulWidget {
+  const _App({super.key});
+
+  @override
+  State<_App> createState() => _AppState();
+}
+
+class _AppState extends State<_App> {
+  final ownCounterBloc = CounterBloc();
+  late final StreamSubscription<CounterStates> _subs;
+
+  @override
+  void initState() {
+    super.initState();
+    _init();
+  }
+
+  void _init() async {
+    _subs = ownCounterBloc.stream.listen((state) {
+      if (state is CounterSuccess) {
+        print("$state: ${state.cnt}");
+      } else {
+        print("state is: $state");
+      }
+    });
+
+    ownCounterBloc.add(Increment(5));
+
+    await Future.delayed(const Duration(seconds: 3));
+
+    ownCounterBloc.add(Increment(3));
+
+    await Future.delayed(const Duration(seconds: 3));
+
+    ownCounterBloc.add(Decrement());
+
+    await Future.delayed(const Duration(seconds: 3));
+
+    ownCounterBloc.add(Decrement());
+  }
+
+  @override
+  void dispose() {
+    _subs.cancel();
+
+    super.dispose();
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return MaterialApp(
+      home: Scaffold(
+        appBar: AppBar(),
+        body: OwnBlocBuilder<CounterBloc, CounterStates>(
+          bloc: ownCounterBloc,
+          child: (context, state) {
+            switch (state) {
+              case CounterError():
+                return Text("Error state");
+              case CounterSuccess():
+                return Text(state.cnt.toString());
+            }
+          },
+        ),
+      ),
+    );
+  }
 }
