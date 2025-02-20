@@ -2,6 +2,13 @@ import 'dart:async';
 
 typedef EventHandler = FutureOr<void> Function();
 
+class Handler {
+  Handler({required this.event, required this.handler});
+
+  final FutureOr<void> Function() handler;
+  Type event;
+}
+
 abstract class OwnBlocBase<Event, State> {
   Future<void> close();
 
@@ -16,7 +23,7 @@ abstract class OwnBloc<Event, State> extends OwnBlocBase<Event, State> {
   //
   OwnBloc(this._state);
 
-  final List<({Type event, EventHandler eventHandler})> _events = [];
+  final List<Handler> _events = [];
 
   final StreamController<State> _stateController = StreamController.broadcast();
 
@@ -30,7 +37,7 @@ abstract class OwnBloc<Event, State> extends OwnBlocBase<Event, State> {
   Future<void> add(Event event) async {
     for (final each in _events) {
       if (each.event == event.runtimeType) {
-        await each.eventHandler();
+        await each.handler();
       }
     }
   }
@@ -43,11 +50,11 @@ abstract class OwnBloc<Event, State> extends OwnBlocBase<Event, State> {
   @override
   void on<E extends Event>(EventHandler eventHandler) {
     for (final each in _events) {
-      if (each.eventHandler.runtimeType is E) {
+      if (each.event.runtimeType is E) {
         throw Error(); // TODO: implement own error or add assert
       }
     }
-    _events.add((event: E, eventHandler: eventHandler));
+    _events.add(Handler(event: E, handler: eventHandler));
   }
 
   @override
