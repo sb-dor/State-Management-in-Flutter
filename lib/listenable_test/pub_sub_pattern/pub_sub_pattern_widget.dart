@@ -28,8 +28,8 @@ class _OwnBlocBuilderState<Bl extends OwnBloc<dynamic, S>, S> extends State<OwnB
     super.initState();
     _state = widget.bloc.state;
     _stateSub = widget.bloc.stream.cast<S>().listen((state) => setState(() {
-      _state = state;
-    }));
+          _state = state;
+        }));
   }
 
   @override
@@ -97,16 +97,23 @@ class _PubSubPatternWidgetState extends State<PubSubPatternWidget> {
     return MaterialApp(
       home: Scaffold(
         appBar: AppBar(),
-        body: OwnBlocBuilder<CounterBloc, CounterStates>(
-          bloc: ownCounterBloc,
-          child: (context, state) {
-            switch (state) {
-              case CounterError():
-                return Text("Error state");
-              case CounterSuccess():
-                return Text(state.cnt.toString());
-            }
-          },
+        body: Center(
+          child: TextButton(
+            onPressed: () {
+              ownCounterBloc.add(Increment(1));
+            },
+            child: OwnBlocBuilder<CounterBloc, CounterStates>(
+              bloc: ownCounterBloc,
+              child: (context, state) {
+                switch (state) {
+                  case CounterError():
+                    return Text("Error state");
+                  case CounterSuccess():
+                    return Text(state.cnt.toString());
+                }
+              },
+            ),
+          ),
         ),
       ),
     );
