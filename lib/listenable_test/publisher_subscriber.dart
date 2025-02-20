@@ -65,7 +65,12 @@ abstract class OwnBloc<Event, State> extends OwnBlocBase<Event, State> {
 
 sealed class CounterEvents {}
 
-class Increment extends CounterEvents {}
+class Increment extends CounterEvents {
+
+  Increment(this.initialValue);
+
+  final int initialValue;
+}
 
 class Decrement extends CounterEvents {}
 
@@ -81,7 +86,7 @@ class CounterSuccess extends CounterStates {
 
 final class CounterBloc extends OwnBloc<CounterEvents, CounterStates> {
   //
-  CounterBloc() : super(CounterSuccess(0)) {
+  CounterBloc() : super(CounterSuccess(4)) {
     on<Increment>(_increment);
 
     on<Decrement>(_decrement);
@@ -93,7 +98,7 @@ final class CounterBloc extends OwnBloc<CounterEvents, CounterStates> {
     final currentState = state as CounterSuccess;
 
     int cnt = currentState.cnt;
-    cnt++;
+    cnt = cnt + increment.initialValue;
     emit(CounterSuccess(cnt));
   }
 
@@ -119,11 +124,11 @@ void main() async {
     }
   });
 
-  ownCounterBloc.add(Increment());
+  ownCounterBloc.add(Increment(5));
 
   await Future.delayed(const Duration(seconds: 3));
 
-  ownCounterBloc.add(Increment());
+  ownCounterBloc.add(Increment(3));
 
   await Future.delayed(const Duration(seconds: 3));
 
