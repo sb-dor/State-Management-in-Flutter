@@ -12,6 +12,7 @@ import 'package:state_management_course/mobx/mobx_with_streams/store/mobx_with_s
 import 'package:state_management_course/mobx/todo_mobx/store/todo_mobx_store.dart';
 import 'package:state_management_course/provider/second_project/provider/datetime_provider.dart';
 import 'package:state_management_course/redux/async_redux_example/state/async_redux_state.dart';
+import 'bloc/fox_article_own_bloc_with_change_notifier/widget/fox_article_own_bloc_wcn_widget.dart';
 import 'bloc/lazy_load_simple_bloc/simple_bloc/simple_bloc_page.dart';
 import 'inherited_widget/get_datetime_on_screen_tap/view/inherited_widget_page.dart';
 import 'inherited_widget/inherited_scopes_learning/inherited_scopes_learning_1.dart';
@@ -72,7 +73,7 @@ class _AppState extends State<App> {
 
   @override
   Widget build(BuildContext context) {
-    return const MaterialApp(home: PubSubPatternWidget());
+    return const MaterialApp(home: FoxArticleOwnBlocWcnWidget());
     return StoreProvider(
       // Redux's store provider
       store: asyncState,
