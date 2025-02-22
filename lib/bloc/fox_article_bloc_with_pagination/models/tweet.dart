@@ -18,8 +18,14 @@ abstract class Tweet implements Comparable<Tweet> {
 
 // class that state will be inside states
 // for handling list, bool
-abstract class TweetChunk {
-  abstract final List<Tweet> tweets;
-  abstract final String? cursor;
-  abstract final bool hasMore;
+class TweetChunk {
+  TweetChunk({
+    required this.tweets,
+    required this.cursor,
+    required this.hasMore,
+  });
+
+  final List<Tweet> tweets;
+  final String? cursor;
+  final bool hasMore;
 }
