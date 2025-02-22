@@ -47,7 +47,7 @@ class _FoxArticleOwnBlocWcnWidgetState extends State<FoxArticleOwnBlocWcnWidget>
         children: [
           TextButton(
             onPressed: () {
-              _bloc.fetch(id: 1);
+              _bloc.fetch(id: _bloc.state.data?.id ?? 1);
             },
             child: Text(
               "${_bloc.state.data?.id}",
