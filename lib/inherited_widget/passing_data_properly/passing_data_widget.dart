@@ -3,7 +3,6 @@ import 'package:state_management_course/inherited_widget/passing_data_properly/v
 
 class _PassingDataInhWidget extends InheritedWidget {
   const _PassingDataInhWidget({
-    super.key,
     required this.passingDataWidgetState,
     required this.valueModel,
     required super.child,

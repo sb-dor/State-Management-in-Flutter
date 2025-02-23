@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:state_management_course/socket_io_learning/models/user.dart';
 import 'package:state_management_course/socket_io_learning/socket_service/socket_client_service.dart';
 

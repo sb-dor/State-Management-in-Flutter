@@ -1,5 +1,4 @@
 import 'dart:async';
-import 'package:flutter/material.dart';
 
 typedef EventHandler<Event> = FutureOr<void> Function(Event event);
 

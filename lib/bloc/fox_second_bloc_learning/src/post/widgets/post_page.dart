@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/authentication/bloc/authentication_bloc.dart';
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/authentication/bloc/authentication_events.dart';
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/authentication/bloc/authentication_states.dart';

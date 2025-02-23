@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:rxdart/rxdart.dart';
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/data/post_repository.dart';
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/models/post.dart';
 import 'post_event.dart';
@@ -54,7 +53,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
       // logic here
       //
       // emit(event.hasText());
-    } catch (error, stackTrace) {
+    } catch (error) {
       //
       // emit(event.error(state: state));
     }
@@ -70,7 +69,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
       // logic
 
       // event.hasFileAndText(state: state);
-    } catch (error, stackTrace) {
+    } catch (error) {
       //
       // event.error(state: state);
     }
@@ -86,7 +85,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
       // logic
 
       // event.successFul(state: state);
-    } catch (error, stackTrace) {
+    } catch (error) {
       //
       // event.error(state: state);
     }
@@ -119,7 +118,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
         emit(event.sendError(state: state));
       }
       //
-    } catch (error, stackTrace) {
+    } catch (error) {
       debugPrint("add post error: $error");
       //
       emit(event.error(state: state, message: error.toString()));

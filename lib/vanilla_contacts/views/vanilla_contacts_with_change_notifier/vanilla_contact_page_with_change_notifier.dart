@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:state_management_course/vanilla_contacts/view_model/contact_book.dart';
 import 'package:state_management_course/vanilla_contacts/view_model/contact_book_with_change_notifier.dart';
 
 import 'vanilla_new_contact_view_with_change_notifier.dart';

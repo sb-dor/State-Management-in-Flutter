@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:state_management_course/inherited_widget/passing_data_properly/passing_data_widget.dart';
 
 // just imagine that this class is one the child of "PassingDataWidget"
 // when you want to get "surnameController" from PassingDataWidgetState

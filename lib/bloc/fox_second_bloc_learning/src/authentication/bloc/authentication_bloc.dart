@@ -82,7 +82,7 @@ class AuthenticationBloc extends Bloc<AuthenticationBlocEvents, AuthenticationSt
       } else {
         emit(const AuthenticationStates.unAuthenticated());
       }
-    } on Object catch (error, stackTrace) {
+    } on Object {
       emit(AuthenticationStates.error(user: state.user));
       rethrow;
     } finally {
@@ -103,7 +103,7 @@ class AuthenticationBloc extends Bloc<AuthenticationBlocEvents, AuthenticationSt
 
       emit(const AuthenticationStates.unAuthenticated(user: UserEntity.notAuthenticated()));
       //
-    } on Object catch (error, stackTrace) {
+    } on Object {
       emit(AuthenticationStates.error(user: state.user));
       rethrow;
     } finally {
@@ -128,7 +128,7 @@ class AuthenticationBloc extends Bloc<AuthenticationBlocEvents, AuthenticationSt
         emit(const AuthenticationStates.unAuthenticated(user: UserEntity.notAuthenticated()));
       }
       //
-    } on Object catch (error, stackTrace) {
+    } on Object {
       emit(AuthenticationStates.error(user: state.user));
       rethrow;
     } finally {

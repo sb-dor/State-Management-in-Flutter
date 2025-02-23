@@ -1,7 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:state_management_course/bloc/fox_second_bloc_learning/src/authentication/widget/authentication_widget.dart';
-import 'package:state_management_course/bloc/fox_second_bloc_learning/src/initialization/widget/multi_bp_scope.dart';
-import 'package:state_management_course/vanilla_contacts/views/vanilla_contacts_with_value_notifier/vanilla_new_contact_view.dart';
 
 final class AnyClass {
   final int number;
@@ -20,7 +17,7 @@ final class AnyClass {
 
   @override
   String toString() {
-    return 'AnyClass{' + ' number: $number,' + '}';
+    return 'AnyClass{' ' number: $number,' '}';
   }
 
   AnyClass copyWith({

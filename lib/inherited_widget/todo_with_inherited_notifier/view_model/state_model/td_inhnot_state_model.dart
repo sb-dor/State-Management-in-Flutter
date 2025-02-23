@@ -1,6 +1,5 @@
 import 'dart:collection';
 
-import 'package:flutter/foundation.dart';
 import 'package:state_management_course/inherited_widget/todo_with_inherited_notifier/models/td_inhnot_model.dart';
 import 'package:state_management_course/inherited_widget/todo_with_inherited_notifier/repository/td_inhnot_repository.dart';
 

@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'riverpod_function_state/riverpod_function_state.dart';
-import 'riverpod_number_trivia_model.dart';
 import 'riverpod_trivia_state_with_notifier/riverpod_trivia_state_with_notifier.dart';
 
 class RiverpodFunctionPage extends ConsumerWidget {
@@ -44,7 +43,7 @@ class RiverpodFunctionPage extends ConsumerWidget {
 }
 
 class _FirstWidgetWithProviderScope extends StatelessWidget {
-  const _FirstWidgetWithProviderScope({super.key});
+  const _FirstWidgetWithProviderScope();
 
   @override
   Widget build(BuildContext context) {
@@ -94,7 +93,7 @@ class _FirstWidgetWithProviderScope extends StatelessWidget {
 }
 
 class _SecondWidgetWithProviderScope extends StatelessWidget {
-  const _SecondWidgetWithProviderScope({super.key});
+  const _SecondWidgetWithProviderScope();
 
   @override
   Widget build(BuildContext context) {

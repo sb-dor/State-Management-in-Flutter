@@ -1,4 +1,3 @@
-import 'dart:collection';
 
 import 'package:state_management_course/flutter_riverpod/riverpod_number_trivia/riverpod_number_trivia_model.dart';
 

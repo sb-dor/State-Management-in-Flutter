@@ -113,7 +113,7 @@ class _ListenableTestState extends State<ListenableTest> {
 }
 
 class _TestRandom extends StatelessWidget {
-  const _TestRandom({super.key});
+  const _TestRandom();
 
   @override
   Widget build(BuildContext context) {

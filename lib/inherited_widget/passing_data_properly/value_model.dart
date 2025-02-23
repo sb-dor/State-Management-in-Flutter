@@ -15,7 +15,7 @@ final class ValueModel {
 
   @override
   String toString() {
-    return 'ValueModel{' + ' counter: $counter,' + '}';
+    return 'ValueModel{' ' counter: $counter,' '}';
   }
 
   ValueModel copyWith({

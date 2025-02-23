@@ -1,6 +1,5 @@
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:state_management_course/bloc/fox_article_bloc_with_pagination/data/fox_article_bloc_repository.dart';
 import 'package:state_management_course/bloc/fox_article_own_bloc_with_change_notifier/data/fox_article_own_bloc_with_change_notifier.dart';
 
 part 'fox_article_own_bloc_with_change_notifier.freezed.dart';
