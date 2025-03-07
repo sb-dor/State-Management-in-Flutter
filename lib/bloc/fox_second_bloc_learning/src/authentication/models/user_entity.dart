@@ -22,10 +22,10 @@ class NotAuthenticatedUser implements UserEntity {
   const NotAuthenticatedUser();
 
   @override
-  T when<T extends Object?>(
-          {required T Function(AuthenticatedUser user) authenticated,
-          required T Function() notAuthenticated}) =>
-      notAuthenticated();
+  T when<T extends Object?>({
+    required T Function(AuthenticatedUser user) authenticated,
+    required T Function() notAuthenticated,
+  }) => notAuthenticated();
 }
 
 class AuthenticatedUser implements UserEntity {
@@ -42,8 +42,8 @@ class AuthenticatedUser implements UserEntity {
   });
 
   @override
-  T when<T extends Object?>(
-          {required T Function(AuthenticatedUser user) authenticated,
-          required T Function() notAuthenticated}) =>
-      authenticated(this);
+  T when<T extends Object?>({
+    required T Function(AuthenticatedUser user) authenticated,
+    required T Function() notAuthenticated,
+  }) => authenticated(this);
 }

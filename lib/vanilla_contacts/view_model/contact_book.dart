@@ -1,4 +1,3 @@
-import 'dart:collection';
 
 import 'package:flutter/foundation.dart';
 import 'package:state_management_course/vanilla_contacts/models/contact.dart';
@@ -13,7 +12,8 @@ class ContactBook extends ValueNotifier<List<Contact>> {
 
   static ContactBook get instance => _instance ??= ContactBook._();
 
-  int get length => value.length; // this value is from "ValueNotifier" getter variable
+  int get length =>
+      value.length; // this value is from "ValueNotifier" getter variable
 
   void add({required Contact contact}) {
     value.add(contact); // this value is from "ValueNotifier" getter variable

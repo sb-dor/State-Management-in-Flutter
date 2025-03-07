@@ -28,9 +28,7 @@ class _PostCreationWidgetState extends State<PostCreationWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Post creation page"),
-      ),
+      appBar: AppBar(title: const Text("Post creation page")),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           final post = Post(
@@ -44,11 +42,9 @@ class _PostCreationWidgetState extends State<PostCreationWidget> {
         child: BlocConsumer<PostBloc, PostState>(
           listener: (context, state) {
             if (state is PostErrorState) {
-              ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text("${state.errorMessage}"),
-                ),
-              );
+              ScaffoldMessenger.of(
+                context,
+              ).showSnackBar(SnackBar(content: Text("${state.errorMessage}")));
             }
             if (context.mounted && state is PostSuccessfulState) {
               Navigator.pop(context);
@@ -59,9 +55,7 @@ class _PostCreationWidgetState extends State<PostCreationWidget> {
               return const SizedBox(
                 width: 20,
                 height: 20,
-                child: CircularProgressIndicator(
-                  strokeWidth: 2,
-                ),
+                child: CircularProgressIndicator(strokeWidth: 2),
               );
             } else {
               return const Icon(Icons.save);

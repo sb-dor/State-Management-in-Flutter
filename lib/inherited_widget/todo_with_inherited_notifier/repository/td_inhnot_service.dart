@@ -6,9 +6,7 @@ class TdInhNotService {
     final faker = Faker();
     return List.generate(
       30,
-      (index) => TdInhNotModel(
-        todo: faker.lorem.sentence(),
-      ),
+      (index) => TdInhNotModel(todo: faker.lorem.sentence()),
     );
   }
 }

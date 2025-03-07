@@ -71,8 +71,6 @@ class _InheritedDateTimeWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     final api = InheritedWidgetHelper.of(context).api;
 
-    return Text(
-      api.dateAndTime ?? "Tap on screen to fetch date and time",
-    );
+    return Text(api.dateAndTime ?? "Tap on screen to fetch date and time");
   }
 }

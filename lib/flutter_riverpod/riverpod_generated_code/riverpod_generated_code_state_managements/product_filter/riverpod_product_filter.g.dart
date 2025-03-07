@@ -12,12 +12,15 @@ String _$riverpodProductFilterHash() =>
 /// See also [RiverpodProductFilter].
 @ProviderFor(RiverpodProductFilter)
 final riverpodProductFilterProvider = AutoDisposeNotifierProvider<
-    RiverpodProductFilter, ProductFilterModel>.internal(
+  RiverpodProductFilter,
+  ProductFilterModel
+>.internal(
   RiverpodProductFilter.new,
   name: r'riverpodProductFilterProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$riverpodProductFilterHash,
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product')
+          ? null
+          : _$riverpodProductFilterHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );

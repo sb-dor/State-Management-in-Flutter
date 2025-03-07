@@ -4,10 +4,7 @@ final class Chat {
   final int id;
   final User user;
 
-  Chat({
-    required this.id,
-    required this.user,
-  });
+  Chat({required this.id, required this.user});
 }
 
 List<Chat> chats = [

@@ -15,9 +15,7 @@ class _MobxWithStreamPageState extends State<MobxWithStreamPage> {
   Widget build(BuildContext context) {
     final mobxWithStreamPage = Provider.of<MobxWithStreamsData>(context);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Mobx streams"),
-      ),
+      appBar: AppBar(title: const Text("Mobx streams")),
       body: Observer(
         builder: (context) {
           return SizedBox(
@@ -30,7 +28,8 @@ class _MobxWithStreamPageState extends State<MobxWithStreamPage> {
                     mobxWithStreamPage.startCount();
                   },
                   child: const Text("Start"),
-                ), TextButton(
+                ),
+                TextButton(
                   onPressed: () {
                     mobxWithStreamPage.stopCount();
                   },

@@ -1,6 +1,5 @@
 import 'dart:collection';
 
-import 'package:flutter/foundation.dart';
 import 'package:state_management_course/inherited_widget/todo_with_inherited_notifier/models/td_inhnot_model.dart';
 import 'package:state_management_course/inherited_widget/todo_with_inherited_notifier/repository/td_inhnot_repository.dart';
 
@@ -13,7 +12,8 @@ class TdInhNotStateModel {
 
   bool get loading => _loading;
 
-  UnmodifiableListView<TdInhNotModel> get todoMVVM => UnmodifiableListView(_todoMVVM);
+  UnmodifiableListView<TdInhNotModel> get todoMVVM =>
+      UnmodifiableListView(_todoMVVM);
 
   void _clearAllTodos() => _todoMVVM.clear();
 
@@ -28,9 +28,7 @@ class TdInhNotStateModel {
   }
 
   void addTodo(String todo) {
-    _todoMVVM.add(
-      TdInhNotModel(todo: todo),
-    );
+    _todoMVVM.add(TdInhNotModel(todo: todo));
   }
 
   void removeTodo(TdInhNotModel todo) {

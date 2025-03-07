@@ -14,12 +14,8 @@ class _SimpleBlocPageState extends State<SimpleBlocPage> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        Provider(create: (_) => SimpleBloc()),
-      ],
-      child: const MaterialApp(
-        home: SimpleBlocPageUI(),
-      ),
+      providers: [Provider(create: (_) => SimpleBloc())],
+      child: const MaterialApp(home: SimpleBlocPageUI()),
     );
   }
 }
@@ -43,14 +39,10 @@ class _SimpleBlocPageUIState extends State<SimpleBlocPageUI> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => const _AnotherPage(),
-                ),
+                MaterialPageRoute(builder: (context) => const _AnotherPage()),
               );
             },
-            icon: const Icon(
-              Icons.arrow_right_alt,
-            ),
+            icon: const Icon(Icons.arrow_right_alt),
           ),
         ],
       ),

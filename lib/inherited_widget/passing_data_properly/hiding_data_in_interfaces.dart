@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 // but I would say that using inh widget like in "passing_data_widget.dart" is better
 // because you may ask that why should I make my widget's state public, but take a look to the
 // flutter's Navigator class and you will see that even flutter's classes are not hidden
@@ -18,9 +17,19 @@ class _HidingDataInInterfaceInhWidget extends InheritedWidget {
 
   final HidingDataInInterfaces hidingDataInInterfaces;
 
-  static _HidingDataInInterfaceInhWidget of(BuildContext context, {bool listen = false}) => listen
-      ? context.dependOnInheritedWidgetOfExactType<_HidingDataInInterfaceInhWidget>()!
-      : context.getInheritedWidgetOfExactType<_HidingDataInInterfaceInhWidget>()!;
+  static _HidingDataInInterfaceInhWidget of(
+    BuildContext context, {
+    bool listen = false,
+  }) =>
+      listen
+          ? context
+              .dependOnInheritedWidgetOfExactType<
+                _HidingDataInInterfaceInhWidget
+              >()!
+          : context
+              .getInheritedWidgetOfExactType<
+                _HidingDataInInterfaceInhWidget
+              >()!;
 
   @override
   bool updateShouldNotify(_HidingDataInInterfaceInhWidget old) {
@@ -32,10 +41,14 @@ class HidingDataInterfaceWidget extends StatefulWidget {
   const HidingDataInterfaceWidget({super.key});
 
   static HidingDataInInterfaces hidingDataInInterfaces(BuildContext context) =>
-      _HidingDataInInterfaceInhWidget.of(context, listen: false).hidingDataInInterfaces;
+      _HidingDataInInterfaceInhWidget.of(
+        context,
+        listen: false,
+      ).hidingDataInInterfaces;
 
   @override
-  State<HidingDataInterfaceWidget> createState() => _HidingDataInterfaceWidgetState();
+  State<HidingDataInterfaceWidget> createState() =>
+      _HidingDataInterfaceWidgetState();
 }
 
 class _HidingDataInterfaceWidgetState extends State<HidingDataInterfaceWidget>
@@ -70,28 +83,22 @@ class _TextFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hiddenInterface = HidingDataInterfaceWidget.hidingDataInInterfaces(context);
+    final hiddenInterface = HidingDataInterfaceWidget.hidingDataInInterfaces(
+      context,
+    );
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Test with interface"),
-      ),
+      appBar: AppBar(title: Text("Test with interface")),
       body: Column(
         children: [
-          TextField(
-            controller: hiddenInterface.nameController,
-          ),
-          TextField(
-            controller: hiddenInterface.surnameController,
-          ),
+          TextField(controller: hiddenInterface.nameController),
+          TextField(controller: hiddenInterface.surnameController),
           TextButton(
             onPressed: () {
               print(hiddenInterface.nameController.text);
               print(hiddenInterface.surnameController.text);
             },
-            child: Text(
-              "Print controller",
-            ),
-          )
+            child: Text("Print controller"),
+          ),
         ],
       ),
     );

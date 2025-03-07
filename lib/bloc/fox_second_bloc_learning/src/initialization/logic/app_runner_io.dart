@@ -1,7 +1,5 @@
 import 'dart:async';
 
-import 'package:bloc/bloc.dart';
-import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter/material.dart';
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/authentication/widget/authentication_widget.dart';
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/initialization/logic/composition_root.dart';
@@ -21,12 +19,10 @@ class AppRunnerIo {
       runApp(
         MultiBlocProviderScope(
           compositionResult: compositionResult,
-          child: const AppWidget(
-            screen: AuthenticationWidget(),
-          ),
+          child: const AppWidget(screen: AuthenticationWidget()),
         ),
       );
-    } catch (error, stackTrace) {
+    } catch (error) {
       // catch problems here
       rethrow;
     } finally {

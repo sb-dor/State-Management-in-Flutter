@@ -6,7 +6,8 @@ import 'package:state_management_course/bloc/fox_second_bloc_learning/src/authen
 import 'authentication_events.dart';
 import 'authentication_states.dart';
 
-class AuthenticationBloc extends Bloc<AuthenticationBlocEvents, AuthenticationStates> {
+class AuthenticationBloc
+    extends Bloc<AuthenticationBlocEvents, AuthenticationStates> {
   final IAuthenticationRepository _repository;
 
   // I didn't know that we can inject deps like this
@@ -14,15 +15,16 @@ class AuthenticationBloc extends Bloc<AuthenticationBlocEvents, AuthenticationSt
   AuthenticationBloc({
     required final IAuthenticationRepository repository,
     UserEntity? user, // you can not pass user like this
-  })  : _repository = repository,
-        super(
-          user?.when(
-                // is using from UserEntity.dart (from models folder)
-                authenticated: (user) => AuthenticationStates.authenticated(user),
-                notAuthenticated: () => const AuthenticationStates.inProgress(),
-              ) ??
-              const AuthenticationStates.inProgress(), // by default
-        ) {
+  }) : _repository = repository,
+       super(
+         user?.when(
+               // is using from UserEntity.dart (from models folder)
+               authenticated:
+                   (user) => AuthenticationStates.authenticated(user),
+               notAuthenticated: () => const AuthenticationStates.inProgress(),
+             ) ??
+             const AuthenticationStates.inProgress(), // by default
+       ) {
     //
     //
     // EventTransformer<T> isolateAndSequential<T>() {
@@ -44,7 +46,6 @@ class AuthenticationBloc extends Bloc<AuthenticationBlocEvents, AuthenticationSt
     // but you have to created getters for each state (optional, one is enough)
     // in order to check whether specific state is working and you can not to emit particular
     // state again while it's in precess (you can call other events at that time)
-
 
     // EDITED!
     // after learning specific articles from Fox and Michael Lazebny, I want to change opinion about
@@ -75,14 +76,17 @@ class AuthenticationBloc extends Bloc<AuthenticationBlocEvents, AuthenticationSt
       //
       debugPrint("checking login");
 
-      final user = await _repository.login(email: event.email, password: event.password);
+      final user = await _repository.login(
+        email: event.email,
+        password: event.password,
+      );
 
       if (user != null) {
         emit(AuthenticationStates.authenticated(user)); // new user
       } else {
         emit(const AuthenticationStates.unAuthenticated());
       }
-    } on Object catch (error, stackTrace) {
+    } on Object {
       emit(AuthenticationStates.error(user: state.user));
       rethrow;
     } finally {
@@ -101,9 +105,13 @@ class AuthenticationBloc extends Bloc<AuthenticationBlocEvents, AuthenticationSt
 
       await _repository.logout();
 
-      emit(const AuthenticationStates.unAuthenticated(user: UserEntity.notAuthenticated()));
+      emit(
+        const AuthenticationStates.unAuthenticated(
+          user: UserEntity.notAuthenticated(),
+        ),
+      );
       //
-    } on Object catch (error, stackTrace) {
+    } on Object {
       emit(AuthenticationStates.error(user: state.user));
       rethrow;
     } finally {
@@ -125,10 +133,14 @@ class AuthenticationBloc extends Bloc<AuthenticationBlocEvents, AuthenticationSt
       if (checkAuth != null) {
         emit(AuthenticationStates.authenticated(checkAuth));
       } else {
-        emit(const AuthenticationStates.unAuthenticated(user: UserEntity.notAuthenticated()));
+        emit(
+          const AuthenticationStates.unAuthenticated(
+            user: UserEntity.notAuthenticated(),
+          ),
+        );
       }
       //
-    } on Object catch (error, stackTrace) {
+    } on Object {
       emit(AuthenticationStates.error(user: state.user));
       rethrow;
     } finally {

@@ -16,31 +16,29 @@ class _VanillaContactPageState extends State<VanillaContactPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Home page"),
-      ),
+      appBar: AppBar(title: const Text("Home page")),
       body: ValueListenableBuilder(
-          valueListenable: contactBook,
-          builder: (context, value, child) {
-            return ListView.separated(
-              padding: const EdgeInsets.all(8.0),
-              separatorBuilder: (context, index) => const SizedBox(height: 10),
-              itemCount: value.length,
-              itemBuilder: (context, index) {
-                final contact = value[index];
-                return Dismissible(
-                  key: UniqueKey(),
-                  onDismissed: (direction) => contactBook.remove(contact: contact),
-                  child: Material(
-                    elevation: 6.0,
-                    child: ListTile(
-                      title: Text("${index + 1}. ${contact.name}"),
-                    ),
-                  ),
-                );
-              },
-            );
-          }),
+        valueListenable: contactBook,
+        builder: (context, value, child) {
+          return ListView.separated(
+            padding: const EdgeInsets.all(8.0),
+            separatorBuilder: (context, index) => const SizedBox(height: 10),
+            itemCount: value.length,
+            itemBuilder: (context, index) {
+              final contact = value[index];
+              return Dismissible(
+                key: UniqueKey(),
+                onDismissed:
+                    (direction) => contactBook.remove(contact: contact),
+                child: Material(
+                  elevation: 6.0,
+                  child: ListTile(title: Text("${index + 1}. ${contact.name}")),
+                ),
+              );
+            },
+          );
+        },
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           Navigator.push(

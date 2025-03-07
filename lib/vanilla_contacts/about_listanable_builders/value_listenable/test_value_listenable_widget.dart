@@ -1,34 +1,27 @@
 import 'package:flutter/material.dart';
-import 'package:state_management_course/bloc/fox_second_bloc_learning/src/authentication/widget/authentication_widget.dart';
-import 'package:state_management_course/bloc/fox_second_bloc_learning/src/initialization/widget/multi_bp_scope.dart';
-import 'package:state_management_course/vanilla_contacts/views/vanilla_contacts_with_value_notifier/vanilla_new_contact_view.dart';
 
 final class AnyClass {
   final int number;
 
-  AnyClass({
-    this.number = 1,
-  });
+  AnyClass({this.number = 1});
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is AnyClass && runtimeType == other.runtimeType && number == other.number);
+      (other is AnyClass &&
+          runtimeType == other.runtimeType &&
+          number == other.number);
 
   @override
   int get hashCode => number.hashCode;
 
   @override
   String toString() {
-    return 'AnyClass{' + ' number: $number,' + '}';
+    return 'AnyClass{' ' number: $number,' '}';
   }
 
-  AnyClass copyWith({
-    int? number,
-  }) {
-    return AnyClass(
-      number: number ?? this.number,
-    );
+  AnyClass copyWith({int? number}) {
+    return AnyClass(number: number ?? this.number);
   }
 }
 
@@ -49,7 +42,8 @@ class TestValueListenableWidget extends StatefulWidget {
   const TestValueListenableWidget({super.key});
 
   @override
-  State<TestValueListenableWidget> createState() => _TestValueListenableWidgetState();
+  State<TestValueListenableWidget> createState() =>
+      _TestValueListenableWidgetState();
 }
 
 class _TestValueListenableWidgetState extends State<TestValueListenableWidget> {
@@ -106,15 +100,16 @@ class _TestValueListenableWidgetState extends State<TestValueListenableWidget> {
 
             OwnListenableBuilder(
               listenable: _testValueListenable,
-              child: () => TextButton(
-                onPressed: () {
-                  print(context.size);
-                  print(MediaQuery.of(context).size.width);
-                  print(MediaQuery.of(context).size.height);
-                  _testValueListenable.increment();
-                },
-                child: Text("Test: ${_testValueListenable.value.number}"),
-              ),
+              child:
+                  () => TextButton(
+                    onPressed: () {
+                      print(context.size);
+                      print(MediaQuery.of(context).size.width);
+                      print(MediaQuery.of(context).size.height);
+                      _testValueListenable.increment();
+                    },
+                    child: Text("Test: ${_testValueListenable.value.number}"),
+                  ),
             ),
           ],
         ),

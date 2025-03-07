@@ -1,35 +1,36 @@
 import 'dart:async';
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
-import 'package:flutter/cupertino.dart';
 
 import 'runner_stub.dart'
     if (dart.library.io) 'runner_io.dart'
-    if (dart.library.html) 'runner_web.dart' as runner;
+    if (dart.library.html) 'runner_web.dart'
+    as runner;
 
 // all errors that may happen in the future
 // will be handled inside runZonedGuarded (widget errors, functions error, request errors)
 // but not bloc errors, because bloc's error will be send to the Bloc.observer
 // that is why you have to write a code that handles bloc's errors and sends to the server
 void main() => runZonedGuarded(
-      () {
-        Bloc.observer = FoxSecondBlocObserver.instance;
+  () {
+    Bloc.observer = FoxSecondBlocObserver.instance;
 
-        // default is sequential
-        // all of them will be set in queue by default
-        // if user clicked Login then Logout
-        // first works when Login ends then Logout will work (Logout will not work until Login finished)
-        Bloc.transformer = sequential();
+    // default is sequential
+    // all of them will be set in queue by default
+    // if user clicked Login then Logout
+    // first works when Login ends then Logout will work (Logout will not work until Login finished)
+    Bloc.transformer = sequential();
 
-        runner.run();
-      },
-      (error, stackTrace) {
-        // error report
-      },
-    );
+    runner.run();
+  },
+  (error, stackTrace) {
+    // error report
+  },
+);
 
 class FoxSecondBlocObserver extends BlocObserver {
-  static FoxSecondBlocObserver get instance => _instance ??= FoxSecondBlocObserver._();
+  static FoxSecondBlocObserver get instance =>
+      _instance ??= FoxSecondBlocObserver._();
   static FoxSecondBlocObserver? _instance;
 
   FoxSecondBlocObserver._();

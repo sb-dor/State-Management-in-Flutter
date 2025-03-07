@@ -10,7 +10,9 @@ part of 'mobx_with_streams_store.dart';
 
 mixin _$MobxWithStreamsData on _MobxWithStreamsStore, Store {
   late final _$integerChangerStreamAtom = Atom(
-      name: '_MobxWithStreamsStore.integerChangerStream', context: context);
+    name: '_MobxWithStreamsStore.integerChangerStream',
+    context: context,
+  );
 
   @override
   ObservableStream<int> get integerChangerStream {
@@ -20,27 +22,35 @@ mixin _$MobxWithStreamsData on _MobxWithStreamsStore, Store {
 
   @override
   set integerChangerStream(ObservableStream<int> value) {
-    _$integerChangerStreamAtom.reportWrite(value, super.integerChangerStream,
-        () {
-      super.integerChangerStream = value;
-    });
+    _$integerChangerStreamAtom.reportWrite(
+      value,
+      super.integerChangerStream,
+      () {
+        super.integerChangerStream = value;
+      },
+    );
   }
 
-  late final _$stopCountAsyncAction =
-      AsyncAction('_MobxWithStreamsStore.stopCount', context: context);
+  late final _$stopCountAsyncAction = AsyncAction(
+    '_MobxWithStreamsStore.stopCount',
+    context: context,
+  );
 
   @override
   Future<void> stopCount() {
     return _$stopCountAsyncAction.run(() => super.stopCount());
   }
 
-  late final _$_MobxWithStreamsStoreActionController =
-      ActionController(name: '_MobxWithStreamsStore', context: context);
+  late final _$_MobxWithStreamsStoreActionController = ActionController(
+    name: '_MobxWithStreamsStore',
+    context: context,
+  );
 
   @override
   void startCount() {
     final _$actionInfo = _$_MobxWithStreamsStoreActionController.startAction(
-        name: '_MobxWithStreamsStore.startCount');
+      name: '_MobxWithStreamsStore.startCount',
+    );
     try {
       return super.startCount();
     } finally {

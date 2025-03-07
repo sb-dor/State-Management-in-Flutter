@@ -17,7 +17,10 @@ class _TodoMobxPageState extends State<TodoMobxPage> {
   @override
   void initState() {
     super.initState();
-    final todoMobxObservable = Provider.of<TodoMobxStoreObservable>(context, listen: false);
+    final todoMobxObservable = Provider.of<TodoMobxStoreObservable>(
+      context,
+      listen: false,
+    );
 
     _textEditingController = TextEditingController(text: '');
 
@@ -45,9 +48,8 @@ class _TodoMobxPageState extends State<TodoMobxPage> {
     // and will listen that variable changes
     reaction(
       (_) => todoMobxObservable.showTypeOfTodos,
-      (currentTypeOfView) => debugPrint(
-        "current type of view: ${currentTypeOfView.name}",
-      ),
+      (currentTypeOfView) =>
+          debugPrint("current type of view: ${currentTypeOfView.name}"),
     );
 
     // information about this function is inside of this function
@@ -59,7 +61,9 @@ class _TodoMobxPageState extends State<TodoMobxPage> {
     // than function finishes
     // for ex:
     // until out state becomes delete this "asyncWhen" will not finish
-    await asyncWhen((_) => todoMobxObservable.showTypeOfTodos == ShowTypeOfTodos.deleted);
+    await asyncWhen(
+      (_) => todoMobxObservable.showTypeOfTodos == ShowTypeOfTodos.deleted,
+    );
     debugPrint("future function completed");
   }
 
@@ -73,9 +77,7 @@ class _TodoMobxPageState extends State<TodoMobxPage> {
   Widget build(BuildContext context) {
     final todoMobxObservable = Provider.of<TodoMobxStoreObservable>(context);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Todo mobx add"),
-      ),
+      appBar: AppBar(title: const Text("Todo mobx add")),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           final desc = _textEditingController.text.trim();
@@ -90,15 +92,17 @@ class _TodoMobxPageState extends State<TodoMobxPage> {
         children: [
           Wrap(
             spacing: 10,
-            children: ShowTypeOfTodos.values
-                .map(
-                  (e) => ElevatedButton(
-                      onPressed: () {
-                        todoMobxObservable.showType(e);
-                      },
-                      child: Text(e.name)),
-                )
-                .toList(),
+            children:
+                ShowTypeOfTodos.values
+                    .map(
+                      (e) => ElevatedButton(
+                        onPressed: () {
+                          todoMobxObservable.showType(e);
+                        },
+                        child: Text(e.name),
+                      ),
+                    )
+                    .toList(),
           ),
           TextField(
             controller: _textEditingController,
@@ -106,24 +110,26 @@ class _TodoMobxPageState extends State<TodoMobxPage> {
           ),
           const SizedBox(height: 10),
           Observer(
-            builder: (_) => ListView.separated(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              separatorBuilder: (context, index) => const SizedBox(height: 10),
-              itemCount: todoMobxObservable.visibleType.length,
-              itemBuilder: (context, index) {
-                final todo = todoMobxObservable.visibleType[index];
-                return ListTile(
-                  title: Text(todo.description),
-                  trailing: IconButton(
-                    onPressed: () {
-                      todoMobxObservable.removeTodo(todo);
-                    },
-                    icon: const Icon(Icons.delete),
-                  ),
-                );
-              },
-            ),
+            builder:
+                (_) => ListView.separated(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  separatorBuilder:
+                      (context, index) => const SizedBox(height: 10),
+                  itemCount: todoMobxObservable.visibleType.length,
+                  itemBuilder: (context, index) {
+                    final todo = todoMobxObservable.visibleType[index];
+                    return ListTile(
+                      title: Text(todo.description),
+                      trailing: IconButton(
+                        onPressed: () {
+                          todoMobxObservable.removeTodo(todo);
+                        },
+                        icon: const Icon(Icons.delete),
+                      ),
+                    );
+                  },
+                ),
           ),
         ],
       ),

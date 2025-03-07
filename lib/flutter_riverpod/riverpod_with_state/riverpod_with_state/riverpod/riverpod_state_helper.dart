@@ -1,6 +1,5 @@
 import 'dart:convert';
 
-import 'package:flutter/cupertino.dart';
 import 'package:riverpod_annotation/riverpod_annotation.dart';
 import 'package:state_management_course/flutter_riverpod/riverpod_number_trivia/riverpod_number_trivia_model.dart';
 import 'package:state_management_course/flutter_riverpod/riverpod_with_state/riverpod_with_state/state_model/riverpod_with_state_model.dart';
@@ -30,7 +29,9 @@ class RiverpodStateHelper extends _$RiverpodStateHelper {
 
   void showEdit(RiverpodNumberTriviaModel model) {
     final stateClones = state.clone();
-    final findModel = stateClones.numberTrivias?.indexWhere((e) => e.id == model.id);
+    final findModel = stateClones.numberTrivias?.indexWhere(
+      (e) => e.id == model.id,
+    );
     if (findModel != -1 && findModel != null) {
       stateClones.numberTrivias?[findModel].edit = true;
     }
@@ -39,9 +40,12 @@ class RiverpodStateHelper extends _$RiverpodStateHelper {
 
   void saveTriviaText(RiverpodNumberTriviaModel model) {
     final stateClones = state.clone();
-    final findModel = stateClones.numberTrivias?.indexWhere((e) => e.id == model.id);
+    final findModel = stateClones.numberTrivias?.indexWhere(
+      (e) => e.id == model.id,
+    );
     if (findModel != -1 && findModel != null) {
-      stateClones.numberTrivias?[findModel].text = model.textEditingController.text.trim();
+      stateClones.numberTrivias?[findModel].text =
+          model.textEditingController.text.trim();
       stateClones.numberTrivias?[findModel].edit = false;
     }
     state = stateClones;

@@ -12,10 +12,12 @@ mixin _$TodoMobxStoreObservable on _TodoMobxStore, Store {
   Computed<ObservableList<MobxTodoModel>>? _$visibleTypeComputed;
 
   @override
-  ObservableList<MobxTodoModel> get visibleType => (_$visibleTypeComputed ??=
-          Computed<ObservableList<MobxTodoModel>>(() => super.visibleType,
-              name: '_TodoMobxStore.visibleType'))
-      .value;
+  ObservableList<MobxTodoModel> get visibleType =>
+      (_$visibleTypeComputed ??= Computed<ObservableList<MobxTodoModel>>(
+            () => super.visibleType,
+            name: '_TodoMobxStore.visibleType',
+          ))
+          .value;
 
   late final _$todosAtom = Atom(name: '_TodoMobxStore.todos', context: context);
 
@@ -32,8 +34,10 @@ mixin _$TodoMobxStoreObservable on _TodoMobxStore, Store {
     });
   }
 
-  late final _$showTypeOfTodosAtom =
-      Atom(name: '_TodoMobxStore.showTypeOfTodos', context: context);
+  late final _$showTypeOfTodosAtom = Atom(
+    name: '_TodoMobxStore.showTypeOfTodos',
+    context: context,
+  );
 
   @override
   ShowTypeOfTodos get showTypeOfTodos {
@@ -48,13 +52,16 @@ mixin _$TodoMobxStoreObservable on _TodoMobxStore, Store {
     });
   }
 
-  late final _$_TodoMobxStoreActionController =
-      ActionController(name: '_TodoMobxStore', context: context);
+  late final _$_TodoMobxStoreActionController = ActionController(
+    name: '_TodoMobxStore',
+    context: context,
+  );
 
   @override
   void showType(ShowTypeOfTodos type) {
     final _$actionInfo = _$_TodoMobxStoreActionController.startAction(
-        name: '_TodoMobxStore.showType');
+      name: '_TodoMobxStore.showType',
+    );
     try {
       return super.showType(type);
     } finally {
@@ -65,7 +72,8 @@ mixin _$TodoMobxStoreObservable on _TodoMobxStore, Store {
   @override
   void addTodo(String description) {
     final _$actionInfo = _$_TodoMobxStoreActionController.startAction(
-        name: '_TodoMobxStore.addTodo');
+      name: '_TodoMobxStore.addTodo',
+    );
     try {
       return super.addTodo(description);
     } finally {
@@ -76,7 +84,8 @@ mixin _$TodoMobxStoreObservable on _TodoMobxStore, Store {
   @override
   void removeTodo(MobxTodoModel model) {
     final _$actionInfo = _$_TodoMobxStoreActionController.startAction(
-        name: '_TodoMobxStore.removeTodo');
+      name: '_TodoMobxStore.removeTodo',
+    );
     try {
       return super.removeTodo(model);
     } finally {

@@ -16,9 +16,8 @@ class ModelWithoutCodeGenerationStore {
   final ObservableList<ModelWithoutCodeGeneration> _list =
       ObservableList<ModelWithoutCodeGeneration>();
 
-  UnmodifiableListView<ModelWithoutCodeGeneration> get list => UnmodifiableListView(
-        _list.where((e) => !e.deleted.value).toList(),
-      );
+  UnmodifiableListView<ModelWithoutCodeGeneration> get list =>
+      UnmodifiableListView(_list.where((e) => !e.deleted.value).toList());
 
   void addToList(String value) {
     runInAction(() {

@@ -12,7 +12,8 @@ part of 'item_bloc.dart';
 T _$identity<T>(T value) => value;
 
 final _privateConstructorUsedError = UnsupportedError(
-    'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models');
+  'It seems like you constructed your class using `MyClass._()`. This constructor is only meant to be used by freezed and you are not supposed to need it nor use it.\nPlease check the documentation here for more information: https://github.com/rrousselGit/freezed#adding-getters-and-methods-to-our-models',
+);
 
 /// @nodoc
 mixin _$ItemEvent {
@@ -22,16 +23,14 @@ mixin _$ItemEvent {
     required TResult Function() read,
     required TResult Function(String value) update,
     required TResult Function() delete,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? create,
     TResult? Function()? read,
     TResult? Function(String value)? update,
     TResult? Function()? delete,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? create,
@@ -39,24 +38,21 @@ mixin _$ItemEvent {
     TResult Function(String value)? update,
     TResult Function()? delete,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_CreateItemEvent value) create,
     required TResult Function(_ReadItemEvent value) read,
     required TResult Function(_UpdateItemEvent value) update,
     required TResult Function(_DeleteItemEvent value) delete,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_CreateItemEvent value)? create,
     TResult? Function(_ReadItemEvent value)? read,
     TResult? Function(_UpdateItemEvent value)? update,
     TResult? Function(_DeleteItemEvent value)? delete,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_CreateItemEvent value)? create,
@@ -64,8 +60,7 @@ mixin _$ItemEvent {
     TResult Function(_UpdateItemEvent value)? update,
     TResult Function(_DeleteItemEvent value)? delete,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -90,9 +85,10 @@ class _$ItemEventCopyWithImpl<$Res, $Val extends ItemEvent>
 
 /// @nodoc
 abstract class _$$CreateItemEventImplCopyWith<$Res> {
-  factory _$$CreateItemEventImplCopyWith(_$CreateItemEventImpl value,
-          $Res Function(_$CreateItemEventImpl) then) =
-      __$$CreateItemEventImplCopyWithImpl<$Res>;
+  factory _$$CreateItemEventImplCopyWith(
+    _$CreateItemEventImpl value,
+    $Res Function(_$CreateItemEventImpl) then,
+  ) = __$$CreateItemEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -100,8 +96,9 @@ class __$$CreateItemEventImplCopyWithImpl<$Res>
     extends _$ItemEventCopyWithImpl<$Res, _$CreateItemEventImpl>
     implements _$$CreateItemEventImplCopyWith<$Res> {
   __$$CreateItemEventImplCopyWithImpl(
-      _$CreateItemEventImpl _value, $Res Function(_$CreateItemEventImpl) _then)
-      : super(_value, _then);
+    _$CreateItemEventImpl _value,
+    $Res Function(_$CreateItemEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ItemEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -208,8 +205,9 @@ abstract class _CreateItemEvent implements ItemEvent {
 /// @nodoc
 abstract class _$$ReadItemEventImplCopyWith<$Res> {
   factory _$$ReadItemEventImplCopyWith(
-          _$ReadItemEventImpl value, $Res Function(_$ReadItemEventImpl) then) =
-      __$$ReadItemEventImplCopyWithImpl<$Res>;
+    _$ReadItemEventImpl value,
+    $Res Function(_$ReadItemEventImpl) then,
+  ) = __$$ReadItemEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -217,8 +215,9 @@ class __$$ReadItemEventImplCopyWithImpl<$Res>
     extends _$ItemEventCopyWithImpl<$Res, _$ReadItemEventImpl>
     implements _$$ReadItemEventImplCopyWith<$Res> {
   __$$ReadItemEventImplCopyWithImpl(
-      _$ReadItemEventImpl _value, $Res Function(_$ReadItemEventImpl) _then)
-      : super(_value, _then);
+    _$ReadItemEventImpl _value,
+    $Res Function(_$ReadItemEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ItemEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -324,9 +323,10 @@ abstract class _ReadItemEvent implements ItemEvent {
 
 /// @nodoc
 abstract class _$$UpdateItemEventImplCopyWith<$Res> {
-  factory _$$UpdateItemEventImplCopyWith(_$UpdateItemEventImpl value,
-          $Res Function(_$UpdateItemEventImpl) then) =
-      __$$UpdateItemEventImplCopyWithImpl<$Res>;
+  factory _$$UpdateItemEventImplCopyWith(
+    _$UpdateItemEventImpl value,
+    $Res Function(_$UpdateItemEventImpl) then,
+  ) = __$$UpdateItemEventImplCopyWithImpl<$Res>;
   @useResult
   $Res call({String value});
 }
@@ -336,22 +336,23 @@ class __$$UpdateItemEventImplCopyWithImpl<$Res>
     extends _$ItemEventCopyWithImpl<$Res, _$UpdateItemEventImpl>
     implements _$$UpdateItemEventImplCopyWith<$Res> {
   __$$UpdateItemEventImplCopyWithImpl(
-      _$UpdateItemEventImpl _value, $Res Function(_$UpdateItemEventImpl) _then)
-      : super(_value, _then);
+    _$UpdateItemEventImpl _value,
+    $Res Function(_$UpdateItemEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ItemEvent
   /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
-  $Res call({
-    Object? value = null,
-  }) {
-    return _then(_$UpdateItemEventImpl(
-      null == value
-          ? _value.value
-          : value // ignore: cast_nullable_to_non_nullable
-              as String,
-    ));
+  $Res call({Object? value = null}) {
+    return _then(
+      _$UpdateItemEventImpl(
+        null == value
+            ? _value.value
+            : value // ignore: cast_nullable_to_non_nullable
+                as String,
+      ),
+    );
   }
 }
 
@@ -386,7 +387,9 @@ class _$UpdateItemEventImpl implements _UpdateItemEvent {
   @pragma('vm:prefer-inline')
   _$$UpdateItemEventImplCopyWith<_$UpdateItemEventImpl> get copyWith =>
       __$$UpdateItemEventImplCopyWithImpl<_$UpdateItemEventImpl>(
-          this, _$identity);
+        this,
+        _$identity,
+      );
 
   @override
   @optionalTypeArgs
@@ -477,9 +480,10 @@ abstract class _UpdateItemEvent implements ItemEvent {
 
 /// @nodoc
 abstract class _$$DeleteItemEventImplCopyWith<$Res> {
-  factory _$$DeleteItemEventImplCopyWith(_$DeleteItemEventImpl value,
-          $Res Function(_$DeleteItemEventImpl) then) =
-      __$$DeleteItemEventImplCopyWithImpl<$Res>;
+  factory _$$DeleteItemEventImplCopyWith(
+    _$DeleteItemEventImpl value,
+    $Res Function(_$DeleteItemEventImpl) then,
+  ) = __$$DeleteItemEventImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -487,8 +491,9 @@ class __$$DeleteItemEventImplCopyWithImpl<$Res>
     extends _$ItemEventCopyWithImpl<$Res, _$DeleteItemEventImpl>
     implements _$$DeleteItemEventImplCopyWith<$Res> {
   __$$DeleteItemEventImplCopyWithImpl(
-      _$DeleteItemEventImpl _value, $Res Function(_$DeleteItemEventImpl) _then)
-      : super(_value, _then);
+    _$DeleteItemEventImpl _value,
+    $Res Function(_$DeleteItemEventImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ItemEvent
   /// with the given fields replaced by the non-null parameter values.
@@ -599,45 +604,39 @@ mixin _$ItemState {
     required TResult Function() initial,
     required TResult Function() loading,
     required TResult Function() loaded,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
     TResult? Function()? loading,
     TResult? Function()? loaded,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
     TResult Function()? loading,
     TResult Function()? loaded,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_InitialItemState value) initial,
     required TResult Function(_LoadingItemState value) loading,
     required TResult Function(_LoadedtemState value) loaded,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_InitialItemState value)? initial,
     TResult? Function(_LoadingItemState value)? loading,
     TResult? Function(_LoadedtemState value)? loaded,
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_InitialItemState value)? initial,
     TResult Function(_LoadingItemState value)? loading,
     TResult Function(_LoadedtemState value)? loaded,
     required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
+  }) => throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -662,18 +661,20 @@ class _$ItemStateCopyWithImpl<$Res, $Val extends ItemState>
 
 /// @nodoc
 abstract class _$$InitialItemStateImplCopyWith<$Res> {
-  factory _$$InitialItemStateImplCopyWith(_$InitialItemStateImpl value,
-          $Res Function(_$InitialItemStateImpl) then) =
-      __$$InitialItemStateImplCopyWithImpl<$Res>;
+  factory _$$InitialItemStateImplCopyWith(
+    _$InitialItemStateImpl value,
+    $Res Function(_$InitialItemStateImpl) then,
+  ) = __$$InitialItemStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$InitialItemStateImplCopyWithImpl<$Res>
     extends _$ItemStateCopyWithImpl<$Res, _$InitialItemStateImpl>
     implements _$$InitialItemStateImplCopyWith<$Res> {
-  __$$InitialItemStateImplCopyWithImpl(_$InitialItemStateImpl _value,
-      $Res Function(_$InitialItemStateImpl) _then)
-      : super(_value, _then);
+  __$$InitialItemStateImplCopyWithImpl(
+    _$InitialItemStateImpl _value,
+    $Res Function(_$InitialItemStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ItemState
   /// with the given fields replaced by the non-null parameter values.
@@ -773,18 +774,20 @@ abstract class _InitialItemState implements ItemState {
 
 /// @nodoc
 abstract class _$$LoadingItemStateImplCopyWith<$Res> {
-  factory _$$LoadingItemStateImplCopyWith(_$LoadingItemStateImpl value,
-          $Res Function(_$LoadingItemStateImpl) then) =
-      __$$LoadingItemStateImplCopyWithImpl<$Res>;
+  factory _$$LoadingItemStateImplCopyWith(
+    _$LoadingItemStateImpl value,
+    $Res Function(_$LoadingItemStateImpl) then,
+  ) = __$$LoadingItemStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
 class __$$LoadingItemStateImplCopyWithImpl<$Res>
     extends _$ItemStateCopyWithImpl<$Res, _$LoadingItemStateImpl>
     implements _$$LoadingItemStateImplCopyWith<$Res> {
-  __$$LoadingItemStateImplCopyWithImpl(_$LoadingItemStateImpl _value,
-      $Res Function(_$LoadingItemStateImpl) _then)
-      : super(_value, _then);
+  __$$LoadingItemStateImplCopyWithImpl(
+    _$LoadingItemStateImpl _value,
+    $Res Function(_$LoadingItemStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ItemState
   /// with the given fields replaced by the non-null parameter values.
@@ -884,9 +887,10 @@ abstract class _LoadingItemState implements ItemState {
 
 /// @nodoc
 abstract class _$$LoadedtemStateImplCopyWith<$Res> {
-  factory _$$LoadedtemStateImplCopyWith(_$LoadedtemStateImpl value,
-          $Res Function(_$LoadedtemStateImpl) then) =
-      __$$LoadedtemStateImplCopyWithImpl<$Res>;
+  factory _$$LoadedtemStateImplCopyWith(
+    _$LoadedtemStateImpl value,
+    $Res Function(_$LoadedtemStateImpl) then,
+  ) = __$$LoadedtemStateImplCopyWithImpl<$Res>;
 }
 
 /// @nodoc
@@ -894,8 +898,9 @@ class __$$LoadedtemStateImplCopyWithImpl<$Res>
     extends _$ItemStateCopyWithImpl<$Res, _$LoadedtemStateImpl>
     implements _$$LoadedtemStateImplCopyWith<$Res> {
   __$$LoadedtemStateImplCopyWithImpl(
-      _$LoadedtemStateImpl _value, $Res Function(_$LoadedtemStateImpl) _then)
-      : super(_value, _then);
+    _$LoadedtemStateImpl _value,
+    $Res Function(_$LoadedtemStateImpl) _then,
+  ) : super(_value, _then);
 
   /// Create a copy of ItemState
   /// with the given fields replaced by the non-null parameter values.

@@ -19,7 +19,8 @@ class MultiBlocProviderScope extends StatelessWidget {
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthenticationBloc>(
-          create: (_) => compositionResult.dependencyContainer.authenticationBloc,
+          create:
+              (_) => compositionResult.dependencyContainer.authenticationBloc,
         ),
         BlocProvider<PostBloc>(
           create: (_) => compositionResult.dependencyContainer.postBloc,

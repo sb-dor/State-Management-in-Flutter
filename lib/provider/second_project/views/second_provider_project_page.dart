@@ -9,16 +9,15 @@ class SecondProviderProjectPage extends StatefulWidget {
   const SecondProviderProjectPage({super.key});
 
   @override
-  State<SecondProviderProjectPage> createState() => _SecondProviderProjectPageState();
+  State<SecondProviderProjectPage> createState() =>
+      _SecondProviderProjectPageState();
 }
 
 class _SecondProviderProjectPageState extends State<SecondProviderProjectPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Second provider app"),
-      ),
+      appBar: AppBar(title: const Text("Second provider app")),
       body: Column(
         children: [
           const Row(
@@ -43,7 +42,7 @@ class _SecondProviderProjectPageState extends State<SecondProviderProjectPage> {
                 child: const Text("Start"),
               ),
             ],
-          )
+          ),
         ],
       ),
     );

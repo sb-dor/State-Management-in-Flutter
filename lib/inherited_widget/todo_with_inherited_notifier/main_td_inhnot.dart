@@ -25,9 +25,7 @@ class _MainTdInhNotState extends State<MainTdInhNot> {
       provider: _tdInhVM,
       child: OwnChangeNotifierProvider(
         provider: _tempMock,
-        child: const MaterialApp(
-          home: TdInhNotView(),
-        ),
+        child: const MaterialApp(home: TdInhNotView()),
       ),
     );
   }

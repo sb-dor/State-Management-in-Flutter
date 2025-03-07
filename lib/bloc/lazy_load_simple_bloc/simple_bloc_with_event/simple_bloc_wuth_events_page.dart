@@ -7,7 +7,8 @@ class SimpleBlocWithEventsPage extends StatefulWidget {
   const SimpleBlocWithEventsPage({super.key});
 
   @override
-  State<SimpleBlocWithEventsPage> createState() => _SimpleBlocWithEventsPageState();
+  State<SimpleBlocWithEventsPage> createState() =>
+      _SimpleBlocWithEventsPageState();
 }
 
 class _SimpleBlocWithEventsPageState extends State<SimpleBlocWithEventsPage> {
@@ -17,9 +18,7 @@ class _SimpleBlocWithEventsPageState extends State<SimpleBlocWithEventsPage> {
       providers: [
         Provider<SimpleBlocWithEvent>(create: (_) => SimpleBlocWithEvent()),
       ],
-      child: const MaterialApp(
-        home: _SimpleBlocPageUI(),
-      ),
+      child: const MaterialApp(home: _SimpleBlocPageUI()),
     );
   }
 }
@@ -43,14 +42,10 @@ class _SimpleBlocPageUIState extends State<_SimpleBlocPageUI> {
             onPressed: () {
               Navigator.push(
                 context,
-                MaterialPageRoute(
-                  builder: (context) => const _AnotherPage(),
-                ),
+                MaterialPageRoute(builder: (context) => const _AnotherPage()),
               );
             },
-            icon: const Icon(
-              Icons.arrow_right_alt,
-            ),
+            icon: const Icon(Icons.arrow_right_alt),
           ),
         ],
       ),

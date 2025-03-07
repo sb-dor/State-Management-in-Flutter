@@ -17,15 +17,15 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
   void initState() {
     super.initState();
     // you can either add event from freezed like this
-    context.read<AuthenticationBloc>().add(const AuthenticationBlocEvents.checkAuth());
+    context.read<AuthenticationBloc>().add(
+      const AuthenticationBlocEvents.checkAuth(),
+    );
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Authentication"),
-      ),
+      appBar: AppBar(title: const Text("Authentication")),
       body: BlocConsumer<AuthenticationBloc, AuthenticationStates>(
         builder: (context, state) {
           return SizedBox.expand(
@@ -39,11 +39,11 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
                   TextButton(
                     onPressed: () {
                       context.read<AuthenticationBloc>().add(
-                            const LogInAuthenticationEvent(
-                              email: "temp_email",
-                              password: "temp_password",
-                            ),
-                          );
+                        const LogInAuthenticationEvent(
+                          email: "temp_email",
+                          password: "temp_password",
+                        ),
+                      );
                     },
                     child: const Text("auth"),
                   ),

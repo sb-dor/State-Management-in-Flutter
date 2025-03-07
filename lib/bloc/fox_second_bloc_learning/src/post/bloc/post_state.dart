@@ -51,24 +51,30 @@ sealed class PostState with _$PostState {
   //
   bool get isSending => maybeMap(orElse: () => false, sending: (_) => true);
 
-  const factory PostState.initial(PostStateModel postStateModel) = LoadingTextState;
+  const factory PostState.initial(PostStateModel postStateModel) =
+      LoadingTextState;
 
   const factory PostState.hasText(PostStateModel postStateModel) = HasTextState;
 
-  const factory PostState.addingText(PostStateModel postStateModel) = AddingTextState;
+  const factory PostState.addingText(PostStateModel postStateModel) =
+      AddingTextState;
 
-  const factory PostState.addingFile(PostStateModel postStateModel) = AddingFileState;
+  const factory PostState.addingFile(PostStateModel postStateModel) =
+      AddingFileState;
 
-  const factory PostState.hasFileAndText(PostStateModel postStateModel) = HasFileAndTextState;
+  const factory PostState.hasFileAndText(PostStateModel postStateModel) =
+      HasFileAndTextState;
 
   const factory PostState.sending(PostStateModel postStateModel) = SendingState;
 
-  const factory PostState.sendError(PostStateModel postStateModel) = SendErrorState;
+  const factory PostState.sendError(PostStateModel postStateModel) =
+      SendErrorState;
 
   const factory PostState.error(
     PostStateModel postStateModel, {
     @Default("Произошла ошибка") String? errorMessage,
   }) = PostErrorState;
 
-  const factory PostState.successful(PostStateModel postStateModel) = PostSuccessfulState;
+  const factory PostState.successful(PostStateModel postStateModel) =
+      PostSuccessfulState;
 }

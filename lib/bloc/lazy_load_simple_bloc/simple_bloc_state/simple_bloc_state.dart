@@ -3,14 +3,14 @@ import 'package:state_management_course/bloc/lazy_load_simple_bloc/models/simple
 class SimpleBlocState {
   final SimpleUser user;
 
-  const SimpleBlocState({
-    required this.user,
-  });
+  const SimpleBlocState({required this.user});
 
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is SimpleBlocState && runtimeType == other.runtimeType && user == other.user);
+      (other is SimpleBlocState &&
+          runtimeType == other.runtimeType &&
+          user == other.user);
 
   @override
   int get hashCode => user.hashCode;
@@ -20,23 +20,15 @@ class SimpleBlocState {
     return 'SimpleBlocState{ user: $user}';
   }
 
-  SimpleBlocState copyWith({
-    SimpleUser? user,
-  }) {
-    return SimpleBlocState(
-      user: user ?? this.user,
-    );
+  SimpleBlocState copyWith({SimpleUser? user}) {
+    return SimpleBlocState(user: user ?? this.user);
   }
 
   Map<String, dynamic> toMap() {
-    return {
-      'user': user,
-    };
+    return {'user': user};
   }
 
   factory SimpleBlocState.fromMap(Map<String, dynamic> map) {
-    return SimpleBlocState(
-      user: map['user'] as SimpleUser,
-    );
+    return SimpleBlocState(user: map['user'] as SimpleUser);
   }
 }

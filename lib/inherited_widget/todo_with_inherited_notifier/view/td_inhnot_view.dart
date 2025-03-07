@@ -55,14 +55,18 @@ class _TdInhNotViewState extends State<TdInhNotView> {
               provider: TdInhViewModel(),
               child: Builder(
                 builder: (context) {
-                  final intValue = OwnChangeNotifierProvider.watch<TdInhViewModel>(context);
+                  final intValue =
+                      OwnChangeNotifierProvider.watch<TdInhViewModel>(context);
                   return TextButton(
                     onPressed: () {
                       if (_todoTextController.text.trim().isEmpty) return;
-                      OwnChangeNotifierProvider.read<TdInhViewModel>(context)
-                          ?.addTodo(_todoTextController.text.trim());
+                      OwnChangeNotifierProvider.read<TdInhViewModel>(
+                        context,
+                      )?.addTodo(_todoTextController.text.trim());
                     },
-                    child: Text("${intValue?.todoListMVVMStateModel.todoMVVM.length}"),
+                    child: Text(
+                      "${intValue?.todoListMVVMStateModel.todoMVVM.length}",
+                    ),
                   );
                 },
               ),
@@ -99,9 +103,10 @@ class _TdInhNotViewState extends State<TdInhNotView> {
           if ((todoInhNot?.todoListMVVMStateModel.loading ?? false))
             SliverFillRemaining(
               child: Center(
-                child: defaultTargetPlatform == TargetPlatform.iOS
-                    ? const CupertinoActivityIndicator()
-                    : const CircularProgressIndicator(),
+                child:
+                    defaultTargetPlatform == TargetPlatform.iOS
+                        ? const CupertinoActivityIndicator()
+                        : const CircularProgressIndicator(),
               ),
             )
           else
@@ -135,9 +140,7 @@ class _SeparatedList extends StatelessWidget {
           ),
         );
       },
-      separatorBuilder: (context, index) => const SizedBox(
-        height: 10,
-      ),
+      separatorBuilder: (context, index) => const SizedBox(height: 10),
     );
   }
 }

@@ -14,8 +14,9 @@ class ReduxFilteredItemsPage extends StatefulWidget {
 }
 
 class _ReduxFilteredItemsPageState extends State<ReduxFilteredItemsPage> {
-
-  final TextEditingController _textEditingController = TextEditingController(text: '');
+  final TextEditingController _textEditingController = TextEditingController(
+    text: '',
+  );
 
   @override
   void dispose() {
@@ -26,9 +27,7 @@ class _ReduxFilteredItemsPageState extends State<ReduxFilteredItemsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Filter Resux app"),
-      ),
+      appBar: AppBar(title: const Text("Filter Resux app")),
       body: Column(
         children: [
           Row(
@@ -59,9 +58,7 @@ class _ReduxFilteredItemsPageState extends State<ReduxFilteredItemsPage> {
               ),
             ],
           ),
-          TextField(
-            controller: _textEditingController,
-          ),
+          TextField(controller: _textEditingController),
           Row(
             children: [
               TextButton(
@@ -89,7 +86,8 @@ class _ReduxFilteredItemsPageState extends State<ReduxFilteredItemsPage> {
             builder: (context, data) {
               return Expanded(
                 child: ListView.separated(
-                  separatorBuilder: (context, index) => const SizedBox(height: 10),
+                  separatorBuilder:
+                      (context, index) => const SizedBox(height: 10),
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   itemCount: data.length,
                   itemBuilder: (context, index) {
@@ -98,7 +96,7 @@ class _ReduxFilteredItemsPageState extends State<ReduxFilteredItemsPage> {
                 ),
               );
             },
-          )
+          ),
         ],
       ),
     );

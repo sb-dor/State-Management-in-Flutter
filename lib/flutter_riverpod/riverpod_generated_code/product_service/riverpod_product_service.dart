@@ -1,4 +1,3 @@
-
 import 'package:state_management_course/flutter_riverpod/riverpod_generated_code/riverpod_generated_code_state_managements/product_filter_model.dart';
 
 class RiverpodProductServiceModel {
@@ -9,7 +8,9 @@ class RiverpodProductServiceModel {
 }
 
 class ProductService {
-  Future<List<RiverpodProductServiceModel>> getProducts(ProductFilterModel? filter) async {
+  Future<List<RiverpodProductServiceModel>> getProducts(
+    ProductFilterModel? filter,
+  ) async {
     // Simulate a network call and filter the products
     await Future.delayed(const Duration(seconds: 2));
 
@@ -23,10 +24,14 @@ class ProductService {
     if (filter == null) return allProducts;
 
     return allProducts
-        .where((product) =>
-            product.name.trim().toUpperCase().contains((filter.query ?? '').trim().toUpperCase()) ||
-            (product.price >= (filter.minPrice ?? 0.0) &&
-                product.price <= (filter.maxPrice ?? 0.0)))
+        .where(
+          (product) =>
+              product.name.trim().toUpperCase().contains(
+                (filter.query ?? '').trim().toUpperCase(),
+              ) ||
+              (product.price >= (filter.minPrice ?? 0.0) &&
+                  product.price <= (filter.maxPrice ?? 0.0)),
+        )
         .toList();
   }
 }

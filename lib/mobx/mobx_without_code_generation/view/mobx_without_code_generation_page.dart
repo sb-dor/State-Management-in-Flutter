@@ -6,10 +6,12 @@ class MobxWithoutCodeGenerationPage extends StatefulWidget {
   const MobxWithoutCodeGenerationPage({super.key});
 
   @override
-  State<MobxWithoutCodeGenerationPage> createState() => _MobxWithoutCodeGenerationPageState();
+  State<MobxWithoutCodeGenerationPage> createState() =>
+      _MobxWithoutCodeGenerationPageState();
 }
 
-class _MobxWithoutCodeGenerationPageState extends State<MobxWithoutCodeGenerationPage> {
+class _MobxWithoutCodeGenerationPageState
+    extends State<MobxWithoutCodeGenerationPage> {
   late final TextEditingController _textEditingController;
   final mobxWithoutCodeGeneration = ModelWithoutCodeGenerationStore();
 
@@ -28,9 +30,7 @@ class _MobxWithoutCodeGenerationPageState extends State<MobxWithoutCodeGeneratio
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Mobx without code generation"),
-      ),
+      appBar: AppBar(title: const Text("Mobx without code generation")),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           final value = _textEditingController.text.trim();
@@ -48,24 +48,26 @@ class _MobxWithoutCodeGenerationPageState extends State<MobxWithoutCodeGeneratio
             decoration: const InputDecoration(hintText: "Add name"),
           ),
           Observer(
-            builder: (_) => ListView.separated(
-              physics: const NeverScrollableScrollPhysics(),
-              shrinkWrap: true,
-              separatorBuilder: (context, index) => const SizedBox(height: 10),
-              itemCount: mobxWithoutCodeGeneration.list.length,
-              itemBuilder: (context, index) {
-                final model = mobxWithoutCodeGeneration.list[index];
-                return ListTile(
-                  title: Text(model.desc),
-                  trailing: IconButton(
-                    onPressed: () {
-                      mobxWithoutCodeGeneration.delete(model);
-                    },
-                    icon: const Icon(Icons.delete),
-                  ),
-                );
-              },
-            ),
+            builder:
+                (_) => ListView.separated(
+                  physics: const NeverScrollableScrollPhysics(),
+                  shrinkWrap: true,
+                  separatorBuilder:
+                      (context, index) => const SizedBox(height: 10),
+                  itemCount: mobxWithoutCodeGeneration.list.length,
+                  itemBuilder: (context, index) {
+                    final model = mobxWithoutCodeGeneration.list[index];
+                    return ListTile(
+                      title: Text(model.desc),
+                      trailing: IconButton(
+                        onPressed: () {
+                          mobxWithoutCodeGeneration.delete(model);
+                        },
+                        icon: const Icon(Icons.delete),
+                      ),
+                    );
+                  },
+                ),
           ),
         ],
       ),

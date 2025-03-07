@@ -7,25 +7,25 @@ import 'package:state_management_course/provider/bread_crumb/provider/bread_crum
 class BreadCrumbWidget extends StatelessWidget {
   final UnmodifiableListView<BreadCrumb> breadCrumbs;
 
-  const BreadCrumbWidget({
-    super.key,
-    required this.breadCrumbs,
-  });
+  const BreadCrumbWidget({super.key, required this.breadCrumbs});
 
   @override
   Widget build(BuildContext context) {
     return Wrap(
-      children: breadCrumbs.map((breadCrumb) {
-        return GestureDetector(
-          onTap: () => context.read<BreadCrumbProvider>().removeItem(breadCrumb),
-          child: Text(
-            breadCrumb.title,
-            style: TextStyle(
-              color: breadCrumb.isActive ? Colors.blue : Colors.black,
-            ),
-          ),
-        );
-      }).toList(),
+      children:
+          breadCrumbs.map((breadCrumb) {
+            return GestureDetector(
+              onTap:
+                  () =>
+                      context.read<BreadCrumbProvider>().removeItem(breadCrumb),
+              child: Text(
+                breadCrumb.title,
+                style: TextStyle(
+                  color: breadCrumb.isActive ? Colors.blue : Colors.black,
+                ),
+              ),
+            );
+          }).toList(),
     );
   }
 }

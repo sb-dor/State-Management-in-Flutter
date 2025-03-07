@@ -28,16 +28,14 @@ class _BreadCrumbCreateScreenState extends State<BreadCrumbCreateScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text(
-          "Create bread crumb",
-        ),
-      ),
+      appBar: AppBar(title: const Text("Create bread crumb")),
       body: Column(
         children: [
           TextField(
             controller: _controller,
-            decoration: const InputDecoration(hintText: "Add new breadcrump..."),
+            decoration: const InputDecoration(
+              hintText: "Add new breadcrump...",
+            ),
           ),
           TextButton(
             onPressed: () {

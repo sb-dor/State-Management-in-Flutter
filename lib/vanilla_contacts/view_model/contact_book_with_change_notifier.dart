@@ -15,10 +15,13 @@ class ContactBookWithChangeNotifier with ChangeNotifier {
 
   UnmodifiableListView<Contact> get contacts => UnmodifiableListView(_contacts);
 
-  int get length => _contacts.length; // this value is from "ValueNotifier" getter variable
+  int get length =>
+      _contacts.length; // this value is from "ValueNotifier" getter variable
 
   void add({required Contact contact}) {
-    _contacts.add(contact); // this value is from "ValueNotifier" getter variable
+    _contacts.add(
+      contact,
+    ); // this value is from "ValueNotifier" getter variable
     notifyListeners();
   }
 

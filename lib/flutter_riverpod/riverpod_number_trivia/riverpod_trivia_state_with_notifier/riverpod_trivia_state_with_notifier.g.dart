@@ -12,19 +12,22 @@ String _$riverpodTriviaStateWithNotifierHash() =>
 /// See also [RiverpodTriviaStateWithNotifier].
 @ProviderFor(RiverpodTriviaStateWithNotifier)
 final riverpodTriviaStateWithNotifierProvider =
-    AutoDisposeAsyncNotifierProvider<RiverpodTriviaStateWithNotifier,
-        List<RiverpodNumberTriviaModel>>.internal(
-  RiverpodTriviaStateWithNotifier.new,
-  name: r'riverpodTriviaStateWithNotifierProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$riverpodTriviaStateWithNotifierHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+    AutoDisposeAsyncNotifierProvider<
+      RiverpodTriviaStateWithNotifier,
+      List<RiverpodNumberTriviaModel>
+    >.internal(
+      RiverpodTriviaStateWithNotifier.new,
+      name: r'riverpodTriviaStateWithNotifierProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product')
+              ? null
+              : _$riverpodTriviaStateWithNotifierHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
-typedef _$RiverpodTriviaStateWithNotifier
-    = AutoDisposeAsyncNotifier<List<RiverpodNumberTriviaModel>>;
+typedef _$RiverpodTriviaStateWithNotifier =
+    AutoDisposeAsyncNotifier<List<RiverpodNumberTriviaModel>>;
 String _$otherRiverpodForTheCombiningProvidersHash() =>
     r'b022cf83dc4c7b3c206340fe99f5b15a9856a0a1';
 
@@ -53,9 +56,7 @@ abstract class _$OtherRiverpodForTheCombiningProviders
     extends BuildlessAutoDisposeAsyncNotifier<int> {
   late final int duration;
 
-  FutureOr<int> build(
-    int duration,
-  );
+  FutureOr<int> build(int duration);
 }
 
 /// See also [OtherRiverpodForTheCombiningProviders].
@@ -70,21 +71,15 @@ class OtherRiverpodForTheCombiningProvidersFamily
   const OtherRiverpodForTheCombiningProvidersFamily();
 
   /// See also [OtherRiverpodForTheCombiningProviders].
-  OtherRiverpodForTheCombiningProvidersProvider call(
-    int duration,
-  ) {
-    return OtherRiverpodForTheCombiningProvidersProvider(
-      duration,
-    );
+  OtherRiverpodForTheCombiningProvidersProvider call(int duration) {
+    return OtherRiverpodForTheCombiningProvidersProvider(duration);
   }
 
   @override
   OtherRiverpodForTheCombiningProvidersProvider getProviderOverride(
     covariant OtherRiverpodForTheCombiningProvidersProvider provider,
   ) {
-    return call(
-      provider.duration,
-    );
+    return call(provider.duration);
   }
 
   static const Iterable<ProviderOrFamily>? _dependencies = null;
@@ -104,25 +99,27 @@ class OtherRiverpodForTheCombiningProvidersFamily
 
 /// See also [OtherRiverpodForTheCombiningProviders].
 class OtherRiverpodForTheCombiningProvidersProvider
-    extends AutoDisposeAsyncNotifierProviderImpl<
-        OtherRiverpodForTheCombiningProviders, int> {
+    extends
+        AutoDisposeAsyncNotifierProviderImpl<
+          OtherRiverpodForTheCombiningProviders,
+          int
+        > {
   /// See also [OtherRiverpodForTheCombiningProviders].
-  OtherRiverpodForTheCombiningProvidersProvider(
-    int duration,
-  ) : this._internal(
-          () => OtherRiverpodForTheCombiningProviders()..duration = duration,
-          from: otherRiverpodForTheCombiningProvidersProvider,
-          name: r'otherRiverpodForTheCombiningProvidersProvider',
-          debugGetCreateSourceHash:
-              const bool.fromEnvironment('dart.vm.product')
-                  ? null
-                  : _$otherRiverpodForTheCombiningProvidersHash,
-          dependencies:
-              OtherRiverpodForTheCombiningProvidersFamily._dependencies,
-          allTransitiveDependencies: OtherRiverpodForTheCombiningProvidersFamily
-              ._allTransitiveDependencies,
-          duration: duration,
-        );
+  OtherRiverpodForTheCombiningProvidersProvider(int duration)
+    : this._internal(
+        () => OtherRiverpodForTheCombiningProviders()..duration = duration,
+        from: otherRiverpodForTheCombiningProvidersProvider,
+        name: r'otherRiverpodForTheCombiningProvidersProvider',
+        debugGetCreateSourceHash:
+            const bool.fromEnvironment('dart.vm.product')
+                ? null
+                : _$otherRiverpodForTheCombiningProvidersHash,
+        dependencies: OtherRiverpodForTheCombiningProvidersFamily._dependencies,
+        allTransitiveDependencies:
+            OtherRiverpodForTheCombiningProvidersFamily
+                ._allTransitiveDependencies,
+        duration: duration,
+      );
 
   OtherRiverpodForTheCombiningProvidersProvider._internal(
     super._createNotifier, {
@@ -140,14 +137,13 @@ class OtherRiverpodForTheCombiningProvidersProvider
   FutureOr<int> runNotifierBuild(
     covariant OtherRiverpodForTheCombiningProviders notifier,
   ) {
-    return notifier.build(
-      duration,
-    );
+    return notifier.build(duration);
   }
 
   @override
   Override overrideWith(
-      OtherRiverpodForTheCombiningProviders Function() create) {
+    OtherRiverpodForTheCombiningProviders Function() create,
+  ) {
     return ProviderOverride(
       origin: this,
       override: OtherRiverpodForTheCombiningProvidersProvider._internal(
@@ -163,8 +159,11 @@ class OtherRiverpodForTheCombiningProvidersProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<OtherRiverpodForTheCombiningProviders,
-      int> createElement() {
+  AutoDisposeAsyncNotifierProviderElement<
+    OtherRiverpodForTheCombiningProviders,
+    int
+  >
+  createElement() {
     return _OtherRiverpodForTheCombiningProvidersProviderElement(this);
   }
 
@@ -192,14 +191,18 @@ mixin OtherRiverpodForTheCombiningProvidersRef
 }
 
 class _OtherRiverpodForTheCombiningProvidersProviderElement
-    extends AutoDisposeAsyncNotifierProviderElement<
-        OtherRiverpodForTheCombiningProviders,
-        int> with OtherRiverpodForTheCombiningProvidersRef {
+    extends
+        AutoDisposeAsyncNotifierProviderElement<
+          OtherRiverpodForTheCombiningProviders,
+          int
+        >
+    with OtherRiverpodForTheCombiningProvidersRef {
   _OtherRiverpodForTheCombiningProvidersProviderElement(super.provider);
 
   @override
   int get duration =>
       (origin as OtherRiverpodForTheCombiningProvidersProvider).duration;
 }
+
 // ignore_for_file: type=lint
 // ignore_for_file: subtype_of_sealed_class, invalid_use_of_internal_member, invalid_use_of_visible_for_testing_member, deprecated_member_use_from_same_package

@@ -7,7 +7,8 @@ class MobxGoogleSuggestionPage extends StatefulWidget {
   const MobxGoogleSuggestionPage({super.key});
 
   @override
-  State<MobxGoogleSuggestionPage> createState() => _MobxGoogleSuggestionPageState();
+  State<MobxGoogleSuggestionPage> createState() =>
+      _MobxGoogleSuggestionPageState();
 }
 
 class _MobxGoogleSuggestionPageState extends State<MobxGoogleSuggestionPage> {
@@ -27,40 +28,43 @@ class _MobxGoogleSuggestionPageState extends State<MobxGoogleSuggestionPage> {
 
   @override
   Widget build(BuildContext context) {
-    final mobxGoogleSuggestionsStore = Provider.of<MobxGoogleSuggestionStoreData>(context);
+    final mobxGoogleSuggestionsStore =
+        Provider.of<MobxGoogleSuggestionStoreData>(context);
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Mobx google search suggestions"),
-      ),
-      body: Observer(builder: (_) {
-        return ListView(
-          padding: const EdgeInsets.all(8.0),
-          children: [
-            TextField(
-              controller: _textEditingController,
-              decoration: const InputDecoration(hintText: "Search"),
-              onChanged: (v) => mobxGoogleSuggestionsStore.loadDataFromGoogle(v),
-            ),
-            if (mobxGoogleSuggestionsStore.loadingApi)
-              const Center(child: Padding(
-                padding: EdgeInsets.all(8.0),
-                child: CircularProgressIndicator(),
-              ))
-            else
-              ListView.builder(
-                shrinkWrap: true,
-                physics: const NeverScrollableScrollPhysics(),
-                itemCount: mobxGoogleSuggestionsStore.suggestions.length,
-                itemBuilder: (context, index) {
-                  final suggestion = mobxGoogleSuggestionsStore.suggestions[index];
-                  return ListTile(
-                    title: Text(suggestion.name),
-                  );
-                },
+      appBar: AppBar(title: const Text("Mobx google search suggestions")),
+      body: Observer(
+        builder: (_) {
+          return ListView(
+            padding: const EdgeInsets.all(8.0),
+            children: [
+              TextField(
+                controller: _textEditingController,
+                decoration: const InputDecoration(hintText: "Search"),
+                onChanged:
+                    (v) => mobxGoogleSuggestionsStore.loadDataFromGoogle(v),
               ),
-          ],
-        );
-      }),
+              if (mobxGoogleSuggestionsStore.loadingApi)
+                const Center(
+                  child: Padding(
+                    padding: EdgeInsets.all(8.0),
+                    child: CircularProgressIndicator(),
+                  ),
+                )
+              else
+                ListView.builder(
+                  shrinkWrap: true,
+                  physics: const NeverScrollableScrollPhysics(),
+                  itemCount: mobxGoogleSuggestionsStore.suggestions.length,
+                  itemBuilder: (context, index) {
+                    final suggestion =
+                        mobxGoogleSuggestionsStore.suggestions[index];
+                    return ListTile(title: Text(suggestion.name));
+                  },
+                ),
+            ],
+          );
+        },
+      ),
     );
   }
 }

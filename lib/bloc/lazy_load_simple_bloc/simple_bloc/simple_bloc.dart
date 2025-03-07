@@ -18,9 +18,7 @@ class SimpleBloc {
   }
 
   void _init() {
-    _state = const SimpleBlocState(
-      user: SimpleUser(name: "avaz", age: 22),
-    );
+    _state = const SimpleBlocState(user: SimpleUser(name: "avaz", age: 22));
     _stateController.add(_state);
   }
 

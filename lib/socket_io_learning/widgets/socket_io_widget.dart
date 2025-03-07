@@ -25,7 +25,6 @@ class _SocketIoWidgetUI extends StatefulWidget {
 }
 
 class _SocketIoWidgetState extends State<_SocketIoWidgetUI> {
-
   @override
   void initState() {
     super.initState();
@@ -35,9 +34,7 @@ class _SocketIoWidgetState extends State<_SocketIoWidgetUI> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Socket io learning"),
-      ),
+      appBar: AppBar(title: const Text("Socket io learning")),
       body: ListView.separated(
         padding: const EdgeInsets.all(8),
         separatorBuilder: (context, index) => const SizedBox(height: 10),
@@ -50,10 +47,11 @@ class _SocketIoWidgetState extends State<_SocketIoWidgetUI> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder: (context) => SocketIoUserWidget(
-                    user: chat.user,
-                    socketBloc: socketBloc,
-                  ),
+                  builder:
+                      (context) => SocketIoUserWidget(
+                        user: chat.user,
+                        socketBloc: socketBloc,
+                      ),
                 ),
               );
             },
@@ -65,9 +63,7 @@ class _SocketIoWidgetState extends State<_SocketIoWidgetUI> {
                   children: [
                     Text(
                       "User: ${chat.user.name}",
-                      style: const TextStyle(
-                        color: Colors.white,
-                      ),
+                      style: const TextStyle(color: Colors.white),
                     ),
                   ],
                 ),

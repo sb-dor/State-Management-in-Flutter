@@ -19,7 +19,6 @@ Future<RiverpodNumberTriviaModel?> trivia(TriviaRef ref) async {
   return RiverpodNumberTriviaModel.fromJson(jsonDecode(response.body));
 }
 
-
 @riverpod
 Future<List<RiverpodNumberTriviaModel>> trivias(TriviasRef ref) async {
   final headers = {'Content-Type': 'application/json'};

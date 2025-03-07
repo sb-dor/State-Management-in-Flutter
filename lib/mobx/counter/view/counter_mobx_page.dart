@@ -8,9 +8,7 @@ class CounterMobxPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Counter mobx page"),
-      ),
+      appBar: AppBar(title: const Text("Counter mobx page")),
       floatingActionButton: FloatingActionButton(
         onPressed: () {
           counter.increment();
@@ -18,9 +16,7 @@ class CounterMobxPage extends StatelessWidget {
         child: const Icon(Icons.add),
       ),
       body: Center(
-        child: Observer(
-          builder: (_) => Text(counter.value.toString()),
-        ),
+        child: Observer(builder: (_) => Text(counter.value.toString())),
       ),
     );
   }

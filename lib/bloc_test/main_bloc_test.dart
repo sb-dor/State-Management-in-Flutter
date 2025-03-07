@@ -5,11 +5,9 @@ import 'package:state_management_course/bloc_test/bloc_event_test.dart';
 class MainBlocTest extends Bloc<BlocEventTest, BlocEventStates> {
   MainBlocTest() : super(LoadingBlocTestState()) {
     //
-    on<LoadEvent>(
-      (event, emit) {
-        emit(LoadingBlocTestState());
-      },
-    );
+    on<LoadEvent>((event, emit) {
+      emit(LoadingBlocTestState());
+    });
 
     //
   }

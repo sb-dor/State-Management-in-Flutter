@@ -5,6 +5,7 @@ import 'package:state_management_course/provider/bread_crumb/provider/bread_crum
 import 'package:state_management_course/provider/bread_crumb/views/bread_crumb_widget.dart';
 
 import 'bread_crumb_create_screen.dart';
+
 class BreadCrumbPage extends StatefulWidget {
   const BreadCrumbPage({super.key});
 
@@ -16,7 +17,9 @@ class _BreadCrumbPageState extends State<BreadCrumbPage> {
   @override
   Widget build(BuildContext context) {
     // the way how to listen only specific item of provider
-    final list = context.select<BreadCrumbProvider, List<BreadCrumb>>((provider) => provider.items);
+    final list = context.select<BreadCrumbProvider, List<BreadCrumb>>(
+      (provider) => provider.items,
+    );
 
     // a lot of programmers with a lot of experience say that if you are out side of build function
     // use the Provider.of itself instead of using context.watch in order to watch something
@@ -24,9 +27,7 @@ class _BreadCrumbPageState extends State<BreadCrumbPage> {
     // but if you are inside of build function you can use that
 
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("BreadCrump page"),
-      ),
+      appBar: AppBar(title: const Text("BreadCrump page")),
       body: SizedBox(
         width: MediaQuery.of(context).size.width,
         child: Column(
@@ -46,17 +47,13 @@ class _BreadCrumbPageState extends State<BreadCrumbPage> {
                   ),
                 );
               },
-              child: const Text(
-                "Add new bread crumb",
-              ),
+              child: const Text("Add new bread crumb"),
             ),
             TextButton(
               onPressed: () {
                 context.read<BreadCrumbProvider>().reset();
               },
-              child: const Text(
-                "Reset",
-              ),
+              child: const Text("Reset"),
             ),
           ],
         ),

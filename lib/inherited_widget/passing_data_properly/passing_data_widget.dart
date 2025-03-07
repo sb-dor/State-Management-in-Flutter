@@ -3,15 +3,18 @@ import 'package:state_management_course/inherited_widget/passing_data_properly/v
 
 class _PassingDataInhWidget extends InheritedWidget {
   const _PassingDataInhWidget({
-    super.key,
     required this.passingDataWidgetState,
     required this.valueModel,
     required super.child,
   });
 
-  static _PassingDataInhWidget of(BuildContext context, {bool listen = false}) => listen
-      ? context.dependOnInheritedWidgetOfExactType<_PassingDataInhWidget>()!
-      : context.getInheritedWidgetOfExactType<_PassingDataInhWidget>()!;
+  static _PassingDataInhWidget of(
+    BuildContext context, {
+    bool listen = false,
+  }) =>
+      listen
+          ? context.dependOnInheritedWidgetOfExactType<_PassingDataInhWidget>()!
+          : context.getInheritedWidgetOfExactType<_PassingDataInhWidget>()!;
 
   final PassingDataWidgetState passingDataWidgetState;
   final ValueModel valueModel;
@@ -62,9 +65,7 @@ class PassingDataWidgetState extends State<PassingDataWidget> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text("Test passing data"),
-      ),
+      appBar: AppBar(title: Text("Test passing data")),
       body: _PassingDataInhWidget(
         passingDataWidgetState: this,
         valueModel: valueNumber,
@@ -83,9 +84,7 @@ class _TestWidget extends StatelessWidget {
 
     return Column(
       children: [
-        TextField(
-          controller: passingDataInhWidget.nameController,
-        ),
+        TextField(controller: passingDataInhWidget.nameController),
         TextButton(
           onPressed: () {
             passingDataInhWidget.changeModel();

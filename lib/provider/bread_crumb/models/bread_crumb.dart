@@ -5,12 +5,14 @@ class BreadCrumb {
   final String name;
   final String uuid;
 
-  BreadCrumb({required this.isActive, required this.name}) : uuid = const Uuid().v4();
+  BreadCrumb({required this.isActive, required this.name})
+    : uuid = const Uuid().v4();
 
   void activate() => isActive = true;
 
   @override
-  bool operator ==(covariant BreadCrumb other) => isActive == other.isActive && uuid == other.uuid;
+  bool operator ==(covariant BreadCrumb other) =>
+      isActive == other.isActive && uuid == other.uuid;
 
   @override
   int get hashCode => uuid.hashCode;

@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:bloc_concurrency/bloc_concurrency.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:rxdart/rxdart.dart';
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/data/post_repository.dart';
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/models/post.dart';
 import 'post_event.dart';
@@ -13,8 +12,8 @@ class PostBloc extends Bloc<PostEvent, PostState> {
   PostBloc({
     required IPostRepository postRepository,
     required PostState initialState,
-  })  : _postRepository = postRepository,
-        super(initialState) {
+  }) : _postRepository = postRepository,
+       super(initialState) {
     // NOTE!
     // if you want to use transformers with freezed
     // the best solution for transformer is "concurrent()"
@@ -43,10 +42,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
     // on<AddPost>(_addPost);
   }
 
-  void _addText(
-    AddTextEvent event,
-    Emitter<PostState> emit,
-  ) async {
+  void _addText(AddTextEvent event, Emitter<PostState> emit) async {
     try {
       // emit(event.addingText());
 
@@ -54,48 +50,39 @@ class PostBloc extends Bloc<PostEvent, PostState> {
       // logic here
       //
       // emit(event.hasText());
-    } catch (error, stackTrace) {
+    } catch (error) {
       //
       // emit(event.error(state: state));
     }
   }
 
-  void _addFile(
-    AddFileEvent event,
-    Emitter<PostState> emit,
-  ) async {
+  void _addFile(AddFileEvent event, Emitter<PostState> emit) async {
     try {
       // event.addFile(state: state);
 
       // logic
 
       // event.hasFileAndText(state: state);
-    } catch (error, stackTrace) {
+    } catch (error) {
       //
       // event.error(state: state);
     }
   }
 
-  void _send(
-    SendPostEvent event,
-    Emitter<PostState> emit,
-  ) async {
+  void _send(SendPostEvent event, Emitter<PostState> emit) async {
     try {
       // event.sending(state: state);
 
       // logic
 
       // event.successFul(state: state);
-    } catch (error, stackTrace) {
+    } catch (error) {
       //
       // event.error(state: state);
     }
   }
 
-  void _addPost(
-    AddPost event,
-    Emitter<PostState> emit,
-  ) async {
+  void _addPost(AddPost event, Emitter<PostState> emit) async {
     try {
       if (state.isSending) return;
 
@@ -119,38 +106,35 @@ class PostBloc extends Bloc<PostEvent, PostState> {
         emit(event.sendError(state: state));
       }
       //
-    } catch (error, stackTrace) {
+    } catch (error) {
       debugPrint("add post error: $error");
       //
       emit(event.error(state: state, message: error.toString()));
     }
   }
 
-  void _checkTestEvent(
-    CheckTestEvent event,
-    Emitter<PostState> emit,
-  ) async {
+  void _checkTestEvent(CheckTestEvent event, Emitter<PostState> emit) async {
     await Future.delayed(const Duration(seconds: 1));
     print('checking event whether it works at the same time with other events');
   }
 
-// void _cancel(
-//   CancelPostEvent event,
-//   Emitter<PostState> emit,
-// ) async {
-//   try {
-//     // logic
-//   } catch (error, stackTrace) {
-//     //
-//   }
-// }
-//
-// void _restore(
-//   RestorePostEvent event,
-//   Emitter<PostState> state,
-// ) async {
-//   try {} catch (error, stackTrace) {
-//     //
-//   }
-// }
+  // void _cancel(
+  //   CancelPostEvent event,
+  //   Emitter<PostState> emit,
+  // ) async {
+  //   try {
+  //     // logic
+  //   } catch (error, stackTrace) {
+  //     //
+  //   }
+  // }
+  //
+  // void _restore(
+  //   RestorePostEvent event,
+  //   Emitter<PostState> state,
+  // ) async {
+  //   try {} catch (error, stackTrace) {
+  //     //
+  //   }
+  // }
 }

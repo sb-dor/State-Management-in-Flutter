@@ -29,9 +29,7 @@ class _VanillaNewContactViewState extends State<VanillaNewContactView> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Add New Contact"),
-      ),
+      appBar: AppBar(title: const Text("Add New Contact")),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -50,7 +48,7 @@ class _VanillaNewContactViewState extends State<VanillaNewContactView> {
                 Navigator.pop(context);
               },
               child: const Text("Add Contact"),
-            )
+            ),
           ],
         ),
       ),

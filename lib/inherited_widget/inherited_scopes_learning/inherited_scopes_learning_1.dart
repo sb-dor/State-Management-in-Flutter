@@ -12,11 +12,15 @@ class _InheritedScope extends InheritedWidget {
 
   static _InheritedScope? of(BuildContext context, {bool listen = true}) {
     if (listen) {
-      final _InheritedScope? result = context.dependOnInheritedWidgetOfExactType<_InheritedScope>();
+      final _InheritedScope? result =
+          context.dependOnInheritedWidgetOfExactType<_InheritedScope>();
       assert(result != null, 'No _InheritedScope found in context');
       return result;
     } else {
-      final result = context.getElementForInheritedWidgetOfExactType<_InheritedScope>()?.widget;
+      final result =
+          context
+              .getElementForInheritedWidgetOfExactType<_InheritedScope>()
+              ?.widget;
       return result is _InheritedScope ? result : null;
     }
   }
@@ -31,28 +35,27 @@ class InheritedScopesLearning1 extends StatefulWidget {
   const InheritedScopesLearning1({super.key});
 
   @override
-  State<InheritedScopesLearning1> createState() => _InheritedScopesLearning1State();
+  State<InheritedScopesLearning1> createState() =>
+      _InheritedScopesLearning1State();
 }
 
 class _InheritedScopesLearning1State extends State<InheritedScopesLearning1> {
   int counter = 0;
 
   void increment() => setState(() {
-        counter++;
-        debugPrint("$counter");
-      });
+    counter++;
+    debugPrint("$counter");
+  });
 
   void decrement() => setState(() {
-        counter--;
-        debugPrint("$counter");
-      });
+    counter--;
+    debugPrint("$counter");
+  });
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Inherited learning 1"),
-      ),
+      appBar: AppBar(title: const Text("Inherited learning 1")),
       body: _InheritedScope(
         counter: counter,
         state: this,
@@ -68,11 +71,7 @@ class _BodyWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return const Column(
-      children: [
-        _IncrementButton(),
-        _InformationOfData(),
-        _DecrementButton(),
-      ],
+      children: [_IncrementButton(), _InformationOfData(), _DecrementButton()],
     );
   }
 }

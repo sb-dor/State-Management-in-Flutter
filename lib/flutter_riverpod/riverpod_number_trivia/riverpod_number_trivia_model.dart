@@ -10,8 +10,8 @@ class RiverpodNumberTriviaModel {
   bool edit;
 
   RiverpodNumberTriviaModel(this.text, this.number, {this.edit = false})
-      : id = const Uuid().v4(),
-        textEditingController = TextEditingController(text: text);
+    : id = const Uuid().v4(),
+      textEditingController = TextEditingController(text: text);
 
   factory RiverpodNumberTriviaModel.fromJson(Map<String, dynamic> json) {
     return RiverpodNumberTriviaModel(

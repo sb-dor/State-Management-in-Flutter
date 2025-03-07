@@ -16,9 +16,9 @@ class AsyncReduxState {
   });
 
   const AsyncReduxState.empty()
-      : isLoading = false,
-        fetchedPersons = null,
-        error = null;
+    : isLoading = false,
+      fetchedPersons = null,
+      error = null;
 }
 
 AsyncReduxState asyncReduxReducer(AsyncReduxState oldState, action) {
@@ -58,7 +58,10 @@ void loadPeopleMiddleware(
 ) {
   if (action is LoadPeopleAction) {
     getPersons()
-        .then((persons) => store.dispatch(SuccessfullyFetchedPeopleAction(persons: persons)))
+        .then(
+          (persons) =>
+              store.dispatch(SuccessfullyFetchedPeopleAction(persons: persons)),
+        )
         .catchError((e) => store.dispatch(FailedFetchedPeople(error: e)));
   }
   next(action);

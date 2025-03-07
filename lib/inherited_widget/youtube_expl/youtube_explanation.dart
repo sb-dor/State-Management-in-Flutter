@@ -1,4 +1,3 @@
-import 'dart:math';
 
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
@@ -16,26 +15,20 @@ void main() async {
 
   final logger = Logger();
 
-  final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
+  final SharedPreferences sharedPreferences =
+      await SharedPreferences.getInstance();
 
   final DependenciesContainer dependenciesContainer = DependenciesContainer(
     logger: logger,
     sharedPreferencesHelper: SharedPreferencesHelper(sharedPreferences),
   );
 
-  runApp(
-    RootApp(
-      dependenciesContainer: dependenciesContainer,
-    ),
-  );
+  runApp(RootApp(dependenciesContainer: dependenciesContainer));
 }
 
 class RootApp extends StatefulWidget {
   //
-  const RootApp({
-    super.key,
-    required this.dependenciesContainer,
-  });
+  const RootApp({super.key, required this.dependenciesContainer});
 
   final DependenciesContainer dependenciesContainer;
 
@@ -53,9 +46,7 @@ class _RootAppState extends State<RootApp> {
   Widget build(BuildContext context) {
     return DependenciesScope(
       dependenciesContainer: widget.dependenciesContainer,
-      child: const MaterialApp(
-        home: App(),
-      ),
+      child: const MaterialApp(home: App()),
     );
   }
 }
@@ -70,17 +61,19 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
-    final depContainer = DependenciesScope.of(context, listen: false).dependenciesContainer;
+    final depContainer =
+        DependenciesScope.of(context, listen: false).dependenciesContainer;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("IoC explanation"),
-      ),
+      appBar: AppBar(title: const Text("IoC explanation")),
       body: Center(
         child: TextButton(
           onPressed: () async {
             // depContainer.logger.log(Level.debug, "We added IoC using context in our app");
 
-            await depContainer.sharedPreferencesHelper.saveString("dart", 'flutter');
+            await depContainer.sharedPreferencesHelper.saveString(
+              "dart",
+              'flutter',
+            );
 
             depContainer.sharedPreferencesHelper.printString("dart");
           },

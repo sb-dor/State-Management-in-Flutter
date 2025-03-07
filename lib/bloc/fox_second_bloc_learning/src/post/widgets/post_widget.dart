@@ -5,10 +5,7 @@ import 'package:state_management_course/bloc/fox_second_bloc_learning/src/post/m
 class PostWidget extends StatelessWidget {
   final Post post;
 
-  const PostWidget({
-    super.key,
-    required this.post,
-  });
+  const PostWidget({super.key, required this.post});
 
   @override
   Widget build(BuildContext context) {
@@ -16,10 +13,7 @@ class PostWidget extends StatelessWidget {
       title: Text(post.title),
       subtitle: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Text(post.content),
-          Text(post.author),
-        ],
+        children: [Text(post.content), Text(post.author)],
       ),
     );
   }

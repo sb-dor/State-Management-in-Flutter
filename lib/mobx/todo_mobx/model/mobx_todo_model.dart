@@ -13,6 +13,6 @@ abstract class _MobxTodoModelAbstraction with Store {
   bool deleted;
 
   _MobxTodoModelAbstraction({required this.description})
-      : uuid = const Uuid().v4(),
-        deleted = false;
+    : uuid = const Uuid().v4(),
+      deleted = false;
 }

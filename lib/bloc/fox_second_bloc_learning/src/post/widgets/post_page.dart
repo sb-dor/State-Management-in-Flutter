@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:provider/provider.dart';
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/authentication/bloc/authentication_bloc.dart';
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/authentication/bloc/authentication_events.dart';
 import 'package:state_management_course/bloc/fox_second_bloc_learning/src/authentication/bloc/authentication_states.dart';
@@ -50,7 +49,9 @@ class _State extends State<PostPage> {
                 return IconButton(
                   onPressed: () {
                     // or like this
-                    context.read<AuthenticationBloc>().add(const LogOutAuthenticationEvent());
+                    context.read<AuthenticationBloc>().add(
+                      const LogOutAuthenticationEvent(),
+                    );
                   },
                   icon: const Icon(Icons.logout),
                 );
@@ -63,14 +64,10 @@ class _State extends State<PostPage> {
         onPressed: () async {
           Navigator.push(
             context,
-            MaterialPageRoute(
-              builder: (context) => const PostCreationWidget(),
-            ),
+            MaterialPageRoute(builder: (context) => const PostCreationWidget()),
           );
         },
-        child: const Icon(
-          Icons.add,
-        ),
+        child: const Icon(Icons.add),
       ),
       body: BlocBuilder<PostBloc, PostState>(
         builder: (context, state) {

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:state_management_course/vanilla_contacts/models/contact.dart';
-import 'package:state_management_course/vanilla_contacts/view_model/contact_book.dart';
 import 'package:state_management_course/vanilla_contacts/view_model/contact_book_with_change_notifier.dart';
 
 class VanillaNewContactViewWithChangeNotifier extends StatefulWidget {
@@ -14,7 +13,8 @@ class VanillaNewContactViewWithChangeNotifier extends StatefulWidget {
 class _VanillaNewContactViewWithChangeNotifierState
     extends State<VanillaNewContactViewWithChangeNotifier> {
   late TextEditingController _controller;
-  final ContactBookWithChangeNotifier _contactBook = ContactBookWithChangeNotifier.instance;
+  final ContactBookWithChangeNotifier _contactBook =
+      ContactBookWithChangeNotifier.instance;
 
   @override
   void initState() {
@@ -31,9 +31,7 @@ class _VanillaNewContactViewWithChangeNotifierState
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Add New Contact"),
-      ),
+      appBar: AppBar(title: const Text("Add New Contact")),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: Column(
@@ -52,7 +50,7 @@ class _VanillaNewContactViewWithChangeNotifierState
                 Navigator.pop(context);
               },
               child: const Text("Add Contact"),
-            )
+            ),
           ],
         ),
       ),

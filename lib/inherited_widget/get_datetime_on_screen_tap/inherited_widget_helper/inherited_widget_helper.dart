@@ -3,11 +3,8 @@ import 'package:state_management_course/inherited_widget/get_datetime_on_screen_
 import 'package:uuid/uuid.dart';
 
 class InheritedWidgetHelper extends InheritedWidget {
-  InheritedWidgetHelper({
-    super.key,
-    required super.child,
-    required this.api,
-  }) : uuid = const Uuid().v4();
+  InheritedWidgetHelper({super.key, required super.child, required this.api})
+    : uuid = const Uuid().v4();
 
   final InhApi api;
 
@@ -30,7 +27,9 @@ class InheritedWidgetHelper extends InheritedWidget {
 
   // for read, not listening
   static InheritedWidgetHelper read(BuildContext context) {
-    final element = context.getElementForInheritedWidgetOfExactType<InheritedWidgetHelper>();
+    final element =
+        context
+            .getElementForInheritedWidgetOfExactType<InheritedWidgetHelper>();
     return element?.widget as InheritedWidgetHelper;
   }
 }

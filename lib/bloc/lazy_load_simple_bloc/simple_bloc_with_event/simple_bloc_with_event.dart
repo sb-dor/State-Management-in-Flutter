@@ -28,7 +28,8 @@ final class SimpleBlocWithEvent {
 
   SimpleBlocState get state => _state;
 
-  final _eventController = StreamController<SimpleBlocEvents>.broadcast(); // get events in
+  final _eventController =
+      StreamController<SimpleBlocEvents>.broadcast(); // get events in
 
   late final Stream<SimpleBlocState> _stateStream;
 
@@ -39,19 +40,18 @@ final class SimpleBlocWithEvent {
   }
 
   SimpleBlocWithEvent() {
-    _stateStream = _eventController.stream.asyncExpand<SimpleBlocState>(
-      (event) async* {
-        switch (event) {
-          case InitSimpleBlocEvent():
-            yield _state = const SimpleBlocState(user: SimpleUser());
-          case SimpleBlocIncrementEvent():
-            debugPrint("hote medroya yo ne");
-            yield* _increment();
-          case SimpleBlocDecrementEvent():
-            yield* _decrement();
-        }
-      },
-    ).asBroadcastStream();
+    _stateStream =
+        _eventController.stream.asyncExpand<SimpleBlocState>((event) async* {
+          switch (event) {
+            case InitSimpleBlocEvent():
+              yield _state = const SimpleBlocState(user: SimpleUser());
+            case SimpleBlocIncrementEvent():
+              debugPrint("hote medroya yo ne");
+              yield* _increment();
+            case SimpleBlocDecrementEvent():
+              yield* _decrement();
+          }
+        }).asBroadcastStream();
 
     addEvent(const InitSimpleBlocEvent());
   }
@@ -65,9 +65,7 @@ final class SimpleBlocWithEvent {
     user = user.copyWith(age: user.age! + 1);
 
     // Update _state with the new value
-    _state = _state.copyWith(
-      user: user,
-    );
+    _state = _state.copyWith(user: user);
 
     yield _state; // Yield the updated state
   }
@@ -77,9 +75,7 @@ final class SimpleBlocWithEvent {
     user = user.copyWith(age: user.age! - 1);
 
     // Update _state with the new value
-    _state = _state.copyWith(
-      user: user,
-    );
+    _state = _state.copyWith(user: user);
 
     yield _state; // Yield the updated state
   }

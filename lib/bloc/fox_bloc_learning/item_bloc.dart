@@ -12,17 +12,14 @@ class ItemBloc extends Bloc<ItemEvent, ItemState> {
   ItemBloc() : super(const ItemState.initial()) {
     // don't do like this, because it's good to use without transformers
     // but when you will use transformers it may bring a lot of problems
-    on<ItemEvent>(
-      (event, emit) {
-        event.when(
-          create: () => _onCreate(emit),
-          read: () => _onRead(emit),
-          update: (String value) => _onUpdate(value, emit),
-          delete: () => _onDelete(emit),
-        );
-      },
-      transformer: droppable(),
-    );
+    on<ItemEvent>((event, emit) {
+      event.when(
+        create: () => _onCreate(emit),
+        read: () => _onRead(emit),
+        update: (String value) => _onUpdate(value, emit),
+        delete: () => _onDelete(emit),
+      );
+    }, transformer: droppable());
   }
 
   // Empty function for create event

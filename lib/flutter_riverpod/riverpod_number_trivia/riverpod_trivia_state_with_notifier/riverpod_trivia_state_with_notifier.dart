@@ -16,7 +16,8 @@ part 'riverpod_trivia_state_with_notifier.g.dart';
 //
 //  Notifiers are responsible for exposing ways to modify the state of the provider.
 @riverpod
-class RiverpodTriviaStateWithNotifier extends _$RiverpodTriviaStateWithNotifier {
+class RiverpodTriviaStateWithNotifier
+    extends _$RiverpodTriviaStateWithNotifier {
   @override
   Future<List<RiverpodNumberTriviaModel>> build() async {
     // We use "ref.watch" to obtain the latest passed seconds.
@@ -28,8 +29,9 @@ class RiverpodTriviaStateWithNotifier extends _$RiverpodTriviaStateWithNotifier 
     //
     // If we omit that .future, we would receive an AsyncValue, which is a snapshot of the current state of the provider.
     // But if no seconds is available yet, we won't be able to do anything.
-    final value = await ref.watch(otherRiverpodForTheCombiningProvidersProvider(3)
-        .future); // when the value will be available
+    final value = await ref.watch(
+      otherRiverpodForTheCombiningProvidersProvider(3).future,
+    ); // when the value will be available
 
     debugPrint("second value comes: $value");
 
@@ -70,7 +72,8 @@ class RiverpodTriviaStateWithNotifier extends _$RiverpodTriviaStateWithNotifier 
 }
 
 @riverpod
-class OtherRiverpodForTheCombiningProviders extends _$OtherRiverpodForTheCombiningProviders {
+class OtherRiverpodForTheCombiningProviders
+    extends _$OtherRiverpodForTheCombiningProviders {
   @override
   Future<int> build(int duration) async {
     // just for test

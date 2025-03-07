@@ -1,6 +1,8 @@
 import 'package:flutter/foundation.dart';
 
-final class OwnValueNotifierListener<T> with ChangeNotifier implements ValueListenable<T> {
+final class OwnValueNotifierListener<T>
+    with ChangeNotifier
+    implements ValueListenable<T> {
   //
   OwnValueNotifierListener(this._value);
 

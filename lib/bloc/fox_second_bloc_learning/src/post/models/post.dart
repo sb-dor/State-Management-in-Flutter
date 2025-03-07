@@ -14,6 +14,6 @@ class Post {
     required this.content,
     required this.author,
     this.attachedFile,
-  })  : id = const Uuid().v4(),
-        datetime = DateTime.now();
+  }) : id = const Uuid().v4(),
+       datetime = DateTime.now();
 }

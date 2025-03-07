@@ -6,7 +6,6 @@ part 'post_event.freezed.dart';
 
 @freezed
 sealed class PostEvent with _$PostEvent {
-
   const factory PostEvent.checkEventTest() = CheckTestEvent;
   //
   // events mixins
@@ -45,9 +44,9 @@ sealed class PostEvent with _$PostEvent {
   // @With<ErrorEmitter>()
   const factory PostEvent.send() = SendPostEvent;
 
-// const factory PostEvent.cancel() = CancelPostEvent;
-//
-// const factory PostEvent.restore() = RestorePostEvent;
+  // const factory PostEvent.cancel() = CancelPostEvent;
+  //
+  // const factory PostEvent.restore() = RestorePostEvent;
 }
 
 // events mixins
@@ -120,12 +119,6 @@ mixin SendErrorEmitter {
 }
 //
 mixin ErrorEmitter {
-  PostState error({
-    required PostState state,
-    String? message,
-  }) =>
-      PostState.error(
-        state.postStateModel,
-        errorMessage: message,
-      );
+  PostState error({required PostState state, String? message}) =>
+      PostState.error(state.postStateModel, errorMessage: message);
 }

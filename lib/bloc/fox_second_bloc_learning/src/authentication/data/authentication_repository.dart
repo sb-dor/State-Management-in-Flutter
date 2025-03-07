@@ -18,12 +18,15 @@ final class AuthenticationRepositoryImpl implements IAuthenticationRepository {
   AuthenticationRepositoryImpl(this._authenticationDatasource);
 
   @override
-  Future<AuthenticatedUser?> login({required String email, required String password}) =>
-      _authenticationDatasource.login(email: email, password: password);
+  Future<AuthenticatedUser?> login({
+    required String email,
+    required String password,
+  }) => _authenticationDatasource.login(email: email, password: password);
 
   @override
   Future<bool> logout() => _authenticationDatasource.logout();
 
   @override
-  Future<AuthenticatedUser?> checkAuth() => _authenticationDatasource.checkAuth();
+  Future<AuthenticatedUser?> checkAuth() =>
+      _authenticationDatasource.checkAuth();
 }

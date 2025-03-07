@@ -16,9 +16,7 @@ class _AsyncReduxPageState extends State<AsyncReduxPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: const Text("Filter Resux app"),
-      ),
+      appBar: AppBar(title: const Text("Filter Resux app")),
       body: Column(
         children: [
           TextButton(

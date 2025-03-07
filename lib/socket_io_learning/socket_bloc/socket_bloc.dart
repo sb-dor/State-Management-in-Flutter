@@ -3,7 +3,6 @@ import 'dart:convert';
 import 'package:bloc/bloc.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:socket_io_client/socket_io_client.dart' as IO;
 import 'package:state_management_course/socket_io_learning/models/user.dart';
 import 'package:state_management_course/socket_io_learning/socket_service/socket_client_service.dart';
 
@@ -13,13 +12,16 @@ part 'socket_bloc.freezed.dart';
 class SocketEvent with _$SocketEvent {
   const factory SocketEvent.initialEvent() = _InitialEventOnSocketEvent;
 
-  const factory SocketEvent.joinToTheRoom(User user) = _JoinToTheRoomEventOnSocketEvent;
+  const factory SocketEvent.joinToTheRoom(User user) =
+      _JoinToTheRoomEventOnSocketEvent;
 
   const factory SocketEvent.leaveRoom() = _LeaveRoomEventOnSocketEvent;
 
-  const factory SocketEvent.sendMessage(String message) = _SendMessageEvemtOnSocketEvent;
+  const factory SocketEvent.sendMessage(String message) =
+      _SendMessageEvemtOnSocketEvent;
 
-  const factory SocketEvent.handleMessage(dynamic data) = _HandleMessagesEventOnSocketEvent;
+  const factory SocketEvent.handleMessage(dynamic data) =
+      _HandleMessagesEventOnSocketEvent;
 }
 
 @freezed
@@ -72,9 +74,7 @@ class SocketBloc extends Bloc<SocketEvent, SocketState> {
     Emitter<SocketState> emit,
   ) async {
     _socketClientService.joinToRoom("room_${event.user.id}");
-    emit(
-      SocketState.completed(toUser: event.user, messages: <String>[]),
-    );
+    emit(SocketState.completed(toUser: event.user, messages: <String>[]));
   }
 
   void _leaveRoom(
@@ -96,10 +96,7 @@ class SocketBloc extends Bloc<SocketEvent, SocketState> {
     if (event.message.trim().isEmpty) return;
 
     _socketClientService.messageToRoom(
-      jsonEncode({
-        "message": event.message,
-        "user_id": currentState.toUser.id,
-      }),
+      jsonEncode({"message": event.message, "user_id": currentState.toUser.id}),
       "room_${currentState.toUser.id}",
     );
   }
@@ -112,16 +109,17 @@ class SocketBloc extends Bloc<SocketEvent, SocketState> {
     var currentState = state as CompletedStateOnSocketStates;
 
     Map<String, dynamic> decodedData =
-        event.data is Map<String, dynamic> ? event.data : jsonDecode(event.data);
+        event.data is Map<String, dynamic>
+            ? event.data
+            : jsonDecode(event.data);
 
     debugPrint("decoded data: $decodedData");
 
-    if (decodedData.containsKey('user_id') && decodedData['user_id'] == currentState.toUser.id) {
+    if (decodedData.containsKey('user_id') &&
+        decodedData['user_id'] == currentState.toUser.id) {
       List<String> stateMessages = List<String>.from(currentState.messages);
       stateMessages.add("${decodedData['message']}");
-      currentState = currentState.copyWith(
-        messages: stateMessages,
-      );
+      currentState = currentState.copyWith(messages: stateMessages);
       debugPrint("adding messagesssss");
     }
 
