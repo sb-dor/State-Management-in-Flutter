@@ -15,9 +15,7 @@ class CounterMobxPage extends StatelessWidget {
         },
         child: const Icon(Icons.add),
       ),
-      body: Center(
-        child: Observer(builder: (_) => Text(counter.value.toString())),
-      ),
+      body: Center(child: Observer(builder: (_) => Text(counter.value.toString()))),
     );
   }
 }

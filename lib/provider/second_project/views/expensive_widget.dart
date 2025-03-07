@@ -8,10 +8,9 @@ class ExpensiveWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final expensiveModel = context
-        .select<DatetimeProvider, ExpensiveDatetimeModel>(
-          (providerValue) => providerValue.expensiveDatetimeModel,
-        );
+    final expensiveModel = context.select<DatetimeProvider, ExpensiveDatetimeModel>(
+      (providerValue) => providerValue.expensiveDatetimeModel,
+    );
     return Container(
       height: 100,
       color: Colors.blue,

@@ -8,8 +8,7 @@ part 'post_state_model.freezed.dart';
 // don't add, it help you for debugging in Flutter inspector
 @freezed
 class PostStateModel with _$PostStateModel {
-  const factory PostStateModel({required List<Post> posts, Post? post}) =
-      _PostStateModel;
+  const factory PostStateModel({required List<Post> posts, Post? post}) = _PostStateModel;
 
   // @override
   // void debugFillProperties(DiagnosticPropertiesBuilder properties) {

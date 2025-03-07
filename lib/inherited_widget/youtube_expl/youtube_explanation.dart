@@ -14,8 +14,7 @@ void main() async {
 
   final logger = Logger();
 
-  final SharedPreferences sharedPreferences =
-      await SharedPreferences.getInstance();
+  final SharedPreferences sharedPreferences = await SharedPreferences.getInstance();
 
   final DependenciesContainer dependenciesContainer = DependenciesContainer(
     logger: logger,
@@ -60,8 +59,7 @@ class App extends StatefulWidget {
 class _AppState extends State<App> {
   @override
   Widget build(BuildContext context) {
-    final depContainer =
-        DependenciesScope.of(context, listen: false).dependenciesContainer;
+    final depContainer = DependenciesScope.of(context, listen: false).dependenciesContainer;
     return Scaffold(
       appBar: AppBar(title: const Text("IoC explanation")),
       body: Center(
@@ -69,10 +67,7 @@ class _AppState extends State<App> {
           onPressed: () async {
             // depContainer.logger.log(Level.debug, "We added IoC using context in our app");
 
-            await depContainer.sharedPreferencesHelper.saveString(
-              "dart",
-              'flutter',
-            );
+            await depContainer.sharedPreferencesHelper.saveString("dart", 'flutter');
 
             depContainer.sharedPreferencesHelper.printString("dart");
           },

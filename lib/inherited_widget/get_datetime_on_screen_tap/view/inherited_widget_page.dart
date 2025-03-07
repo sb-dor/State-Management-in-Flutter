@@ -17,10 +17,7 @@ class _InheritedWidgetPageState extends State<InheritedWidgetPage> {
 
   @override
   Widget build(BuildContext context) {
-    return InheritedWidgetHelper(
-      api: InhApi(),
-      child: const _InheritedScreen(),
-    );
+    return InheritedWidgetHelper(api: InhApi(), child: const _InheritedScreen());
   }
 }
 

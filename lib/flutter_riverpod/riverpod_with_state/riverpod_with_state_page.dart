@@ -38,9 +38,7 @@ class _RiverpodWithStatePageState extends ConsumerState<RiverpodWithStatePage> {
                         controller: trivia.textEditingController,
                         maxLines: null,
                         onSubmitted: (v) {
-                          ref
-                              .read(riverpodStateHelperProvider.notifier)
-                              .saveTriviaText(trivia);
+                          ref.read(riverpodStateHelperProvider.notifier).saveTriviaText(trivia);
                         },
                       )
                       : Text("Trivia: ${trivia.text}"),
@@ -48,13 +46,9 @@ class _RiverpodWithStatePageState extends ConsumerState<RiverpodWithStatePage> {
               leading: IconButton(
                 onPressed: () {
                   if (trivia.edit) {
-                    ref
-                        .read(riverpodStateHelperProvider.notifier)
-                        .saveTriviaText(trivia);
+                    ref.read(riverpodStateHelperProvider.notifier).saveTriviaText(trivia);
                   } else {
-                    ref
-                        .read(riverpodStateHelperProvider.notifier)
-                        .showEdit(trivia);
+                    ref.read(riverpodStateHelperProvider.notifier).showEdit(trivia);
                   }
                 },
                 icon: Icon(trivia.edit ? Icons.save : Icons.edit),

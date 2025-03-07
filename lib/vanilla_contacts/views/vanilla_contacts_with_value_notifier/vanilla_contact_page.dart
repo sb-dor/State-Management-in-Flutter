@@ -28,8 +28,7 @@ class _VanillaContactPageState extends State<VanillaContactPage> {
               final contact = value[index];
               return Dismissible(
                 key: UniqueKey(),
-                onDismissed:
-                    (direction) => contactBook.remove(contact: contact),
+                onDismissed: (direction) => contactBook.remove(contact: contact),
                 child: Material(
                   elevation: 6.0,
                   child: ListTile(title: Text("${index + 1}. ${contact.name}")),
@@ -43,9 +42,7 @@ class _VanillaContactPageState extends State<VanillaContactPage> {
         onPressed: () {
           Navigator.push(
             context,
-            MaterialPageRoute(
-              builder: (context) => const VanillaNewContactView(),
-            ),
+            MaterialPageRoute(builder: (context) => const VanillaNewContactView()),
           );
         },
         child: const Icon(Icons.add),

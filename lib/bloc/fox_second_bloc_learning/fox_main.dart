@@ -29,8 +29,7 @@ void main() => runZonedGuarded(
 );
 
 class FoxSecondBlocObserver extends BlocObserver {
-  static FoxSecondBlocObserver get instance =>
-      _instance ??= FoxSecondBlocObserver._();
+  static FoxSecondBlocObserver get instance => _instance ??= FoxSecondBlocObserver._();
   static FoxSecondBlocObserver? _instance;
 
   FoxSecondBlocObserver._();

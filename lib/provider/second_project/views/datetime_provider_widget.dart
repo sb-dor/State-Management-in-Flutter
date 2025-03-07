@@ -13,11 +13,7 @@ class DatetimeProviderWidget extends StatelessWidget {
       width: MediaQuery.of(context).size.width,
       color: Colors.purple,
       child: Column(
-        children: [
-          const Text("Datetime provider widget"),
-          const Text("ID"),
-          Text(provider.id),
-        ],
+        children: [const Text("Datetime provider widget"), const Text("ID"), Text(provider.id)],
       ),
     );
   }

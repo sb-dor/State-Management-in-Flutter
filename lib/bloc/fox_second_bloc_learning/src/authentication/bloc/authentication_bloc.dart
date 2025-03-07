@@ -6,8 +6,7 @@ import 'package:state_management_course/bloc/fox_second_bloc_learning/src/authen
 import 'authentication_events.dart';
 import 'authentication_states.dart';
 
-class AuthenticationBloc
-    extends Bloc<AuthenticationBlocEvents, AuthenticationStates> {
+class AuthenticationBloc extends Bloc<AuthenticationBlocEvents, AuthenticationStates> {
   final IAuthenticationRepository _repository;
 
   // I didn't know that we can inject deps like this
@@ -19,8 +18,7 @@ class AuthenticationBloc
        super(
          user?.when(
                // is using from UserEntity.dart (from models folder)
-               authenticated:
-                   (user) => AuthenticationStates.authenticated(user),
+               authenticated: (user) => AuthenticationStates.authenticated(user),
                notAuthenticated: () => const AuthenticationStates.inProgress(),
              ) ??
              const AuthenticationStates.inProgress(), // by default
@@ -65,10 +63,7 @@ class AuthenticationBloc
     );
   }
 
-  void _login(
-    LogInAuthenticationEvent event,
-    Emitter<AuthenticationStates> emit,
-  ) async {
+  void _login(LogInAuthenticationEvent event, Emitter<AuthenticationStates> emit) async {
     try {
       if (state.isInProgress) return;
 
@@ -76,10 +71,7 @@ class AuthenticationBloc
       //
       debugPrint("checking login");
 
-      final user = await _repository.login(
-        email: event.email,
-        password: event.password,
-      );
+      final user = await _repository.login(email: event.email, password: event.password);
 
       if (user != null) {
         emit(AuthenticationStates.authenticated(user)); // new user
@@ -94,10 +86,7 @@ class AuthenticationBloc
     }
   }
 
-  void _logout(
-    LogOutAuthenticationEvent logout,
-    Emitter<AuthenticationStates> emit,
-  ) async {
+  void _logout(LogOutAuthenticationEvent logout, Emitter<AuthenticationStates> emit) async {
     try {
       emit(AuthenticationStates.inProgress(user: state.user));
 
@@ -105,11 +94,7 @@ class AuthenticationBloc
 
       await _repository.logout();
 
-      emit(
-        const AuthenticationStates.unAuthenticated(
-          user: UserEntity.notAuthenticated(),
-        ),
-      );
+      emit(const AuthenticationStates.unAuthenticated(user: UserEntity.notAuthenticated()));
       //
     } on Object {
       emit(AuthenticationStates.error(user: state.user));
@@ -119,10 +104,7 @@ class AuthenticationBloc
     }
   }
 
-  void _checkAuthEvent(
-    CheckAuthenticationEvent logout,
-    Emitter<AuthenticationStates> emit,
-  ) async {
+  void _checkAuthEvent(CheckAuthenticationEvent logout, Emitter<AuthenticationStates> emit) async {
     try {
       emit(AuthenticationStates.inProgress(user: state.user));
 
@@ -133,11 +115,7 @@ class AuthenticationBloc
       if (checkAuth != null) {
         emit(AuthenticationStates.authenticated(checkAuth));
       } else {
-        emit(
-          const AuthenticationStates.unAuthenticated(
-            user: UserEntity.notAuthenticated(),
-          ),
-        );
+        emit(const AuthenticationStates.unAuthenticated(user: UserEntity.notAuthenticated()));
       }
       //
     } on Object {

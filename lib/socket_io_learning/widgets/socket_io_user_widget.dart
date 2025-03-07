@@ -7,11 +7,7 @@ class SocketIoUserWidget extends StatefulWidget {
   final User user;
   final SocketBloc socketBloc;
 
-  const SocketIoUserWidget({
-    super.key,
-    required this.user,
-    required this.socketBloc,
-  });
+  const SocketIoUserWidget({super.key, required this.user, required this.socketBloc});
 
   @override
   State<SocketIoUserWidget> createState() => _SocketIoUserWidgetState();
@@ -51,10 +47,7 @@ class _SocketIoUserWidgetState extends State<SocketIoUserWidget> {
                   case CompletedStateOnSocketStates():
                     return Wrap(
                       spacing: 10,
-                      children:
-                          state.messages
-                              .map((element) => Text(element))
-                              .toList(),
+                      children: state.messages.map((element) => Text(element)).toList(),
                     );
                 }
               },
@@ -66,9 +59,7 @@ class _SocketIoUserWidgetState extends State<SocketIoUserWidget> {
             TextButton(
               onPressed: () {
                 if (_textEditingController.text.trim().isEmpty) return;
-                widget.socketBloc.add(
-                  SocketEvent.sendMessage(_textEditingController.text.trim()),
-                );
+                widget.socketBloc.add(SocketEvent.sendMessage(_textEditingController.text.trim()));
               },
               child: const Text("Send"),
             ),

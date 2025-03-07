@@ -47,11 +47,7 @@ class _SocketIoWidgetState extends State<_SocketIoWidgetUI> {
               Navigator.push(
                 context,
                 MaterialPageRoute(
-                  builder:
-                      (context) => SocketIoUserWidget(
-                        user: chat.user,
-                        socketBloc: socketBloc,
-                      ),
+                  builder: (context) => SocketIoUserWidget(user: chat.user, socketBloc: socketBloc),
                 ),
               );
             },
@@ -61,10 +57,7 @@ class _SocketIoWidgetState extends State<_SocketIoWidgetUI> {
                 padding: const EdgeInsets.all(8.0),
                 child: Row(
                   children: [
-                    Text(
-                      "User: ${chat.user.name}",
-                      style: const TextStyle(color: Colors.white),
-                    ),
+                    Text("User: ${chat.user.name}", style: const TextStyle(color: Colors.white)),
                   ],
                 ),
               ),

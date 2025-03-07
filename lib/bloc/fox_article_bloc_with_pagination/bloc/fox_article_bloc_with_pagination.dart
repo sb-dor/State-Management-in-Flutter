@@ -18,15 +18,13 @@ sealed class TweetsEvent with _$TweetsEvent {
 }
 
 mixin _ProcessingStateEmitter on TweetsEvent {
-  TweetsState processing({
-    required final TweetsState state,
-    final String? message,
-  }) => TweetsState.processing(
-    tweets: state.tweets,
-    cursor: state.cursor,
-    endOfList: state.endOfList,
-    message: message ?? 'Processing',
-  );
+  TweetsState processing({required final TweetsState state, final String? message}) =>
+      TweetsState.processing(
+        tweets: state.tweets,
+        cursor: state.cursor,
+        endOfList: state.endOfList,
+        message: message ?? 'Processing',
+      );
 }
 
 mixin _SuccessfulStateEmitter on TweetsEvent {
@@ -45,20 +43,16 @@ mixin _SuccessfulStateEmitter on TweetsEvent {
 }
 
 mixin _IdleStateEmitter on TweetsEvent {
-  TweetsState idle({required final TweetsState state, final String? message}) =>
-      TweetsState.idle(
-        tweets: state.tweets,
-        cursor: state.cursor,
-        endOfList: state.endOfList,
-        message: message ?? 'Idle',
-      );
+  TweetsState idle({required final TweetsState state, final String? message}) => TweetsState.idle(
+    tweets: state.tweets,
+    cursor: state.cursor,
+    endOfList: state.endOfList,
+    message: message ?? 'Idle',
+  );
 }
 
 mixin _ErrorStateEmitter on TweetsEvent {
-  TweetsState error({
-    required final TweetsState state,
-    final String? message,
-  }) => TweetsState.error(
+  TweetsState error({required final TweetsState state, final String? message}) => TweetsState.error(
     tweets: state.tweets,
     cursor: state.cursor,
     endOfList: state.endOfList,
@@ -108,22 +102,17 @@ sealed class TweetsState with _$TweetsState {
 
   bool get hasError => maybeMap(orElse: () => false, error: (_) => true);
 
-  bool get isProcessing =>
-      maybeMap(orElse: () => false, processing: (_) => true);
+  bool get isProcessing => maybeMap(orElse: () => false, processing: (_) => true);
 
   bool get hasMore => !endOfList;
 }
 
 class TweetsBloc extends Bloc<TweetsEvent, TweetsState> {
-  TweetsBloc({
-    required final IFoxArticleBlocRepository repository,
-    final TweetsState? initialState,
-  }) : _articleBlocRepository = repository,
-       super(initialState ?? TweetsState.initialState) {
+  TweetsBloc({required final IFoxArticleBlocRepository repository, final TweetsState? initialState})
+    : _articleBlocRepository = repository,
+      super(initialState ?? TweetsState.initialState) {
     //
-    on<TweetsEvent>(
-      (event, emit) => event.map(paginate: (event) => _paginate(event, emit)),
-    );
+    on<TweetsEvent>((event, emit) => event.map(paginate: (event) => _paginate(event, emit)));
   }
 
   final IFoxArticleBlocRepository _articleBlocRepository;

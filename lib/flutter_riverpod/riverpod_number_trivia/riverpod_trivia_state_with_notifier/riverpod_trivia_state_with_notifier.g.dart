@@ -6,30 +6,25 @@ part of 'riverpod_trivia_state_with_notifier.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$riverpodTriviaStateWithNotifierHash() =>
-    r'f1d5586c49217ef71d3516cdec30be8bf47e8ad2';
+String _$riverpodTriviaStateWithNotifierHash() => r'f1d5586c49217ef71d3516cdec30be8bf47e8ad2';
 
 /// See also [RiverpodTriviaStateWithNotifier].
 @ProviderFor(RiverpodTriviaStateWithNotifier)
-final riverpodTriviaStateWithNotifierProvider =
-    AutoDisposeAsyncNotifierProvider<
-      RiverpodTriviaStateWithNotifier,
-      List<RiverpodNumberTriviaModel>
-    >.internal(
-      RiverpodTriviaStateWithNotifier.new,
-      name: r'riverpodTriviaStateWithNotifierProvider',
-      debugGetCreateSourceHash:
-          const bool.fromEnvironment('dart.vm.product')
-              ? null
-              : _$riverpodTriviaStateWithNotifierHash,
-      dependencies: null,
-      allTransitiveDependencies: null,
-    );
+final riverpodTriviaStateWithNotifierProvider = AutoDisposeAsyncNotifierProvider<
+  RiverpodTriviaStateWithNotifier,
+  List<RiverpodNumberTriviaModel>
+>.internal(
+  RiverpodTriviaStateWithNotifier.new,
+  name: r'riverpodTriviaStateWithNotifierProvider',
+  debugGetCreateSourceHash:
+      const bool.fromEnvironment('dart.vm.product') ? null : _$riverpodTriviaStateWithNotifierHash,
+  dependencies: null,
+  allTransitiveDependencies: null,
+);
 
 typedef _$RiverpodTriviaStateWithNotifier =
     AutoDisposeAsyncNotifier<List<RiverpodNumberTriviaModel>>;
-String _$otherRiverpodForTheCombiningProvidersHash() =>
-    r'b022cf83dc4c7b3c206340fe99f5b15a9856a0a1';
+String _$otherRiverpodForTheCombiningProvidersHash() => r'b022cf83dc4c7b3c206340fe99f5b15a9856a0a1';
 
 /// Copied from Dart SDK
 class _SystemHash {
@@ -61,12 +56,10 @@ abstract class _$OtherRiverpodForTheCombiningProviders
 
 /// See also [OtherRiverpodForTheCombiningProviders].
 @ProviderFor(OtherRiverpodForTheCombiningProviders)
-const otherRiverpodForTheCombiningProvidersProvider =
-    OtherRiverpodForTheCombiningProvidersFamily();
+const otherRiverpodForTheCombiningProvidersProvider = OtherRiverpodForTheCombiningProvidersFamily();
 
 /// See also [OtherRiverpodForTheCombiningProviders].
-class OtherRiverpodForTheCombiningProvidersFamily
-    extends Family<AsyncValue<int>> {
+class OtherRiverpodForTheCombiningProvidersFamily extends Family<AsyncValue<int>> {
   /// See also [OtherRiverpodForTheCombiningProviders].
   const OtherRiverpodForTheCombiningProvidersFamily();
 
@@ -90,8 +83,7 @@ class OtherRiverpodForTheCombiningProvidersFamily
   static const Iterable<ProviderOrFamily>? _allTransitiveDependencies = null;
 
   @override
-  Iterable<ProviderOrFamily>? get allTransitiveDependencies =>
-      _allTransitiveDependencies;
+  Iterable<ProviderOrFamily>? get allTransitiveDependencies => _allTransitiveDependencies;
 
   @override
   String? get name => r'otherRiverpodForTheCombiningProvidersProvider';
@@ -99,11 +91,7 @@ class OtherRiverpodForTheCombiningProvidersFamily
 
 /// See also [OtherRiverpodForTheCombiningProviders].
 class OtherRiverpodForTheCombiningProvidersProvider
-    extends
-        AutoDisposeAsyncNotifierProviderImpl<
-          OtherRiverpodForTheCombiningProviders,
-          int
-        > {
+    extends AutoDisposeAsyncNotifierProviderImpl<OtherRiverpodForTheCombiningProviders, int> {
   /// See also [OtherRiverpodForTheCombiningProviders].
   OtherRiverpodForTheCombiningProvidersProvider(int duration)
     : this._internal(
@@ -116,8 +104,7 @@ class OtherRiverpodForTheCombiningProvidersProvider
                 : _$otherRiverpodForTheCombiningProvidersHash,
         dependencies: OtherRiverpodForTheCombiningProvidersFamily._dependencies,
         allTransitiveDependencies:
-            OtherRiverpodForTheCombiningProvidersFamily
-                ._allTransitiveDependencies,
+            OtherRiverpodForTheCombiningProvidersFamily._allTransitiveDependencies,
         duration: duration,
       );
 
@@ -134,16 +121,12 @@ class OtherRiverpodForTheCombiningProvidersProvider
   final int duration;
 
   @override
-  FutureOr<int> runNotifierBuild(
-    covariant OtherRiverpodForTheCombiningProviders notifier,
-  ) {
+  FutureOr<int> runNotifierBuild(covariant OtherRiverpodForTheCombiningProviders notifier) {
     return notifier.build(duration);
   }
 
   @override
-  Override overrideWith(
-    OtherRiverpodForTheCombiningProviders Function() create,
-  ) {
+  Override overrideWith(OtherRiverpodForTheCombiningProviders Function() create) {
     return ProviderOverride(
       origin: this,
       override: OtherRiverpodForTheCombiningProvidersProvider._internal(
@@ -159,18 +142,14 @@ class OtherRiverpodForTheCombiningProvidersProvider
   }
 
   @override
-  AutoDisposeAsyncNotifierProviderElement<
-    OtherRiverpodForTheCombiningProviders,
-    int
-  >
+  AutoDisposeAsyncNotifierProviderElement<OtherRiverpodForTheCombiningProviders, int>
   createElement() {
     return _OtherRiverpodForTheCombiningProvidersProviderElement(this);
   }
 
   @override
   bool operator ==(Object other) {
-    return other is OtherRiverpodForTheCombiningProvidersProvider &&
-        other.duration == duration;
+    return other is OtherRiverpodForTheCombiningProvidersProvider && other.duration == duration;
   }
 
   @override
@@ -184,24 +163,18 @@ class OtherRiverpodForTheCombiningProvidersProvider
 
 @Deprecated('Will be removed in 3.0. Use Ref instead')
 // ignore: unused_element
-mixin OtherRiverpodForTheCombiningProvidersRef
-    on AutoDisposeAsyncNotifierProviderRef<int> {
+mixin OtherRiverpodForTheCombiningProvidersRef on AutoDisposeAsyncNotifierProviderRef<int> {
   /// The parameter `duration` of this provider.
   int get duration;
 }
 
 class _OtherRiverpodForTheCombiningProvidersProviderElement
-    extends
-        AutoDisposeAsyncNotifierProviderElement<
-          OtherRiverpodForTheCombiningProviders,
-          int
-        >
+    extends AutoDisposeAsyncNotifierProviderElement<OtherRiverpodForTheCombiningProviders, int>
     with OtherRiverpodForTheCombiningProvidersRef {
   _OtherRiverpodForTheCombiningProvidersProviderElement(super.provider);
 
   @override
-  int get duration =>
-      (origin as OtherRiverpodForTheCombiningProvidersProvider).duration;
+  int get duration => (origin as OtherRiverpodForTheCombiningProvidersProvider).duration;
 }
 
 // ignore_for_file: type=lint

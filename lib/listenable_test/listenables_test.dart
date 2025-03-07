@@ -84,24 +84,14 @@ class _ListenableTestState extends State<ListenableTest> {
           ListenableBuilder(
             listenable: _valueNotifier,
             builder: (context, child) {
-              return Column(
-                children: [
-                  const _TestRandom(),
-                  Text(_valueNotifier.value.toString()),
-                ],
-              );
+              return Column(children: [const _TestRandom(), Text(_valueNotifier.value.toString())]);
             },
           ),
           // listens all Listenable ->  ValueNotifier, Animation, ChangeNotifier etc
           ListenableBuilder(
             listenable: _changeNotifier,
             builder: (context, child) {
-              return Column(
-                children: [
-                  _TestRandom(),
-                  Text(_changeNotifier.counter.toString()),
-                ],
-              );
+              return Column(children: [_TestRandom(), Text(_changeNotifier.counter.toString())]);
             },
           ),
         ],

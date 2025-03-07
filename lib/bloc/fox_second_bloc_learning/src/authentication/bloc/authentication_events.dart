@@ -4,10 +4,8 @@ part 'authentication_events.freezed.dart';
 
 @freezed
 class AuthenticationBlocEvents with _$AuthenticationBlocEvents {
-  const factory AuthenticationBlocEvents.logIn({
-    required String email,
-    required String password,
-  }) = LogInAuthenticationEvent;
+  const factory AuthenticationBlocEvents.logIn({required String email, required String password}) =
+      LogInAuthenticationEvent;
 
   const factory AuthenticationBlocEvents.logOut() = LogOutAuthenticationEvent;
 

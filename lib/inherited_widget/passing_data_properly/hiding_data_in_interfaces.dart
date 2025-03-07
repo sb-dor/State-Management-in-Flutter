@@ -17,19 +17,10 @@ class _HidingDataInInterfaceInhWidget extends InheritedWidget {
 
   final HidingDataInInterfaces hidingDataInInterfaces;
 
-  static _HidingDataInInterfaceInhWidget of(
-    BuildContext context, {
-    bool listen = false,
-  }) =>
+  static _HidingDataInInterfaceInhWidget of(BuildContext context, {bool listen = false}) =>
       listen
-          ? context
-              .dependOnInheritedWidgetOfExactType<
-                _HidingDataInInterfaceInhWidget
-              >()!
-          : context
-              .getInheritedWidgetOfExactType<
-                _HidingDataInInterfaceInhWidget
-              >()!;
+          ? context.dependOnInheritedWidgetOfExactType<_HidingDataInInterfaceInhWidget>()!
+          : context.getInheritedWidgetOfExactType<_HidingDataInInterfaceInhWidget>()!;
 
   @override
   bool updateShouldNotify(_HidingDataInInterfaceInhWidget old) {
@@ -41,14 +32,10 @@ class HidingDataInterfaceWidget extends StatefulWidget {
   const HidingDataInterfaceWidget({super.key});
 
   static HidingDataInInterfaces hidingDataInInterfaces(BuildContext context) =>
-      _HidingDataInInterfaceInhWidget.of(
-        context,
-        listen: false,
-      ).hidingDataInInterfaces;
+      _HidingDataInInterfaceInhWidget.of(context, listen: false).hidingDataInInterfaces;
 
   @override
-  State<HidingDataInterfaceWidget> createState() =>
-      _HidingDataInterfaceWidgetState();
+  State<HidingDataInterfaceWidget> createState() => _HidingDataInterfaceWidgetState();
 }
 
 class _HidingDataInterfaceWidgetState extends State<HidingDataInterfaceWidget>
@@ -71,10 +58,7 @@ class _HidingDataInterfaceWidgetState extends State<HidingDataInterfaceWidget>
 
   @override
   Widget build(BuildContext context) {
-    return _HidingDataInInterfaceInhWidget(
-      hidingDataInInterfaces: this,
-      child: _TextFields(),
-    );
+    return _HidingDataInInterfaceInhWidget(hidingDataInInterfaces: this, child: _TextFields());
   }
 }
 
@@ -83,9 +67,7 @@ class _TextFields extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final hiddenInterface = HidingDataInterfaceWidget.hidingDataInInterfaces(
-      context,
-    );
+    final hiddenInterface = HidingDataInterfaceWidget.hidingDataInInterfaces(context);
     return Scaffold(
       appBar: AppBar(title: Text("Test with interface")),
       body: Column(

@@ -22,13 +22,9 @@ mixin _$MobxWithStreamsData on _MobxWithStreamsStore, Store {
 
   @override
   set integerChangerStream(ObservableStream<int> value) {
-    _$integerChangerStreamAtom.reportWrite(
-      value,
-      super.integerChangerStream,
-      () {
-        super.integerChangerStream = value;
-      },
-    );
+    _$integerChangerStreamAtom.reportWrite(value, super.integerChangerStream, () {
+      super.integerChangerStream = value;
+    });
   }
 
   late final _$stopCountAsyncAction = AsyncAction(

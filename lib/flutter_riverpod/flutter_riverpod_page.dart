@@ -28,10 +28,7 @@ class FlutterRiverPodPage extends ConsumerWidget {
                 duration: const Duration(seconds: 1),
                 width: 100,
                 height: 50,
-                color:
-                    counterProviderWatch.changeColor
-                        ? Colors.orange
-                        : Colors.green,
+                color: counterProviderWatch.changeColor ? Colors.orange : Colors.green,
                 child: const Center(child: Text("Hello")),
               ),
             ),

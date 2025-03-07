@@ -17,9 +17,7 @@ class _AuthenticationWidgetState extends State<AuthenticationWidget> {
   void initState() {
     super.initState();
     // you can either add event from freezed like this
-    context.read<AuthenticationBloc>().add(
-      const AuthenticationBlocEvents.checkAuth(),
-    );
+    context.read<AuthenticationBloc>().add(const AuthenticationBlocEvents.checkAuth());
   }
 
   @override

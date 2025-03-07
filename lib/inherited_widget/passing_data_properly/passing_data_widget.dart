@@ -8,10 +8,7 @@ class _PassingDataInhWidget extends InheritedWidget {
     required super.child,
   });
 
-  static _PassingDataInhWidget of(
-    BuildContext context, {
-    bool listen = false,
-  }) =>
+  static _PassingDataInhWidget of(BuildContext context, {bool listen = false}) =>
       listen
           ? context.dependOnInheritedWidgetOfExactType<_PassingDataInhWidget>()!
           : context.getInheritedWidgetOfExactType<_PassingDataInhWidget>()!;
@@ -89,9 +86,7 @@ class _TestWidget extends StatelessWidget {
           onPressed: () {
             passingDataInhWidget.changeModel();
           },
-          child: Text(
-            "Value of model: ${passingDataInhWidget.valueNumber.counter}",
-          ),
+          child: Text("Value of model: ${passingDataInhWidget.valueNumber.counter}"),
         ),
       ],
     );

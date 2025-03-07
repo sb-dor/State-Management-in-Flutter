@@ -8,23 +8,16 @@ class MultiBlocProviderScope extends StatelessWidget {
   final Widget child;
   final CompositionResult compositionResult;
 
-  const MultiBlocProviderScope({
-    super.key,
-    required this.child,
-    required this.compositionResult,
-  });
+  const MultiBlocProviderScope({super.key, required this.child, required this.compositionResult});
 
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
         BlocProvider<AuthenticationBloc>(
-          create:
-              (_) => compositionResult.dependencyContainer.authenticationBloc,
+          create: (_) => compositionResult.dependencyContainer.authenticationBloc,
         ),
-        BlocProvider<PostBloc>(
-          create: (_) => compositionResult.dependencyContainer.postBloc,
-        ),
+        BlocProvider<PostBloc>(create: (_) => compositionResult.dependencyContainer.postBloc),
       ],
       child: child,
     );

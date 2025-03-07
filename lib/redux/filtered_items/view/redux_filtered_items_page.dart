@@ -14,9 +14,7 @@ class ReduxFilteredItemsPage extends StatefulWidget {
 }
 
 class _ReduxFilteredItemsPageState extends State<ReduxFilteredItemsPage> {
-  final TextEditingController _textEditingController = TextEditingController(
-    text: '',
-  );
+  final TextEditingController _textEditingController = TextEditingController(text: '');
 
   @override
   void dispose() {
@@ -34,25 +32,19 @@ class _ReduxFilteredItemsPageState extends State<ReduxFilteredItemsPage> {
             children: [
               TextButton(
                 onPressed: () {
-                  stateSome.dispatch(
-                    const ChangeFilterTypeAction(ItemFilter.all),
-                  );
+                  stateSome.dispatch(const ChangeFilterTypeAction(ItemFilter.all));
                 },
                 child: const Text("All"),
               ),
               TextButton(
                 onPressed: () {
-                  stateSome.dispatch(
-                    const ChangeFilterTypeAction(ItemFilter.shortTexts),
-                  );
+                  stateSome.dispatch(const ChangeFilterTypeAction(ItemFilter.shortTexts));
                 },
                 child: const Text("Short Items"),
               ),
               TextButton(
                 onPressed: () {
-                  stateSome.dispatch(
-                    const ChangeFilterTypeAction(ItemFilter.longTexts),
-                  );
+                  stateSome.dispatch(const ChangeFilterTypeAction(ItemFilter.longTexts));
                 },
                 child: const Text("Long Items"),
               ),
@@ -86,8 +78,7 @@ class _ReduxFilteredItemsPageState extends State<ReduxFilteredItemsPage> {
             builder: (context, data) {
               return Expanded(
                 child: ListView.separated(
-                  separatorBuilder:
-                      (context, index) => const SizedBox(height: 10),
+                  separatorBuilder: (context, index) => const SizedBox(height: 10),
                   padding: const EdgeInsets.symmetric(horizontal: 10),
                   itemCount: data.length,
                   itemBuilder: (context, index) {

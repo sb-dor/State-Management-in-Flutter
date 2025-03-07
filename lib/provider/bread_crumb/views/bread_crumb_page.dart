@@ -42,9 +42,7 @@ class _BreadCrumbPageState extends State<BreadCrumbPage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const BreadCrumbCreateScreen(),
-                  ),
+                  MaterialPageRoute(builder: (context) => const BreadCrumbCreateScreen()),
                 );
               },
               child: const Text("Add new bread crumb"),

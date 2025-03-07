@@ -12,10 +12,7 @@ part 'riverpod_function_state.g.dart';
 @riverpod
 Future<RiverpodNumberTriviaModel?> trivia(TriviaRef ref) async {
   final headers = {'Content-Type': 'application/json'};
-  final response = await http.get(
-    Uri.parse("http://numbersapi.com/random?json"),
-    headers: headers,
-  );
+  final response = await http.get(Uri.parse("http://numbersapi.com/random?json"), headers: headers);
   return RiverpodNumberTriviaModel.fromJson(jsonDecode(response.body));
 }
 

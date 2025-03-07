@@ -37,13 +37,10 @@ abstract class _MobxGoogleSuggestionStore with Store {
         final myTransformer = Xml2Json();
         myTransformer.parse(response.body);
         final json = myTransformer.toGData();
-        List suggestionsData =
-            jsonDecode(json)['toplevel']['CompleteSuggestion'] ?? [];
+        List suggestionsData = jsonDecode(json)['toplevel']['CompleteSuggestion'] ?? [];
         for (var suggestion in suggestionsData) {
           suggestions.add(
-            MobxGoogleSuggestionModel(
-              name: suggestion['suggestion']['data'].toString(),
-            ),
+            MobxGoogleSuggestionModel(name: suggestion['suggestion']['data'].toString()),
           );
         }
       }

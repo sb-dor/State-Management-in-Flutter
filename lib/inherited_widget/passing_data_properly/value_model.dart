@@ -6,9 +6,7 @@ final class ValueModel {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is ValueModel &&
-          runtimeType == other.runtimeType &&
-          counter == other.counter);
+      (other is ValueModel && runtimeType == other.runtimeType && counter == other.counter);
 
   @override
   int get hashCode => counter.hashCode;

@@ -30,10 +30,10 @@ class DependencyFactory extends Factory<DependencyContainer> {
   DependencyContainer create() {
     // you can create another class that creates
     // authentication bloc with all necessary dependencies
-    final IAuthenticationDatasource authenticationDatasource =
-        AuthenticationDatasourceImpl();
-    final IAuthenticationRepository authenticationRepository =
-        AuthenticationRepositoryImpl(authenticationDatasource);
+    final IAuthenticationDatasource authenticationDatasource = AuthenticationDatasourceImpl();
+    final IAuthenticationRepository authenticationRepository = AuthenticationRepositoryImpl(
+      authenticationDatasource,
+    );
     final AuthenticationBloc authenticationBloc = AuthenticationBloc(
       repository: authenticationRepository,
     );
@@ -41,19 +41,11 @@ class DependencyFactory extends Factory<DependencyContainer> {
     //
     final IPostDatasource postDatasource = PostDatasourceImpl();
     final IPostRepository postRepository = PostRepositoryImpl(postDatasource);
-    const PostState initialState = PostState.initial(
-      PostStateModel(posts: <Post>[]),
-    );
+    const PostState initialState = PostState.initial(PostStateModel(posts: <Post>[]));
 
-    final postBloc = PostBloc(
-      postRepository: postRepository,
-      initialState: initialState,
-    );
+    final postBloc = PostBloc(postRepository: postRepository, initialState: initialState);
 
-    return DependencyContainer(
-      authenticationBloc: authenticationBloc,
-      postBloc: postBloc,
-    );
+    return DependencyContainer(authenticationBloc: authenticationBloc, postBloc: postBloc);
   }
 }
 

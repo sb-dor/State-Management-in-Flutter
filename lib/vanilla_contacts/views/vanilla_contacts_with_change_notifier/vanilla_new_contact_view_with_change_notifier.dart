@@ -13,8 +13,7 @@ class VanillaNewContactViewWithChangeNotifier extends StatefulWidget {
 class _VanillaNewContactViewWithChangeNotifierState
     extends State<VanillaNewContactViewWithChangeNotifier> {
   late TextEditingController _controller;
-  final ContactBookWithChangeNotifier _contactBook =
-      ContactBookWithChangeNotifier.instance;
+  final ContactBookWithChangeNotifier _contactBook = ContactBookWithChangeNotifier.instance;
 
   @override
   void initState() {
@@ -38,9 +37,7 @@ class _VanillaNewContactViewWithChangeNotifierState
           children: [
             TextField(
               controller: _controller,
-              decoration: const InputDecoration(
-                hintText: "Enter a new contact here...",
-              ),
+              decoration: const InputDecoration(hintText: "Enter a new contact here..."),
             ),
             TextButton(
               onPressed: () {

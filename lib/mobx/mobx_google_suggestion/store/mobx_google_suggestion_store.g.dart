@@ -52,9 +52,7 @@ mixin _$MobxGoogleSuggestionStoreData on _MobxGoogleSuggestionStore, Store {
 
   @override
   Future<void> loadDataFromGoogle(String data) {
-    return _$loadDataFromGoogleAsyncAction.run(
-      () => super.loadDataFromGoogle(data),
-    );
+    return _$loadDataFromGoogleAsyncAction.run(() => super.loadDataFromGoogle(data));
   }
 
   @override

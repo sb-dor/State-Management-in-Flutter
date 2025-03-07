@@ -34,10 +34,7 @@ mixin _$TodoMobxStoreObservable on _TodoMobxStore, Store {
     });
   }
 
-  late final _$showTypeOfTodosAtom = Atom(
-    name: '_TodoMobxStore.showTypeOfTodos',
-    context: context,
-  );
+  late final _$showTypeOfTodosAtom = Atom(name: '_TodoMobxStore.showTypeOfTodos', context: context);
 
   @override
   ShowTypeOfTodos get showTypeOfTodos {

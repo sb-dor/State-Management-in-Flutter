@@ -14,9 +14,6 @@ class RiverpodNumberTriviaModel {
       textEditingController = TextEditingController(text: text);
 
   factory RiverpodNumberTriviaModel.fromJson(Map<String, dynamic> json) {
-    return RiverpodNumberTriviaModel(
-      json['text'],
-      int.tryParse("${json['number']}"),
-    );
+    return RiverpodNumberTriviaModel(json['text'], int.tryParse("${json['number']}"));
   }
 }

@@ -28,13 +28,11 @@ sealed class AuthenticationStates with _$AuthenticationStates {
   // using "concurrent" transformer, it's better to use only one "on" handler with "sequential"
   // transformer, because every event inside "on" handler will be executed only after one of the finishes
   //
-  bool get isInProgress =>
-      maybeMap(orElse: () => false, inProgress: (_) => true);
+  bool get isInProgress => maybeMap(orElse: () => false, inProgress: (_) => true);
 
   const AuthenticationStates._();
 
-  const factory AuthenticationStates.authenticated(UserEntity user) =
-      AuthenticatedState;
+  const factory AuthenticationStates.authenticated(UserEntity user) = AuthenticatedState;
 
   const factory AuthenticationStates.inProgress({
     @Default(UserEntity.notAuthenticated()) UserEntity user,
