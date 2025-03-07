@@ -17,7 +17,9 @@ final class AnyClass {
 
   @override
   String toString() {
-    return 'AnyClass{' ' number: $number,' '}';
+    return 'AnyClass{'
+        ' number: $number,'
+        '}';
   }
 
   AnyClass copyWith({int? number}) {

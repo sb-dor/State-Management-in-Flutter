@@ -13,6 +13,7 @@ final class OwnValueNotifierListener<T>
       return;
     }
     _value = newValue;
+    notifyListeners();
   }
 
   @override

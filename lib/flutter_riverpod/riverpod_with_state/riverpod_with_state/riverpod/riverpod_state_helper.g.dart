@@ -12,15 +12,12 @@ String _$riverpodStateHelperHash() =>
 /// See also [RiverpodStateHelper].
 @ProviderFor(RiverpodStateHelper)
 final riverpodStateHelperProvider = AutoDisposeNotifierProvider<
-  RiverpodStateHelper,
-  RiverpodWithStateModel
->.internal(
+    RiverpodStateHelper, RiverpodWithStateModel>.internal(
   RiverpodStateHelper.new,
   name: r'riverpodStateHelperProvider',
-  debugGetCreateSourceHash:
-      const bool.fromEnvironment('dart.vm.product')
-          ? null
-          : _$riverpodStateHelperHash,
+  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
+      ? null
+      : _$riverpodStateHelperHash,
   dependencies: null,
   allTransitiveDependencies: null,
 );
