@@ -17,8 +17,6 @@ class FilteredItemsState {
         return items.where((e) => e.length >= 10);
       case ItemFilter.shortTexts:
         return items.where((e) => e.length <= 3);
-      default:
-        return items;
-    }
+      }
   }
 }
