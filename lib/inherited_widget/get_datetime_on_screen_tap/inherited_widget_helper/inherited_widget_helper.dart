@@ -27,9 +27,7 @@ class InheritedWidgetHelper extends InheritedWidget {
 
   // for read, not listening
   static InheritedWidgetHelper read(BuildContext context) {
-    final element =
-        context
-            .getElementForInheritedWidgetOfExactType<InheritedWidgetHelper>();
+    final element = context.getElementForInheritedWidgetOfExactType<InheritedWidgetHelper>();
     return element?.widget as InheritedWidgetHelper;
   }
 }

@@ -4,23 +4,15 @@ class _InheritedScope extends InheritedWidget {
   final int counter;
   final _InheritedScopesLearning1State state;
 
-  const _InheritedScope({
-    required super.child,
-    required this.counter,
-    required this.state,
-  });
+  const _InheritedScope({required super.child, required this.counter, required this.state});
 
   static _InheritedScope? of(BuildContext context, {bool listen = true}) {
     if (listen) {
-      final _InheritedScope? result =
-          context.dependOnInheritedWidgetOfExactType<_InheritedScope>();
+      final _InheritedScope? result = context.dependOnInheritedWidgetOfExactType<_InheritedScope>();
       assert(result != null, 'No _InheritedScope found in context');
       return result;
     } else {
-      final result =
-          context
-              .getElementForInheritedWidgetOfExactType<_InheritedScope>()
-              ?.widget;
+      final result = context.getElementForInheritedWidgetOfExactType<_InheritedScope>()?.widget;
       return result is _InheritedScope ? result : null;
     }
   }
@@ -35,8 +27,7 @@ class InheritedScopesLearning1 extends StatefulWidget {
   const InheritedScopesLearning1({super.key});
 
   @override
-  State<InheritedScopesLearning1> createState() =>
-      _InheritedScopesLearning1State();
+  State<InheritedScopesLearning1> createState() => _InheritedScopesLearning1State();
 }
 
 class _InheritedScopesLearning1State extends State<InheritedScopesLearning1> {
@@ -56,11 +47,7 @@ class _InheritedScopesLearning1State extends State<InheritedScopesLearning1> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(title: const Text("Inherited learning 1")),
-      body: _InheritedScope(
-        counter: counter,
-        state: this,
-        child: const _BodyWidget(),
-      ),
+      body: _InheritedScope(counter: counter, state: this, child: const _BodyWidget()),
     );
   }
 }
@@ -70,9 +57,7 @@ class _BodyWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return const Column(
-      children: [_IncrementButton(), _InformationOfData(), _DecrementButton()],
-    );
+    return const Column(children: [_IncrementButton(), _InformationOfData(), _DecrementButton()]);
   }
 }
 

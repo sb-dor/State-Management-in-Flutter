@@ -4,9 +4,6 @@ import 'package:state_management_course/inherited_widget/todo_with_inherited_not
 class TdInhNotService {
   Future<List<TdInhNotModel>> getTodos() async {
     final faker = Faker();
-    return List.generate(
-      30,
-      (index) => TdInhNotModel(todo: faker.lorem.sentence()),
-    );
+    return List.generate(30, (index) => TdInhNotModel(todo: faker.lorem.sentence()));
   }
 }

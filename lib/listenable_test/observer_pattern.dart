@@ -107,9 +107,7 @@ void main() async {
   final SubscribersNotifier subscribersNotifier = SubscribersNotifier();
   final NotifiableClass notifiableClass = NotifiableClass();
 
-  subscribersNotifier.addSubscriber(
-    notifiableClass.justAFunctionThatCallsPrint,
-  );
+  subscribersNotifier.addSubscriber(notifiableClass.justAFunctionThatCallsPrint);
 
   subscribersNotifier.notifySubscribers();
 
@@ -118,9 +116,7 @@ void main() async {
   await Future.delayed(const Duration(seconds: 3));
   subscribersNotifier.notifySubscribers();
   await Future.delayed(const Duration(seconds: 3));
-  subscribersNotifier.removeSubscriber(
-    notifiableClass.justAFunctionThatCallsPrint,
-  );
+  subscribersNotifier.removeSubscriber(notifiableClass.justAFunctionThatCallsPrint);
   print("removed subscriber");
   subscribersNotifier.notifySubscribers();
 

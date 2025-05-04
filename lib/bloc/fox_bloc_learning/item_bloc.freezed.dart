@@ -70,8 +70,7 @@ abstract class $ItemEventCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ItemEventCopyWithImpl<$Res, $Val extends ItemEvent>
-    implements $ItemEventCopyWith<$Res> {
+class _$ItemEventCopyWithImpl<$Res, $Val extends ItemEvent> implements $ItemEventCopyWith<$Res> {
   _$ItemEventCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field
@@ -386,10 +385,7 @@ class _$UpdateItemEventImpl implements _UpdateItemEvent {
   @override
   @pragma('vm:prefer-inline')
   _$$UpdateItemEventImplCopyWith<_$UpdateItemEventImpl> get copyWith =>
-      __$$UpdateItemEventImplCopyWithImpl<_$UpdateItemEventImpl>(
-        this,
-        _$identity,
-      );
+      __$$UpdateItemEventImplCopyWithImpl<_$UpdateItemEventImpl>(this, _$identity);
 
   @override
   @optionalTypeArgs
@@ -646,8 +642,7 @@ abstract class $ItemStateCopyWith<$Res> {
 }
 
 /// @nodoc
-class _$ItemStateCopyWithImpl<$Res, $Val extends ItemState>
-    implements $ItemStateCopyWith<$Res> {
+class _$ItemStateCopyWithImpl<$Res, $Val extends ItemState> implements $ItemStateCopyWith<$Res> {
   _$ItemStateCopyWithImpl(this._value, this._then);
 
   // ignore: unused_field

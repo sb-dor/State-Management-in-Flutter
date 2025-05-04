@@ -43,8 +43,7 @@ class _VanillaContactPageWithChangeNotifierState
               final contact = contactBook.contacts[index];
               return Dismissible(
                 key: UniqueKey(),
-                onDismissed:
-                    (direction) => contactBook.remove(contact: contact),
+                onDismissed: (direction) => contactBook.remove(contact: contact),
                 child: Material(
                   elevation: 6.0,
                   child: ListTile(title: Text("${index + 1}. ${contact.name}")),
@@ -59,8 +58,7 @@ class _VanillaContactPageWithChangeNotifierState
           Navigator.push(
             context,
             MaterialPageRoute(
-              builder:
-                  (context) => const VanillaNewContactViewWithChangeNotifier(),
+              builder: (context) => const VanillaNewContactViewWithChangeNotifier(),
             ),
           );
         },

@@ -36,9 +36,7 @@ class _VanillaNewContactViewState extends State<VanillaNewContactView> {
           children: [
             TextField(
               controller: _controller,
-              decoration: const InputDecoration(
-                hintText: "Enter a new contact here...",
-              ),
+              decoration: const InputDecoration(hintText: "Enter a new contact here..."),
             ),
             TextButton(
               onPressed: () {

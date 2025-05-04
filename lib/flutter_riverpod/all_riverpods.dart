@@ -6,7 +6,6 @@ import 'counter_riverpod/counter_riverpod.dart';
 //
 //
 //create all riverPods in another file and use them.
-final counterRiverPod =
-    StateNotifierProvider<CounterRiverPod, CounterStateModel>(
-      (ref) => CounterRiverPod(),
-    );
+final counterRiverPod = StateNotifierProvider<CounterRiverPod, CounterStateModel>(
+  (ref) => CounterRiverPod(),
+);

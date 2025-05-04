@@ -15,14 +15,10 @@ class BreadCrumbWidget extends StatelessWidget {
       children:
           breadCrumbs.map((breadCrumb) {
             return GestureDetector(
-              onTap:
-                  () =>
-                      context.read<BreadCrumbProvider>().removeItem(breadCrumb),
+              onTap: () => context.read<BreadCrumbProvider>().removeItem(breadCrumb),
               child: Text(
                 breadCrumb.title,
-                style: TextStyle(
-                  color: breadCrumb.isActive ? Colors.blue : Colors.black,
-                ),
+                style: TextStyle(color: breadCrumb.isActive ? Colors.blue : Colors.black),
               ),
             );
           }).toList(),

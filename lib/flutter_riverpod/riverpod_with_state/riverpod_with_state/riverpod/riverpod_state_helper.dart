@@ -29,9 +29,7 @@ class RiverpodStateHelper extends _$RiverpodStateHelper {
 
   void showEdit(RiverpodNumberTriviaModel model) {
     final stateClones = state.clone();
-    final findModel = stateClones.numberTrivias?.indexWhere(
-      (e) => e.id == model.id,
-    );
+    final findModel = stateClones.numberTrivias?.indexWhere((e) => e.id == model.id);
     if (findModel != -1 && findModel != null) {
       stateClones.numberTrivias?[findModel].edit = true;
     }
@@ -40,12 +38,9 @@ class RiverpodStateHelper extends _$RiverpodStateHelper {
 
   void saveTriviaText(RiverpodNumberTriviaModel model) {
     final stateClones = state.clone();
-    final findModel = stateClones.numberTrivias?.indexWhere(
-      (e) => e.id == model.id,
-    );
+    final findModel = stateClones.numberTrivias?.indexWhere((e) => e.id == model.id);
     if (findModel != -1 && findModel != null) {
-      stateClones.numberTrivias?[findModel].text =
-          model.textEditingController.text.trim();
+      stateClones.numberTrivias?[findModel].text = model.textEditingController.text.trim();
       stateClones.numberTrivias?[findModel].edit = false;
     }
     state = stateClones;

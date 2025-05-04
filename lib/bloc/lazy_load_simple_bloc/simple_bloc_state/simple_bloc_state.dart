@@ -8,9 +8,7 @@ class SimpleBlocState {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is SimpleBlocState &&
-          runtimeType == other.runtimeType &&
-          user == other.user);
+      (other is SimpleBlocState && runtimeType == other.runtimeType && user == other.user);
 
   @override
   int get hashCode => user.hashCode;

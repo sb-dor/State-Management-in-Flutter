@@ -17,10 +17,7 @@ class _TodoMobxPageState extends State<TodoMobxPage> {
   @override
   void initState() {
     super.initState();
-    final todoMobxObservable = Provider.of<TodoMobxStoreObservable>(
-      context,
-      listen: false,
-    );
+    final todoMobxObservable = Provider.of<TodoMobxStoreObservable>(context, listen: false);
 
     _textEditingController = TextEditingController(text: '');
 
@@ -48,8 +45,7 @@ class _TodoMobxPageState extends State<TodoMobxPage> {
     // and will listen that variable changes
     reaction(
       (_) => todoMobxObservable.showTypeOfTodos,
-      (currentTypeOfView) =>
-          debugPrint("current type of view: ${currentTypeOfView.name}"),
+      (currentTypeOfView) => debugPrint("current type of view: ${currentTypeOfView.name}"),
     );
 
     // information about this function is inside of this function
@@ -61,9 +57,7 @@ class _TodoMobxPageState extends State<TodoMobxPage> {
     // than function finishes
     // for ex:
     // until out state becomes delete this "asyncWhen" will not finish
-    await asyncWhen(
-      (_) => todoMobxObservable.showTypeOfTodos == ShowTypeOfTodos.deleted,
-    );
+    await asyncWhen((_) => todoMobxObservable.showTypeOfTodos == ShowTypeOfTodos.deleted);
     debugPrint("future function completed");
   }
 
@@ -114,8 +108,7 @@ class _TodoMobxPageState extends State<TodoMobxPage> {
                 (_) => ListView.separated(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  separatorBuilder:
-                      (context, index) => const SizedBox(height: 10),
+                  separatorBuilder: (context, index) => const SizedBox(height: 10),
                   itemCount: todoMobxObservable.visibleType.length,
                   itemBuilder: (context, index) {
                     final todo = todoMobxObservable.visibleType[index];

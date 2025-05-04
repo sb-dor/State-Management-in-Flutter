@@ -21,8 +21,7 @@ class Person {
   }
 }
 
-const personUrl =
-    "https://raw.githubusercontent.com/sb-dor/rxdart-app/master/apis/persons.json";
+const personUrl = "https://raw.githubusercontent.com/sb-dor/rxdart-app/master/apis/persons.json";
 
 Future<Iterable<Person>> getPersons() => HttpClient()
     .getUrl(Uri.parse(personUrl))

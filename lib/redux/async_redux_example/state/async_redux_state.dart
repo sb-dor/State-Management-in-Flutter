@@ -15,25 +15,14 @@ class AsyncReduxState {
     required this.error,
   });
 
-  const AsyncReduxState.empty()
-    : isLoading = false,
-      fetchedPersons = null,
-      error = null;
+  const AsyncReduxState.empty() : isLoading = false, fetchedPersons = null, error = null;
 }
 
 AsyncReduxState asyncReduxReducer(AsyncReduxState oldState, action) {
   if (action is LoadPeopleAction) {
-    return const AsyncReduxState(
-      isLoading: true,
-      fetchedPersons: null,
-      error: null,
-    );
+    return const AsyncReduxState(isLoading: true, fetchedPersons: null, error: null);
   } else if (action is SuccessfullyFetchedPeopleAction) {
-    return AsyncReduxState(
-      isLoading: false,
-      fetchedPersons: action.persons,
-      error: null,
-    );
+    return AsyncReduxState(isLoading: false, fetchedPersons: action.persons, error: null);
   } else if (action is FailedFetchedPeople) {
     return AsyncReduxState(
       isLoading: false,
@@ -51,17 +40,10 @@ AsyncReduxState asyncReduxReducer(AsyncReduxState oldState, action) {
 // ***
 // all middlewares should be initialized inside main app's store
 // ------ take a look a main.dart ------
-void loadPeopleMiddleware(
-  Store<AsyncReduxState> store,
-  action,
-  NextDispatcher next,
-) {
+void loadPeopleMiddleware(Store<AsyncReduxState> store, action, NextDispatcher next) {
   if (action is LoadPeopleAction) {
     getPersons()
-        .then(
-          (persons) =>
-              store.dispatch(SuccessfullyFetchedPeopleAction(persons: persons)),
-        )
+        .then((persons) => store.dispatch(SuccessfullyFetchedPeopleAction(persons: persons)))
         .catchError((e) => store.dispatch(FailedFetchedPeople(error: e)));
   }
   next(action);

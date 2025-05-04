@@ -28,8 +28,7 @@ final class SimpleBlocWithEvent {
 
   SimpleBlocState get state => _state;
 
-  final _eventController =
-      StreamController<SimpleBlocEvents>.broadcast(); // get events in
+  final _eventController = StreamController<SimpleBlocEvents>.broadcast(); // get events in
 
   late final Stream<SimpleBlocState> _stateStream;
 

@@ -6,21 +6,17 @@ class FoxArticleOwnBlocWcnWidget extends StatefulWidget {
   const FoxArticleOwnBlocWcnWidget({super.key});
 
   @override
-  State<FoxArticleOwnBlocWcnWidget> createState() =>
-      _FoxArticleOwnBlocWcnWidgetState();
+  State<FoxArticleOwnBlocWcnWidget> createState() => _FoxArticleOwnBlocWcnWidgetState();
 }
 
-class _FoxArticleOwnBlocWcnWidgetState
-    extends State<FoxArticleOwnBlocWcnWidget> {
+class _FoxArticleOwnBlocWcnWidgetState extends State<FoxArticleOwnBlocWcnWidget> {
   late final FoxArticleOwnBlocWithChangeNotifier _bloc;
 
   @override
   void initState() {
     super.initState();
 
-    _bloc = FoxArticleOwnBlocWithChangeNotifier(
-      FoxArticleOwnBlocWithChangeNotifierImpl(),
-    );
+    _bloc = FoxArticleOwnBlocWithChangeNotifier(FoxArticleOwnBlocWithChangeNotifierImpl());
 
     _bloc.addListener(_listener);
   }

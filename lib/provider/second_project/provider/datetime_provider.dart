@@ -25,19 +25,14 @@ class DatetimeProvider extends ChangeNotifier {
 
   StreamSubscription get cheapDateTimeModelSubs => _cheapDateTimeModelSubs;
 
-  StreamSubscription get expensiveDateTimeModelSubs =>
-      _expensiveDateTimeModelSubs;
+  StreamSubscription get expensiveDateTimeModelSubs => _expensiveDateTimeModelSubs;
 
   void start() {
-    _cheapDateTimeModelSubs = Stream.periodic(
-      const Duration(seconds: 1),
-    ).listen((e) {
+    _cheapDateTimeModelSubs = Stream.periodic(const Duration(seconds: 1)).listen((e) {
       _cheapDatetimeModel = CheapDatetimeModel();
       notifyListeners();
     });
-    _expensiveDateTimeModelSubs = Stream.periodic(
-      const Duration(seconds: 10),
-    ).listen((e) {
+    _expensiveDateTimeModelSubs = Stream.periodic(const Duration(seconds: 10)).listen((e) {
       _expensiveDatetimeModel = ExpensiveDatetimeModel();
       notifyListeners();
     });

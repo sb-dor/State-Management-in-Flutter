@@ -12,8 +12,7 @@ class RiverpodGeneratedCodePage extends ConsumerStatefulWidget {
   ConsumerState createState() => _RiverpodGeneratedCodePageState();
 }
 
-class _RiverpodGeneratedCodePageState
-    extends ConsumerState<RiverpodGeneratedCodePage> {
+class _RiverpodGeneratedCodePageState extends ConsumerState<RiverpodGeneratedCodePage> {
   @override
   void initState() {
     super.initState();
@@ -47,10 +46,7 @@ class _RiverpodGeneratedCodePageState
           Padding(
             padding: const EdgeInsets.all(8.0),
             child: TextField(
-              decoration: const InputDecoration(
-                labelText: 'Search',
-                border: OutlineInputBorder(),
-              ),
+              decoration: const InputDecoration(labelText: 'Search', border: OutlineInputBorder()),
               onChanged: (value) {
                 ref
                     .read(riverpodProductFilterProvider.notifier)

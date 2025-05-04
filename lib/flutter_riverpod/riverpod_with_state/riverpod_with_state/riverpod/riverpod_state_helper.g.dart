@@ -6,21 +6,19 @@ part of 'riverpod_state_helper.dart';
 // RiverpodGenerator
 // **************************************************************************
 
-String _$riverpodStateHelperHash() =>
-    r'aa9217422991bed6d47dc1eeb17a3fe691661a03';
+String _$riverpodStateHelperHash() => r'aa9217422991bed6d47dc1eeb17a3fe691661a03';
 
 /// See also [RiverpodStateHelper].
 @ProviderFor(RiverpodStateHelper)
-final riverpodStateHelperProvider = AutoDisposeNotifierProvider<
-    RiverpodStateHelper, RiverpodWithStateModel>.internal(
-  RiverpodStateHelper.new,
-  name: r'riverpodStateHelperProvider',
-  debugGetCreateSourceHash: const bool.fromEnvironment('dart.vm.product')
-      ? null
-      : _$riverpodStateHelperHash,
-  dependencies: null,
-  allTransitiveDependencies: null,
-);
+final riverpodStateHelperProvider =
+    AutoDisposeNotifierProvider<RiverpodStateHelper, RiverpodWithStateModel>.internal(
+      RiverpodStateHelper.new,
+      name: r'riverpodStateHelperProvider',
+      debugGetCreateSourceHash:
+          const bool.fromEnvironment('dart.vm.product') ? null : _$riverpodStateHelperHash,
+      dependencies: null,
+      allTransitiveDependencies: null,
+    );
 
 typedef _$RiverpodStateHelper = AutoDisposeNotifier<RiverpodWithStateModel>;
 // ignore_for_file: type=lint

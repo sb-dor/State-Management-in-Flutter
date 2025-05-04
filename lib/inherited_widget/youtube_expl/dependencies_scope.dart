@@ -19,10 +19,7 @@ final class SharedPreferencesHelper {
 final class DependenciesContainer {
   //
   //
-  const DependenciesContainer({
-    required this.logger,
-    required this.sharedPreferencesHelper,
-  });
+  const DependenciesContainer({required this.logger, required this.sharedPreferencesHelper});
 
   final Logger logger;
 
@@ -30,11 +27,7 @@ final class DependenciesContainer {
 }
 
 class DependenciesScope extends InheritedWidget {
-  const DependenciesScope({
-    super.key,
-    required super.child,
-    required this.dependenciesContainer,
-  });
+  const DependenciesScope({super.key, required super.child, required this.dependenciesContainer});
 
   final DependenciesContainer dependenciesContainer;
 
@@ -45,15 +38,9 @@ class DependenciesScope extends InheritedWidget {
       assert(result != null, 'No _InheritedScope found in context');
       return result!;
     } else {
-      final result =
-          context
-              .getElementForInheritedWidgetOfExactType<DependenciesScope>()
-              ?.widget;
+      final result = context.getElementForInheritedWidgetOfExactType<DependenciesScope>()?.widget;
 
-      assert(
-        result is DependenciesScope,
-        'No _InheritedScope found in context',
-      );
+      assert(result is DependenciesScope, 'No _InheritedScope found in context');
 
       return result as DependenciesScope;
     }

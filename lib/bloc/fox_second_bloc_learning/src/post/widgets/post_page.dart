@@ -49,9 +49,7 @@ class _State extends State<PostPage> {
                 return IconButton(
                   onPressed: () {
                     // or like this
-                    context.read<AuthenticationBloc>().add(
-                      const LogOutAuthenticationEvent(),
-                    );
+                    context.read<AuthenticationBloc>().add(const LogOutAuthenticationEvent());
                   },
                   icon: const Icon(Icons.logout),
                 );

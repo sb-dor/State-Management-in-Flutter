@@ -8,9 +8,7 @@ final class AnyClass {
   @override
   bool operator ==(Object other) =>
       identical(this, other) ||
-      (other is AnyClass &&
-          runtimeType == other.runtimeType &&
-          number == other.number);
+      (other is AnyClass && runtimeType == other.runtimeType && number == other.number);
 
   @override
   int get hashCode => number.hashCode;
@@ -44,8 +42,7 @@ class TestValueListenableWidget extends StatefulWidget {
   const TestValueListenableWidget({super.key});
 
   @override
-  State<TestValueListenableWidget> createState() =>
-      _TestValueListenableWidgetState();
+  State<TestValueListenableWidget> createState() => _TestValueListenableWidgetState();
 }
 
 class _TestValueListenableWidgetState extends State<TestValueListenableWidget> {
@@ -123,11 +120,7 @@ class _TestValueListenableWidgetState extends State<TestValueListenableWidget> {
 typedef WidgetBuilder = Widget Function();
 
 class OwnListenableBuilder extends StatefulWidget {
-  const OwnListenableBuilder({
-    super.key,
-    required this.listenable,
-    required this.child,
-  });
+  const OwnListenableBuilder({super.key, required this.listenable, required this.child});
 
   final Listenable listenable;
   final WidgetBuilder child;

@@ -20,9 +20,7 @@ abstract class Bloc<State extends Object> with ChangeNotifier {
     notifyListeners();
   }
 
-  Future<void> handle(
-    Future<void> Function(SetState<State> setState) handler,
-  ) async {
+  Future<void> handle(Future<void> Function(SetState<State> setState) handler) async {
     if (_isProcessing) return;
 
     _isProcessing = true;
@@ -92,17 +90,14 @@ class SampleState with _$SampleState {
   bool get hasError => maybeMap<bool>(orElse: () => false, error: (_) => true);
 
   /// Is in progress state
-  bool get isProcessing =>
-      maybeMap<bool>(orElse: () => false, processing: (_) => true);
+  bool get isProcessing => maybeMap<bool>(orElse: () => false, processing: (_) => true);
 }
 
 final class FoxArticleOwnBlocWithChangeNotifier extends Bloc<SampleState> {
-  FoxArticleOwnBlocWithChangeNotifier(
-    this._iFoxArticleOwnBlocWithChangeNotifier,
-  ) : super(SampleState.idle(data: Data(1)));
+  FoxArticleOwnBlocWithChangeNotifier(this._iFoxArticleOwnBlocWithChangeNotifier)
+    : super(SampleState.idle(data: Data(1)));
 
-  final IFoxArticleOwnBlocWithChangeNotifier
-  _iFoxArticleOwnBlocWithChangeNotifier;
+  final IFoxArticleOwnBlocWithChangeNotifier _iFoxArticleOwnBlocWithChangeNotifier;
 
   Future<void> fetch({required int id}) => handle((setState) async {
     try {

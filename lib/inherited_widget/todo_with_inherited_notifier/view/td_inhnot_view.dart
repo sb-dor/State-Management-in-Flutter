@@ -45,9 +45,7 @@ class _TdInhNotViewState extends State<TdInhNotView> {
     return Scaffold(
       body: CustomScrollView(
         slivers: [
-          const CupertinoSliverNavigationBar(
-            largeTitle: Text("Todo with MVVM"),
-          ),
+          const CupertinoSliverNavigationBar(largeTitle: Text("Todo with MVVM")),
 
           // for test one
           SliverToBoxAdapter(
@@ -55,8 +53,7 @@ class _TdInhNotViewState extends State<TdInhNotView> {
               provider: TdInhViewModel(),
               child: Builder(
                 builder: (context) {
-                  final intValue =
-                      OwnChangeNotifierProvider.watch<TdInhViewModel>(context);
+                  final intValue = OwnChangeNotifierProvider.watch<TdInhViewModel>(context);
                   return TextButton(
                     onPressed: () {
                       if (_todoTextController.text.trim().isEmpty) return;
@@ -64,9 +61,7 @@ class _TdInhNotViewState extends State<TdInhNotView> {
                         context,
                       )?.addTodo(_todoTextController.text.trim());
                     },
-                    child: Text(
-                      "${intValue?.todoListMVVMStateModel.todoMVVM.length}",
-                    ),
+                    child: Text("${intValue?.todoListMVVMStateModel.todoMVVM.length}"),
                   );
                 },
               ),
@@ -90,10 +85,7 @@ class _TdInhNotViewState extends State<TdInhNotView> {
                       // todoInhNot?.tdInhViewModel.addTodo(_todoTextController.text.trim());
                       todoInhNot?.addTodo(_todoTextController.text.trim());
                     },
-                    icon: const Icon(
-                      CupertinoIcons.add,
-                      color: CupertinoColors.activeGreen,
-                    ),
+                    icon: const Icon(CupertinoIcons.add, color: CupertinoColors.activeGreen),
                   ),
                 ],
               ),

@@ -12,8 +12,7 @@ class TdInhNotStateModel {
 
   bool get loading => _loading;
 
-  UnmodifiableListView<TdInhNotModel> get todoMVVM =>
-      UnmodifiableListView(_todoMVVM);
+  UnmodifiableListView<TdInhNotModel> get todoMVVM => UnmodifiableListView(_todoMVVM);
 
   void _clearAllTodos() => _todoMVVM.clear();
 

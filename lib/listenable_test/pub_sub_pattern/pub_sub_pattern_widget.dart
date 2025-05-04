@@ -15,8 +15,7 @@ class OwnBlocBuilder<Bl extends OwnBloc<dynamic, S>, S> extends StatefulWidget {
   State<OwnBlocBuilder<Bl, S>> createState() => _OwnBlocBuilderState<Bl, S>();
 }
 
-class _OwnBlocBuilderState<Bl extends OwnBloc<dynamic, S>, S>
-    extends State<OwnBlocBuilder<Bl, S>> {
+class _OwnBlocBuilderState<Bl extends OwnBloc<dynamic, S>, S> extends State<OwnBlocBuilder<Bl, S>> {
   late final StreamSubscription<S> _stateSub;
   late S _state;
 

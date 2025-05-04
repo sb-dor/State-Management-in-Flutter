@@ -14,21 +14,14 @@ import 'package:flutter_riverpod/flutter_riverpod.dart';
 class ProviderObserverHelper extends ProviderObserver {
   // called when a provider is added to the tree
   @override
-  void didAddProvider(
-    ProviderBase<Object?> provider,
-    Object? value,
-    ProviderContainer container,
-  ) {
+  void didAddProvider(ProviderBase<Object?> provider, Object? value, ProviderContainer container) {
     debugPrint("provider added: ${provider.name}");
     super.didAddProvider(provider, value, container);
   }
 
   // called when a provider is updated
   @override
-  void didDisposeProvider(
-    ProviderBase<Object?> provider,
-    ProviderContainer container,
-  ) {
+  void didDisposeProvider(ProviderBase<Object?> provider, ProviderContainer container) {
     debugPrint("provider disposed: ${provider.name}");
     super.didDisposeProvider(provider, container);
   }

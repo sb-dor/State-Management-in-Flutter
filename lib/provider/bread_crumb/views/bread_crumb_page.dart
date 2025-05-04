@@ -17,9 +17,9 @@ class _BreadCrumbPageState extends State<BreadCrumbPage> {
   @override
   Widget build(BuildContext context) {
     // the way how to listen only specific item of provider
-    final list = context.select<BreadCrumbProvider, List<BreadCrumb>>(
-      (provider) => provider.items,
-    );
+    // final list = context.select<BreadCrumbProvider, List<BreadCrumb>>(
+    //   (provider) => provider.items,
+    // );
 
     // a lot of programmers with a lot of experience say that if you are out side of build function
     // use the Provider.of itself instead of using context.watch in order to watch something
@@ -42,9 +42,7 @@ class _BreadCrumbPageState extends State<BreadCrumbPage> {
               onPressed: () {
                 Navigator.push(
                   context,
-                  MaterialPageRoute(
-                    builder: (context) => const BreadCrumbCreateScreen(),
-                  ),
+                  MaterialPageRoute(builder: (context) => const BreadCrumbCreateScreen()),
                 );
               },
               child: const Text("Add new bread crumb"),

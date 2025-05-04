@@ -6,12 +6,10 @@ class MobxWithoutCodeGenerationPage extends StatefulWidget {
   const MobxWithoutCodeGenerationPage({super.key});
 
   @override
-  State<MobxWithoutCodeGenerationPage> createState() =>
-      _MobxWithoutCodeGenerationPageState();
+  State<MobxWithoutCodeGenerationPage> createState() => _MobxWithoutCodeGenerationPageState();
 }
 
-class _MobxWithoutCodeGenerationPageState
-    extends State<MobxWithoutCodeGenerationPage> {
+class _MobxWithoutCodeGenerationPageState extends State<MobxWithoutCodeGenerationPage> {
   late final TextEditingController _textEditingController;
   final mobxWithoutCodeGeneration = ModelWithoutCodeGenerationStore();
 
@@ -52,8 +50,7 @@ class _MobxWithoutCodeGenerationPageState
                 (_) => ListView.separated(
                   physics: const NeverScrollableScrollPhysics(),
                   shrinkWrap: true,
-                  separatorBuilder:
-                      (context, index) => const SizedBox(height: 10),
+                  separatorBuilder: (context, index) => const SizedBox(height: 10),
                   itemCount: mobxWithoutCodeGeneration.list.length,
                   itemBuilder: (context, index) {
                     final model = mobxWithoutCodeGeneration.list[index];

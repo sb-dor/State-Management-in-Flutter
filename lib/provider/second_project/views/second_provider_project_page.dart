@@ -9,8 +9,7 @@ class SecondProviderProjectPage extends StatefulWidget {
   const SecondProviderProjectPage({super.key});
 
   @override
-  State<SecondProviderProjectPage> createState() =>
-      _SecondProviderProjectPageState();
+  State<SecondProviderProjectPage> createState() => _SecondProviderProjectPageState();
 }
 
 class _SecondProviderProjectPageState extends State<SecondProviderProjectPage> {

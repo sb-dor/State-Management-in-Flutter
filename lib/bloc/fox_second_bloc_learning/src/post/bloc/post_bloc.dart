@@ -9,11 +9,9 @@ import 'post_state.dart';
 class PostBloc extends Bloc<PostEvent, PostState> {
   final IPostRepository _postRepository;
 
-  PostBloc({
-    required IPostRepository postRepository,
-    required PostState initialState,
-  }) : _postRepository = postRepository,
-       super(initialState) {
+  PostBloc({required IPostRepository postRepository, required PostState initialState})
+    : _postRepository = postRepository,
+      super(initialState) {
     // NOTE!
     // if you want to use transformers with freezed
     // the best solution for transformer is "concurrent()"
@@ -97,9 +95,7 @@ class PostBloc extends Bloc<PostEvent, PostState> {
 
         listFromCopiedList.add(event.post);
 
-        final copiedState = state.postStateModel.copyWith(
-          posts: listFromCopiedList,
-        );
+        final copiedState = state.postStateModel.copyWith(posts: listFromCopiedList);
 
         emit(PostSuccessfulState(copiedState));
       } else {

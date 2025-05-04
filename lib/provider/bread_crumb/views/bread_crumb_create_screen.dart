@@ -33,17 +33,12 @@ class _BreadCrumbCreateScreenState extends State<BreadCrumbCreateScreen> {
         children: [
           TextField(
             controller: _controller,
-            decoration: const InputDecoration(
-              hintText: "Add new breadcrump...",
-            ),
+            decoration: const InputDecoration(hintText: "Add new breadcrump..."),
           ),
           TextButton(
             onPressed: () {
               if (_controller.text.trim().isEmpty) return;
-              final breadCrumb = BreadCrumb(
-                isActive: false,
-                name: _controller.text.trim(),
-              );
+              final breadCrumb = BreadCrumb(isActive: false, name: _controller.text.trim());
               context.read<BreadCrumbProvider>().add(breadCrumb);
               Navigator.pop(context);
             },

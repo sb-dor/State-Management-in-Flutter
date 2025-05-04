@@ -64,12 +64,8 @@ class _AppState extends State<App> {
       child: MultiProvider(
         // Provider package
         providers: [
-          ChangeNotifierProvider<BreadCrumbProvider>(
-            create: (_) => BreadCrumbProvider(),
-          ),
-          ChangeNotifierProvider<DatetimeProvider>(
-            create: (_) => DatetimeProvider(),
-          ),
+          ChangeNotifierProvider<BreadCrumbProvider>(create: (_) => BreadCrumbProvider()),
+          ChangeNotifierProvider<DatetimeProvider>(create: (_) => DatetimeProvider()),
 
           // MOBX REGISTRATIONS
           Provider(create: (_) => TodoMobxStoreObservable()),
@@ -86,10 +82,7 @@ class _AppState extends State<App> {
 
             // riverpodTriviaStateWithNotifierProvider // <- THIS IS PROVIDER
           ],
-          child: MaterialApp(
-            debugShowCheckedModeBanner: false,
-            home: const TdInhNotView(),
-          ),
+          child: MaterialApp(debugShowCheckedModeBanner: false, home: const TdInhNotView()),
         ),
       ),
     );

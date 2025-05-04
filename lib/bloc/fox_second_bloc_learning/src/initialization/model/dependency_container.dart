@@ -6,8 +6,5 @@ class DependencyContainer {
 
   final PostBloc postBloc;
 
-  DependencyContainer({
-    required this.authenticationBloc,
-    required this.postBloc,
-  });
+  DependencyContainer({required this.authenticationBloc, required this.postBloc});
 }

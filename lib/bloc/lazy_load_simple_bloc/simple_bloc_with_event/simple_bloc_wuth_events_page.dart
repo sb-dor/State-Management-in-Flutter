@@ -7,17 +7,14 @@ class SimpleBlocWithEventsPage extends StatefulWidget {
   const SimpleBlocWithEventsPage({super.key});
 
   @override
-  State<SimpleBlocWithEventsPage> createState() =>
-      _SimpleBlocWithEventsPageState();
+  State<SimpleBlocWithEventsPage> createState() => _SimpleBlocWithEventsPageState();
 }
 
 class _SimpleBlocWithEventsPageState extends State<SimpleBlocWithEventsPage> {
   @override
   Widget build(BuildContext context) {
     return MultiBlocProvider(
-      providers: [
-        Provider<SimpleBlocWithEvent>(create: (_) => SimpleBlocWithEvent()),
-      ],
+      providers: [Provider<SimpleBlocWithEvent>(create: (_) => SimpleBlocWithEvent())],
       child: const MaterialApp(home: _SimpleBlocPageUI()),
     );
   }

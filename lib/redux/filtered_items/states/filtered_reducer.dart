@@ -11,28 +11,20 @@ Iterable<String> addAndRemoveFromItems(Iterable<String> prevItems, action) {
   if (action is AddItemAction) {
     prevToList.add(action.item);
   } else if (action is RemoveItemAction) {
-    prevToList.removeWhere(
-      (e) => e.trim().toLowerCase() == action.item.trim().toLowerCase(),
-    );
+    prevToList.removeWhere((e) => e.trim().toLowerCase() == action.item.trim().toLowerCase());
   }
   return prevToList;
 }
 
 // function above is replacement for code from here
 // ---
-Iterable<String> addItemReducer(
-  Iterable<String> previousItems,
-  AddItemAction addItem,
-) {
+Iterable<String> addItemReducer(Iterable<String> previousItems, AddItemAction addItem) {
   return previousItems.followedBy([addItem.item]);
 }
 
 // these codes represent the Redux functionality
 
-Iterable<String> removeItemReducer(
-  Iterable<String> previousItems,
-  RemoveItemAction remove,
-) {
+Iterable<String> removeItemReducer(Iterable<String> previousItems, RemoveItemAction remove) {
   return previousItems.where((e) => e != remove.item);
 }
 

@@ -21,9 +21,7 @@ class RiverpodFunctionPage extends ConsumerWidget {
             ElevatedButton(
               onPressed: () {
                 showModalBottomSheet(
-                  constraints: BoxConstraints(
-                    maxHeight: MediaQuery.of(context).size.height * 0.9,
-                  ),
+                  constraints: BoxConstraints(maxHeight: MediaQuery.of(context).size.height * 0.9),
                   isScrollControlled: true,
                   context: context,
                   builder: (context) {
@@ -62,9 +60,7 @@ class _FirstWidgetWithProviderScope extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 10),
-                        Text(
-                          "Number: ${riverpodFunction.value?.number ?? '-'}",
-                        ),
+                        Text("Number: ${riverpodFunction.value?.number ?? '-'}"),
                         const SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: () {
@@ -80,9 +76,7 @@ class _FirstWidgetWithProviderScope extends StatelessWidget {
                         ),
                       ],
                     ),
-                error:
-                    (error, stacktrace) =>
-                        const Text("Error occreed, please try again later"),
+                error: (error, stacktrace) => const Text("Error occreed, please try again later"),
                 loading: () => const CircularProgressIndicator(),
               );
         },
@@ -113,9 +107,7 @@ class _SecondWidgetWithProviderScope extends StatelessWidget {
                           textAlign: TextAlign.center,
                         ),
                         const SizedBox(height: 10),
-                        Text(
-                          "Number: ${riverpodFunction.value?.number ?? '-'}",
-                        ),
+                        Text("Number: ${riverpodFunction.value?.number ?? '-'}"),
                         const SizedBox(height: 20),
                         ElevatedButton(
                           onPressed: () {
@@ -131,9 +123,7 @@ class _SecondWidgetWithProviderScope extends StatelessWidget {
                         ),
                       ],
                     ),
-                error:
-                    (error, stacktrace) =>
-                        const Text("Error occreed, please try again later"),
+                error: (error, stacktrace) => const Text("Error occreed, please try again later"),
                 loading: () => const CircularProgressIndicator(),
               );
         },
@@ -147,9 +137,7 @@ class _DialogWidget extends ConsumerWidget {
 
   @override
   Widget build(BuildContext context, WidgetRef ref) {
-    final numberTrivialRiverpod = ref.watch(
-      riverpodTriviaStateWithNotifierProvider,
-    );
+    final numberTrivialRiverpod = ref.watch(riverpodTriviaStateWithNotifierProvider);
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
@@ -157,15 +145,11 @@ class _DialogWidget extends ConsumerWidget {
           scrolledUnderElevation: 0,
           actions: [
             IconButton(
-              onPressed:
-                  () => ref.invalidate(
-                    otherRiverpodForTheCombiningProvidersProvider,
-                  ),
+              onPressed: () => ref.invalidate(otherRiverpodForTheCombiningProvidersProvider),
               icon: const Icon(Icons.update),
             ),
             IconButton(
-              onPressed:
-                  () => ref.invalidate(riverpodTriviaStateWithNotifierProvider),
+              onPressed: () => ref.invalidate(riverpodTriviaStateWithNotifierProvider),
               icon: const Icon(Icons.refresh),
             ),
           ],
@@ -198,10 +182,7 @@ class _DialogWidget extends ConsumerWidget {
                                       maxLines: null,
                                       onSubmitted: (v) {
                                         ref
-                                            .read(
-                                              riverpodTriviaStateWithNotifierProvider
-                                                  .notifier,
-                                            )
+                                            .read(riverpodTriviaStateWithNotifierProvider.notifier)
                                             .saveTriviaText(trivia);
                                       },
                                     )
@@ -211,17 +192,11 @@ class _DialogWidget extends ConsumerWidget {
                               onPressed: () {
                                 if (trivia.edit) {
                                   ref
-                                      .read(
-                                        riverpodTriviaStateWithNotifierProvider
-                                            .notifier,
-                                      )
+                                      .read(riverpodTriviaStateWithNotifierProvider.notifier)
                                       .saveTriviaText(trivia);
                                 } else {
                                   ref
-                                      .read(
-                                        riverpodTriviaStateWithNotifierProvider
-                                            .notifier,
-                                      )
+                                      .read(riverpodTriviaStateWithNotifierProvider.notifier)
                                       .showEdit(trivia);
                                 }
                               },
