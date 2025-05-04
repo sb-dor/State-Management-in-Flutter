@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/widgets.dart';
 import 'package:state_management_course/inherited_widget/test_auth/models/test_auth_user.dart';
 import 'package:uuid/uuid.dart';
 
+// JUST FOR TESTING, WHAT HAPPENS IF I PUT INH-WIDGET BELOW MATERIAL APP AND THEN PUSH THE SCREEN
+
 void main() {
-  runApp(TestAuthApp());
+  runApp(MaterialApp(home: TestAuthApp()));
 }
 
 class TestAuthInhWidget extends InheritedWidget {
@@ -54,7 +55,7 @@ class TestAuthAppState extends State<TestAuthApp> {
 
   @override
   Widget build(BuildContext context) {
-    return TestAuthInhWidget(testAuthAppState: this, child: MaterialApp(home: AuthWidget()));
+    return TestAuthInhWidget(testAuthAppState: this, child: AuthWidget());
   }
 }
 
@@ -75,7 +76,6 @@ class _AuthWidgetState extends State<AuthWidget> {
         actions: [
           TextButton(
             onPressed: () {
-              // after pushing to the new screen you will lose access to the inhWidget
               Navigator.push(context, MaterialPageRoute(builder: (context) => TestLogutWidget()));
             },
             child: Text("Push"),
